@@ -1,0 +1,455 @@
+{
+  "design": {
+    "design_info": {
+      "boundary_crc": "0x9A61045944965567",
+      "device": "xcku5p-ffvb676-2-e",
+      "gen_directory": "../../../../post_processing_v1.gen/sources_1/bd/TXRX_BRAM",
+      "name": "TXRX_BRAM",
+      "rev_ctrl_bd_flag": "RevCtrlBdOff",
+      "synth_flow_mode": "Hierarchical",
+      "tool_version": "2022.1",
+      "validated": "true"
+    },
+    "design_tree": {
+      "B2A_BRAM": "",
+      "A2B_BRAM": ""
+    },
+    "ports": {
+      "B_TX_bram_addrb": {
+        "direction": "I",
+        "left": "10",
+        "right": "0"
+      },
+      "B_TX_bram_clkb": {
+        "type": "clk",
+        "direction": "I",
+        "parameters": {
+          "CLK_DOMAIN": {
+            "value": "TXRX_BRAM_clka_0",
+            "value_src": "default"
+          },
+          "FREQ_HZ": {
+            "value": "100000000",
+            "value_src": "default"
+          },
+          "FREQ_TOLERANCE_HZ": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.0",
+            "value_src": "default"
+          }
+        }
+      },
+      "B_TX_bram_dinb": {
+        "direction": "I",
+        "left": "31",
+        "right": "0"
+      },
+      "B_TX_bram_doutb": {
+        "direction": "O",
+        "left": "31",
+        "right": "0"
+      },
+      "B_TX_bram_enb": {
+        "direction": "I"
+      },
+      "B_TX_bram_web": {
+        "direction": "I",
+        "left": "0",
+        "right": "0"
+      },
+      "A_RX_bram_enb": {
+        "direction": "I"
+      },
+      "A_RX_bram_addrb": {
+        "direction": "I",
+        "left": "10",
+        "right": "0"
+      },
+      "A_RX_bram_clkb": {
+        "type": "clk",
+        "direction": "I",
+        "parameters": {
+          "CLK_DOMAIN": {
+            "value": "TXRX_BRAM_clkb_0",
+            "value_src": "default"
+          },
+          "FREQ_HZ": {
+            "value": "100000000",
+            "value_src": "default"
+          },
+          "FREQ_TOLERANCE_HZ": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.0",
+            "value_src": "default"
+          }
+        }
+      },
+      "A_RX_bram_dinb": {
+        "direction": "I",
+        "left": "31",
+        "right": "0"
+      },
+      "A_RX_bram_doutb": {
+        "direction": "O",
+        "left": "31",
+        "right": "0"
+      },
+      "A_RX_bram_web": {
+        "direction": "I",
+        "left": "0",
+        "right": "0"
+      },
+      "A_TX_bram_enb": {
+        "direction": "I"
+      },
+      "A_TX_bram_clkb": {
+        "type": "clk",
+        "direction": "I",
+        "parameters": {
+          "CLK_DOMAIN": {
+            "value": "TXRX_BRAM_clka_0",
+            "value_src": "default"
+          },
+          "FREQ_HZ": {
+            "value": "100000000",
+            "value_src": "default"
+          },
+          "FREQ_TOLERANCE_HZ": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.0",
+            "value_src": "default"
+          }
+        }
+      },
+      "A_TX_bram_dinb": {
+        "direction": "I",
+        "left": "31",
+        "right": "0"
+      },
+      "A_TX_bram_web": {
+        "direction": "I",
+        "left": "0",
+        "right": "0"
+      },
+      "A_TX_bram_doutb": {
+        "direction": "O",
+        "left": "31",
+        "right": "0"
+      },
+      "A_TX_bram_addrb": {
+        "direction": "I",
+        "left": "10",
+        "right": "0"
+      },
+      "B_RX_bram_enb": {
+        "direction": "I"
+      },
+      "B_RX_bram_dinb": {
+        "direction": "I",
+        "left": "31",
+        "right": "0"
+      },
+      "B_RX_bram_doutb": {
+        "direction": "O",
+        "left": "31",
+        "right": "0"
+      },
+      "B_RX_bram_addrb": {
+        "direction": "I",
+        "left": "10",
+        "right": "0"
+      },
+      "B_RX_bram_clkb": {
+        "type": "clk",
+        "direction": "I",
+        "parameters": {
+          "CLK_DOMAIN": {
+            "value": "TXRX_BRAM_clkb_0",
+            "value_src": "default"
+          },
+          "FREQ_HZ": {
+            "value": "100000000",
+            "value_src": "default"
+          },
+          "FREQ_TOLERANCE_HZ": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.0",
+            "value_src": "default"
+          }
+        }
+      },
+      "B_RX_bram_web": {
+        "direction": "I",
+        "left": "0",
+        "right": "0"
+      }
+    },
+    "components": {
+      "B2A_BRAM": {
+        "vlnv": "xilinx.com:ip:blk_mem_gen:8.4",
+        "xci_name": "TXRX_BRAM_blk_mem_gen_0_0",
+        "xci_path": "ip\\TXRX_BRAM_blk_mem_gen_0_0\\TXRX_BRAM_blk_mem_gen_0_0.xci",
+        "inst_hier_path": "B2A_BRAM",
+        "parameters": {
+          "Enable_32bit_Address": {
+            "value": "false"
+          },
+          "Enable_B": {
+            "value": "Use_ENB_Pin"
+          },
+          "Memory_Type": {
+            "value": "True_Dual_Port_RAM"
+          },
+          "Port_B_Clock": {
+            "value": "100"
+          },
+          "Port_B_Enable_Rate": {
+            "value": "100"
+          },
+          "Port_B_Write_Rate": {
+            "value": "50"
+          },
+          "Register_PortA_Output_of_Memory_Primitives": {
+            "value": "true"
+          },
+          "Register_PortB_Output_of_Memory_Primitives": {
+            "value": "true"
+          },
+          "Use_Byte_Write_Enable": {
+            "value": "false"
+          },
+          "Use_RSTA_Pin": {
+            "value": "false"
+          },
+          "Write_Depth_A": {
+            "value": "2048"
+          },
+          "use_bram_block": {
+            "value": "Stand_Alone"
+          }
+        }
+      },
+      "A2B_BRAM": {
+        "vlnv": "xilinx.com:ip:blk_mem_gen:8.4",
+        "xci_name": "TXRX_BRAM_blk_mem_gen_1_0",
+        "xci_path": "ip\\TXRX_BRAM_blk_mem_gen_1_0\\TXRX_BRAM_blk_mem_gen_1_0.xci",
+        "inst_hier_path": "A2B_BRAM",
+        "parameters": {
+          "Enable_32bit_Address": {
+            "value": "false"
+          },
+          "Enable_B": {
+            "value": "Use_ENB_Pin"
+          },
+          "Memory_Type": {
+            "value": "True_Dual_Port_RAM"
+          },
+          "Port_B_Clock": {
+            "value": "100"
+          },
+          "Port_B_Enable_Rate": {
+            "value": "100"
+          },
+          "Port_B_Write_Rate": {
+            "value": "50"
+          },
+          "Register_PortA_Output_of_Memory_Primitives": {
+            "value": "true"
+          },
+          "Register_PortB_Output_of_Memory_Primitives": {
+            "value": "true"
+          },
+          "Use_Byte_Write_Enable": {
+            "value": "false"
+          },
+          "Use_RSTA_Pin": {
+            "value": "false"
+          },
+          "Use_RSTB_Pin": {
+            "value": "false"
+          },
+          "Write_Depth_A": {
+            "value": "2048"
+          },
+          "use_bram_block": {
+            "value": "Stand_Alone"
+          }
+        }
+      }
+    },
+    "nets": {
+      "A2B_BRAM_douta": {
+        "ports": [
+          "A2B_BRAM/douta",
+          "A_TX_bram_doutb"
+        ]
+      },
+      "A2B_BRAM_doutb": {
+        "ports": [
+          "A2B_BRAM/doutb",
+          "B_RX_bram_doutb"
+        ]
+      },
+      "B2A_BRAM_douta": {
+        "ports": [
+          "B2A_BRAM/douta",
+          "B_TX_bram_doutb"
+        ]
+      },
+      "B2A_BRAM_doutb": {
+        "ports": [
+          "B2A_BRAM/doutb",
+          "A_RX_bram_doutb"
+        ]
+      },
+      "addra_0_1": {
+        "ports": [
+          "B_TX_bram_addrb",
+          "B2A_BRAM/addra"
+        ]
+      },
+      "addra_0_2": {
+        "ports": [
+          "A_TX_bram_addrb",
+          "A2B_BRAM/addra"
+        ]
+      },
+      "addrb_0_1": {
+        "ports": [
+          "A_RX_bram_addrb",
+          "B2A_BRAM/addrb"
+        ]
+      },
+      "addrb_0_2": {
+        "ports": [
+          "B_RX_bram_addrb",
+          "A2B_BRAM/addrb"
+        ]
+      },
+      "clka_0_1": {
+        "ports": [
+          "B_TX_bram_clkb",
+          "B2A_BRAM/clka"
+        ]
+      },
+      "clka_0_2": {
+        "ports": [
+          "A_TX_bram_clkb",
+          "A2B_BRAM/clka"
+        ]
+      },
+      "clkb_0_1": {
+        "ports": [
+          "A_RX_bram_clkb",
+          "B2A_BRAM/clkb"
+        ]
+      },
+      "clkb_0_2": {
+        "ports": [
+          "B_RX_bram_clkb",
+          "A2B_BRAM/clkb"
+        ]
+      },
+      "dina_0_1": {
+        "ports": [
+          "B_TX_bram_dinb",
+          "B2A_BRAM/dina"
+        ]
+      },
+      "dina_0_2": {
+        "ports": [
+          "A_TX_bram_dinb",
+          "A2B_BRAM/dina"
+        ]
+      },
+      "dinb_0_1": {
+        "ports": [
+          "A_RX_bram_dinb",
+          "B2A_BRAM/dinb"
+        ]
+      },
+      "dinb_0_2": {
+        "ports": [
+          "B_RX_bram_dinb",
+          "A2B_BRAM/dinb"
+        ]
+      },
+      "ena_0_1": {
+        "ports": [
+          "B_TX_bram_enb",
+          "B2A_BRAM/ena"
+        ]
+      },
+      "ena_0_2": {
+        "ports": [
+          "A_TX_bram_enb",
+          "A2B_BRAM/ena"
+        ]
+      },
+      "enb_0_1": {
+        "ports": [
+          "A_RX_bram_enb",
+          "B2A_BRAM/enb"
+        ]
+      },
+      "enb_0_2": {
+        "ports": [
+          "B_RX_bram_enb",
+          "A2B_BRAM/enb"
+        ]
+      },
+      "wea_0_1": {
+        "ports": [
+          "B_TX_bram_web",
+          "B2A_BRAM/wea"
+        ]
+      },
+      "wea_0_2": {
+        "ports": [
+          "A_TX_bram_web",
+          "A2B_BRAM/wea"
+        ]
+      },
+      "web_0_1": {
+        "ports": [
+          "A_RX_bram_web",
+          "B2A_BRAM/web"
+        ]
+      },
+      "web_0_2": {
+        "ports": [
+          "B_RX_bram_web",
+          "A2B_BRAM/web"
+        ]
+      }
+    }
+  }
+}

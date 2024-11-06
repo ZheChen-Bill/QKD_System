@@ -1,0 +1,2131 @@
+{
+  "design": {
+    "design_info": {
+      "boundary_crc": "0x1BD99542C0838339",
+      "device": "xcku5p-ffvb676-2-e",
+      "gen_directory": "../../../../post_processing_v1.gen/sources_1/bd/BD_interface_B",
+      "name": "BD_interface_B",
+      "rev_ctrl_bd_flag": "RevCtrlBdOff",
+      "synth_flow_mode": "Singular",
+      "tool_version": "2022.1",
+      "validated": "true"
+    },
+    "design_tree": {
+      "B_TX_detected_fifo": "",
+      "B_TX_er_fifo": "",
+      "B_RX_Zbasis_decoy_fifo": "",
+      "B_RX_er_fifo": "",
+      "B_RX_secretkey_length_fifo": "",
+      "B_RX_EVrandombit_bram": "",
+      "B_RX_PArandombit_bram": "",
+      "Bsiftedkey_uram": "",
+      "Breconciledkey_uram": "",
+      "ask_parity_fifo": ""
+    },
+    "ports": {
+      "Breconciledkey_addra": {
+        "direction": "I",
+        "left": "14",
+        "right": "0"
+      },
+      "Breconciledkey_wea": {
+        "direction": "I",
+        "left": "0",
+        "right": "0"
+      },
+      "Breconciledkey_dinb": {
+        "direction": "I",
+        "left": "63",
+        "right": "0"
+      },
+      "Breconciledkey_douta": {
+        "direction": "O",
+        "left": "63",
+        "right": "0"
+      },
+      "Breconciledkey_doutb": {
+        "direction": "O",
+        "left": "63",
+        "right": "0"
+      },
+      "Breconciledkey_addrb": {
+        "direction": "I",
+        "left": "14",
+        "right": "0"
+      },
+      "Breconciledkey_ena": {
+        "direction": "I"
+      },
+      "Breconciledkey_clkb": {
+        "type": "clk",
+        "direction": "I",
+        "parameters": {
+          "CLK_DOMAIN": {
+            "value": "BD_interface_B_clkb_0",
+            "value_src": "default"
+          },
+          "FREQ_HZ": {
+            "value": "100000000",
+            "value_src": "default"
+          },
+          "FREQ_TOLERANCE_HZ": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.0",
+            "value_src": "default"
+          }
+        }
+      },
+      "Breconciledkey_enb": {
+        "direction": "I"
+      },
+      "Breconciledkey_clka": {
+        "type": "clk",
+        "direction": "I",
+        "parameters": {
+          "CLK_DOMAIN": {
+            "value": "BD_interface_B_clka_0",
+            "value_src": "default"
+          },
+          "FREQ_HZ": {
+            "value": "100000000",
+            "value_src": "default"
+          },
+          "FREQ_TOLERANCE_HZ": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.0",
+            "value_src": "default"
+          }
+        }
+      },
+      "Breconciledkey_dina": {
+        "direction": "I",
+        "left": "63",
+        "right": "0"
+      },
+      "Breconciledkey_web": {
+        "direction": "I",
+        "left": "0",
+        "right": "0"
+      },
+      "B_RX_PArandombit_doutb": {
+        "direction": "O",
+        "left": "63",
+        "right": "0"
+      },
+      "B_RX_PArandombit_addrb": {
+        "direction": "I",
+        "left": "13",
+        "right": "0"
+      },
+      "B_RX_PArandombit_clkb": {
+        "type": "clk",
+        "direction": "I",
+        "parameters": {
+          "CLK_DOMAIN": {
+            "value": "BD_interface_B_clkb_0",
+            "value_src": "default"
+          },
+          "FREQ_HZ": {
+            "value": "100000000",
+            "value_src": "default"
+          },
+          "FREQ_TOLERANCE_HZ": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.0",
+            "value_src": "default"
+          }
+        }
+      },
+      "B_RX_PArandombit_clka": {
+        "type": "clk",
+        "direction": "I",
+        "parameters": {
+          "CLK_DOMAIN": {
+            "value": "BD_interface_B_clka_0",
+            "value_src": "default"
+          },
+          "FREQ_HZ": {
+            "value": "100000000",
+            "value_src": "default"
+          },
+          "FREQ_TOLERANCE_HZ": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.0",
+            "value_src": "default"
+          }
+        }
+      },
+      "B_RX_PArandombit_enb": {
+        "direction": "I"
+      },
+      "B_RX_PArandombit_dina": {
+        "direction": "I",
+        "left": "63",
+        "right": "0"
+      },
+      "B_RX_PArandombit_web": {
+        "direction": "I",
+        "left": "0",
+        "right": "0"
+      },
+      "B_RX_PArandombit_wea": {
+        "direction": "I",
+        "left": "0",
+        "right": "0"
+      },
+      "B_RX_PArandombit_douta": {
+        "direction": "O",
+        "left": "63",
+        "right": "0"
+      },
+      "B_RX_PArandombit_ena": {
+        "direction": "I"
+      },
+      "B_RX_PArandombit_dinb": {
+        "direction": "I",
+        "left": "63",
+        "right": "0"
+      },
+      "B_RX_PArandombit_addra": {
+        "direction": "I",
+        "left": "13",
+        "right": "0"
+      },
+      "B_RX_EVrandombit_wea": {
+        "direction": "I",
+        "left": "0",
+        "right": "0"
+      },
+      "B_RX_EVrandombit_doutb": {
+        "direction": "O",
+        "left": "63",
+        "right": "0"
+      },
+      "B_RX_EVrandombit_ena": {
+        "direction": "I"
+      },
+      "B_RX_EVrandombit_dinb": {
+        "direction": "I",
+        "left": "63",
+        "right": "0"
+      },
+      "B_RX_EVrandombit_clkb": {
+        "type": "clk",
+        "direction": "I",
+        "parameters": {
+          "CLK_DOMAIN": {
+            "value": "BD_interface_B_clkb_0",
+            "value_src": "default"
+          },
+          "FREQ_HZ": {
+            "value": "100000000",
+            "value_src": "default"
+          },
+          "FREQ_TOLERANCE_HZ": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.0",
+            "value_src": "default"
+          }
+        }
+      },
+      "B_RX_EVrandombit_douta": {
+        "direction": "O",
+        "left": "63",
+        "right": "0"
+      },
+      "B_RX_EVrandombit_addrb": {
+        "direction": "I",
+        "left": "13",
+        "right": "0"
+      },
+      "B_RX_EVrandombit_enb": {
+        "direction": "I"
+      },
+      "B_RX_EVrandombit_dina": {
+        "direction": "I",
+        "left": "63",
+        "right": "0"
+      },
+      "B_RX_EVrandombit_clka": {
+        "type": "clk",
+        "direction": "I",
+        "parameters": {
+          "CLK_DOMAIN": {
+            "value": "BD_interface_B_clka_0",
+            "value_src": "default"
+          },
+          "FREQ_HZ": {
+            "value": "100000000",
+            "value_src": "default"
+          },
+          "FREQ_TOLERANCE_HZ": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.0",
+            "value_src": "default"
+          }
+        }
+      },
+      "B_RX_EVrandombit_addra": {
+        "direction": "I",
+        "left": "13",
+        "right": "0"
+      },
+      "B_RX_EVrandombit_web": {
+        "direction": "I",
+        "left": "0",
+        "right": "0"
+      },
+      "Bsiftedkey_addrb": {
+        "direction": "I",
+        "left": "14",
+        "right": "0"
+      },
+      "Bsiftedkey_clkb": {
+        "type": "clk",
+        "direction": "I",
+        "parameters": {
+          "CLK_DOMAIN": {
+            "value": "BD_interface_B_clkb_0",
+            "value_src": "default"
+          },
+          "FREQ_HZ": {
+            "value": "100000000",
+            "value_src": "default"
+          },
+          "FREQ_TOLERANCE_HZ": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.0",
+            "value_src": "default"
+          }
+        }
+      },
+      "Bsiftedkey_clka": {
+        "type": "clk",
+        "direction": "I",
+        "parameters": {
+          "CLK_DOMAIN": {
+            "value": "BD_interface_B_clka_0",
+            "value_src": "default"
+          },
+          "FREQ_HZ": {
+            "value": "100000000",
+            "value_src": "default"
+          },
+          "FREQ_TOLERANCE_HZ": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.0",
+            "value_src": "default"
+          }
+        }
+      },
+      "Bsiftedkey_enb": {
+        "direction": "I"
+      },
+      "Bsiftedkey_dina": {
+        "direction": "I",
+        "left": "63",
+        "right": "0"
+      },
+      "Bsiftedkey_addra": {
+        "direction": "I",
+        "left": "14",
+        "right": "0"
+      },
+      "Bsiftedkey_wea": {
+        "direction": "I",
+        "left": "0",
+        "right": "0"
+      },
+      "Bsiftedkey_douta": {
+        "direction": "O",
+        "left": "63",
+        "right": "0"
+      },
+      "Bsiftedkey_ena": {
+        "direction": "I"
+      },
+      "Bsiftedkey_dinb": {
+        "direction": "I",
+        "left": "63",
+        "right": "0"
+      },
+      "Bsiftedkey_doutb": {
+        "direction": "O",
+        "left": "63",
+        "right": "0"
+      },
+      "Bsiftedkey_web": {
+        "direction": "I",
+        "left": "0",
+        "right": "0"
+      },
+      "B_RX_Zbasis_decoy_srst": {
+        "direction": "I"
+      },
+      "B_RX_Zbasis_decoy_wr_clk": {
+        "type": "clk",
+        "direction": "I",
+        "parameters": {
+          "CLK_DOMAIN": {
+            "value": "BD_interface_B_wr_clk_0",
+            "value_src": "default"
+          },
+          "FREQ_HZ": {
+            "value": "100000000",
+            "value_src": "default"
+          },
+          "FREQ_TOLERANCE_HZ": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.0",
+            "value_src": "default"
+          }
+        }
+      },
+      "B_RX_Zbasis_decoy_rd_clk": {
+        "type": "clk",
+        "direction": "I",
+        "parameters": {
+          "CLK_DOMAIN": {
+            "value": "BD_interface_B_rd_clk_0",
+            "value_src": "default"
+          },
+          "FREQ_HZ": {
+            "value": "100000000",
+            "value_src": "default"
+          },
+          "FREQ_TOLERANCE_HZ": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.0",
+            "value_src": "default"
+          }
+        }
+      },
+      "B_RX_Zbasis_decoy_wr_ack": {
+        "direction": "O"
+      },
+      "B_RX_Zbasis_decoy_empty": {
+        "direction": "O"
+      },
+      "B_RX_Zbasis_decoy_rd_dout": {
+        "direction": "O",
+        "left": "31",
+        "right": "0"
+      },
+      "B_RX_Zbasis_decoy_rd_en": {
+        "direction": "I"
+      },
+      "B_RX_Zbasis_decoy_rd_valid": {
+        "direction": "O"
+      },
+      "B_RX_Zbasis_decoy_wr_din": {
+        "direction": "I",
+        "left": "31",
+        "right": "0"
+      },
+      "B_RX_Zbasis_decoy_wr_rst_busy": {
+        "direction": "O"
+      },
+      "B_RX_Zbasis_decoy_rd_rst_busy": {
+        "direction": "O"
+      },
+      "B_RX_Zbasis_decoy_wr_en": {
+        "direction": "I"
+      },
+      "B_RX_Zbasis_decoy_full": {
+        "direction": "O"
+      },
+      "B_TX_er_rd_clk": {
+        "type": "clk",
+        "direction": "I",
+        "parameters": {
+          "CLK_DOMAIN": {
+            "value": "BD_interface_B_rd_clk_0",
+            "value_src": "default"
+          },
+          "FREQ_HZ": {
+            "value": "100000000",
+            "value_src": "default"
+          },
+          "FREQ_TOLERANCE_HZ": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.0",
+            "value_src": "default"
+          }
+        }
+      },
+      "B_TX_er_empty": {
+        "direction": "O"
+      },
+      "B_TX_er_rd_en": {
+        "direction": "I"
+      },
+      "B_TX_er_rd_dout": {
+        "direction": "O",
+        "left": "31",
+        "right": "0"
+      },
+      "B_TX_er_wr_rst_busy": {
+        "direction": "O"
+      },
+      "B_TX_er_rd_valid": {
+        "direction": "O"
+      },
+      "B_TX_er_wr_en": {
+        "direction": "I"
+      },
+      "B_TX_er_wr_din": {
+        "direction": "I",
+        "left": "31",
+        "right": "0"
+      },
+      "B_TX_er_rd_rst_busy": {
+        "direction": "O"
+      },
+      "B_TX_er_wr_clk": {
+        "type": "clk",
+        "direction": "I",
+        "parameters": {
+          "CLK_DOMAIN": {
+            "value": "BD_interface_B_wr_clk_0",
+            "value_src": "default"
+          },
+          "FREQ_HZ": {
+            "value": "100000000",
+            "value_src": "default"
+          },
+          "FREQ_TOLERANCE_HZ": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.0",
+            "value_src": "default"
+          }
+        }
+      },
+      "B_TX_er_srst": {
+        "direction": "I"
+      },
+      "B_TX_er_wr_ack": {
+        "direction": "O"
+      },
+      "B_TX_er_full": {
+        "direction": "O"
+      },
+      "B_RX_er_rd_clk": {
+        "type": "clk",
+        "direction": "I",
+        "parameters": {
+          "CLK_DOMAIN": {
+            "value": "BD_interface_B_rd_clk_0",
+            "value_src": "default"
+          },
+          "FREQ_HZ": {
+            "value": "100000000",
+            "value_src": "default"
+          },
+          "FREQ_TOLERANCE_HZ": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.0",
+            "value_src": "default"
+          }
+        }
+      },
+      "B_RX_er_rd_rst_busy": {
+        "direction": "O"
+      },
+      "B_RX_er_srst": {
+        "direction": "I"
+      },
+      "B_RX_er_rd_valid": {
+        "direction": "O"
+      },
+      "B_RX_er_wr_ack": {
+        "direction": "O"
+      },
+      "B_RX_er_wr_clk": {
+        "type": "clk",
+        "direction": "I",
+        "parameters": {
+          "CLK_DOMAIN": {
+            "value": "BD_interface_B_wr_clk_0",
+            "value_src": "default"
+          },
+          "FREQ_HZ": {
+            "value": "100000000",
+            "value_src": "default"
+          },
+          "FREQ_TOLERANCE_HZ": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.0",
+            "value_src": "default"
+          }
+        }
+      },
+      "B_RX_er_wr_rst_busy": {
+        "direction": "O"
+      },
+      "B_RX_er_rd_en": {
+        "direction": "I"
+      },
+      "B_RX_er_rd_dout": {
+        "direction": "O",
+        "left": "31",
+        "right": "0"
+      },
+      "B_RX_er_empty": {
+        "direction": "O"
+      },
+      "B_RX_er_wr_en": {
+        "direction": "I"
+      },
+      "B_RX_er_wr_din": {
+        "direction": "I",
+        "left": "31",
+        "right": "0"
+      },
+      "B_RX_er_full": {
+        "direction": "O"
+      },
+      "B_RX_secretkey_length_rd_en": {
+        "direction": "I"
+      },
+      "B_RX_secretkey_length_empty": {
+        "direction": "O"
+      },
+      "B_RX_secretkey_length_rd_clk": {
+        "type": "clk",
+        "direction": "I",
+        "parameters": {
+          "CLK_DOMAIN": {
+            "value": "BD_interface_B_rd_clk_0",
+            "value_src": "default"
+          },
+          "FREQ_HZ": {
+            "value": "100000000",
+            "value_src": "default"
+          },
+          "FREQ_TOLERANCE_HZ": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.0",
+            "value_src": "default"
+          }
+        }
+      },
+      "B_RX_secretkey_length_wr_ack": {
+        "direction": "O"
+      },
+      "B_RX_secretkey_length_srst": {
+        "direction": "I"
+      },
+      "B_RX_secretkey_length_wr_clk": {
+        "type": "clk",
+        "direction": "I",
+        "parameters": {
+          "CLK_DOMAIN": {
+            "value": "BD_interface_B_wr_clk_0",
+            "value_src": "default"
+          },
+          "FREQ_HZ": {
+            "value": "100000000",
+            "value_src": "default"
+          },
+          "FREQ_TOLERANCE_HZ": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.0",
+            "value_src": "default"
+          }
+        }
+      },
+      "B_RX_secretkey_length_rd_rst_busy": {
+        "direction": "O"
+      },
+      "B_RX_secretkey_length_wr_din": {
+        "direction": "I",
+        "left": "31",
+        "right": "0"
+      },
+      "B_RX_secretkey_length_rd_valid": {
+        "direction": "O"
+      },
+      "B_RX_secretkey_length_wr_en": {
+        "direction": "I"
+      },
+      "B_RX_secretkey_length_wr_rst_busy": {
+        "direction": "O"
+      },
+      "B_RX_secretkey_length_rd_dout": {
+        "direction": "O",
+        "left": "31",
+        "right": "0"
+      },
+      "B_RX_secretkey_length_full": {
+        "direction": "O"
+      },
+      "B_TX_detected_rd_valid": {
+        "direction": "O"
+      },
+      "B_TX_detected_rd_rst_busy": {
+        "direction": "O"
+      },
+      "B_TX_detected_full": {
+        "direction": "O"
+      },
+      "B_TX_detected_wr_en": {
+        "direction": "I"
+      },
+      "B_TX_detected_wr_din": {
+        "direction": "I",
+        "left": "31",
+        "right": "0"
+      },
+      "B_TX_detected_empty": {
+        "direction": "O"
+      },
+      "B_TX_detected_wr_clk": {
+        "type": "clk",
+        "direction": "I",
+        "parameters": {
+          "CLK_DOMAIN": {
+            "value": "BD_interface_B_wr_clk_0",
+            "value_src": "default"
+          },
+          "FREQ_HZ": {
+            "value": "100000000",
+            "value_src": "default"
+          },
+          "FREQ_TOLERANCE_HZ": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.0",
+            "value_src": "default"
+          }
+        }
+      },
+      "B_TX_detected_rd_en": {
+        "direction": "I"
+      },
+      "B_TX_detected_srst": {
+        "direction": "I"
+      },
+      "B_TX_detected_rd_dout": {
+        "direction": "O",
+        "left": "31",
+        "right": "0"
+      },
+      "B_TX_detected_rd_clk": {
+        "type": "clk",
+        "direction": "I",
+        "parameters": {
+          "CLK_DOMAIN": {
+            "value": "BD_interface_B_rd_clk_0",
+            "value_src": "default"
+          },
+          "FREQ_HZ": {
+            "value": "100000000",
+            "value_src": "default"
+          },
+          "FREQ_TOLERANCE_HZ": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.0",
+            "value_src": "default"
+          }
+        }
+      },
+      "B_TX_detected_wr_rst_busy": {
+        "direction": "O"
+      },
+      "B_TX_detected_wr_ack": {
+        "direction": "O"
+      },
+      "ask_parity_wr_en": {
+        "direction": "I"
+      },
+      "ask_parity_wr_din": {
+        "direction": "I",
+        "left": "31",
+        "right": "0"
+      },
+      "ask_parity_rd_rst_busy": {
+        "direction": "O"
+      },
+      "ask_parity_wr_rst_busy": {
+        "direction": "O"
+      },
+      "ask_parity_rd_valid": {
+        "direction": "O"
+      },
+      "ask_parity_wr_ack": {
+        "direction": "O"
+      },
+      "ask_parity_srst": {
+        "direction": "I"
+      },
+      "ask_parity_clk": {
+        "type": "clk",
+        "direction": "I",
+        "parameters": {
+          "CLK_DOMAIN": {
+            "value": "BD_interface_B_clk_0",
+            "value_src": "default"
+          },
+          "FREQ_HZ": {
+            "value": "100000000",
+            "value_src": "default"
+          },
+          "FREQ_TOLERANCE_HZ": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.0",
+            "value_src": "default"
+          }
+        }
+      },
+      "ask_parity_rd_en": {
+        "direction": "I"
+      },
+      "ask_parity_rd_dout": {
+        "direction": "O",
+        "left": "31",
+        "right": "0"
+      },
+      "ask_parity_empty": {
+        "direction": "O"
+      },
+      "ask_parity_full": {
+        "direction": "O"
+      }
+    },
+    "components": {
+      "B_TX_detected_fifo": {
+        "vlnv": "xilinx.com:ip:fifo_generator:13.2",
+        "xci_name": "BD_interface_B_fifo_generator_0_0",
+        "xci_path": "ip\\BD_interface_B_fifo_generator_0_0\\BD_interface_B_fifo_generator_0_0.xci",
+        "inst_hier_path": "B_TX_detected_fifo",
+        "parameters": {
+          "Fifo_Implementation": {
+            "value": "Independent_Clocks_Builtin_FIFO"
+          },
+          "Input_Data_Width": {
+            "value": "32"
+          },
+          "Input_Depth": {
+            "value": "2048"
+          },
+          "Performance_Options": {
+            "value": "First_Word_Fall_Through"
+          },
+          "Read_Clock_Frequency": {
+            "value": "125"
+          },
+          "Valid_Flag": {
+            "value": "true"
+          },
+          "Write_Acknowledge_Flag": {
+            "value": "true"
+          },
+          "Write_Clock_Frequency": {
+            "value": "125"
+          },
+          "enable_low_latency": {
+            "value": "true"
+          },
+          "use_dout_register": {
+            "value": "true"
+          }
+        }
+      },
+      "B_TX_er_fifo": {
+        "vlnv": "xilinx.com:ip:fifo_generator:13.2",
+        "xci_name": "BD_interface_B_fifo_generator_0_1",
+        "xci_path": "ip\\BD_interface_B_fifo_generator_0_1\\BD_interface_B_fifo_generator_0_1.xci",
+        "inst_hier_path": "B_TX_er_fifo",
+        "parameters": {
+          "Fifo_Implementation": {
+            "value": "Independent_Clocks_Builtin_FIFO"
+          },
+          "Input_Data_Width": {
+            "value": "32"
+          },
+          "Input_Depth": {
+            "value": "2048"
+          },
+          "Performance_Options": {
+            "value": "First_Word_Fall_Through"
+          },
+          "Read_Clock_Frequency": {
+            "value": "125"
+          },
+          "Valid_Flag": {
+            "value": "true"
+          },
+          "Write_Acknowledge_Flag": {
+            "value": "true"
+          },
+          "Write_Clock_Frequency": {
+            "value": "125"
+          },
+          "enable_low_latency": {
+            "value": "true"
+          },
+          "use_dout_register": {
+            "value": "true"
+          }
+        }
+      },
+      "B_RX_Zbasis_decoy_fifo": {
+        "vlnv": "xilinx.com:ip:fifo_generator:13.2",
+        "xci_name": "BD_interface_B_fifo_generator_0_2",
+        "xci_path": "ip\\BD_interface_B_fifo_generator_0_2\\BD_interface_B_fifo_generator_0_2.xci",
+        "inst_hier_path": "B_RX_Zbasis_decoy_fifo",
+        "parameters": {
+          "Fifo_Implementation": {
+            "value": "Independent_Clocks_Builtin_FIFO"
+          },
+          "Input_Data_Width": {
+            "value": "32"
+          },
+          "Input_Depth": {
+            "value": "2048"
+          },
+          "Performance_Options": {
+            "value": "First_Word_Fall_Through"
+          },
+          "Read_Clock_Frequency": {
+            "value": "125"
+          },
+          "Valid_Flag": {
+            "value": "true"
+          },
+          "Write_Acknowledge_Flag": {
+            "value": "true"
+          },
+          "Write_Clock_Frequency": {
+            "value": "125"
+          },
+          "enable_low_latency": {
+            "value": "true"
+          },
+          "use_dout_register": {
+            "value": "true"
+          }
+        }
+      },
+      "B_RX_er_fifo": {
+        "vlnv": "xilinx.com:ip:fifo_generator:13.2",
+        "xci_name": "BD_interface_B_fifo_generator_0_3",
+        "xci_path": "ip\\BD_interface_B_fifo_generator_0_3\\BD_interface_B_fifo_generator_0_3.xci",
+        "inst_hier_path": "B_RX_er_fifo",
+        "parameters": {
+          "Fifo_Implementation": {
+            "value": "Independent_Clocks_Builtin_FIFO"
+          },
+          "Input_Data_Width": {
+            "value": "32"
+          },
+          "Input_Depth": {
+            "value": "2048"
+          },
+          "Performance_Options": {
+            "value": "First_Word_Fall_Through"
+          },
+          "Read_Clock_Frequency": {
+            "value": "125"
+          },
+          "Valid_Flag": {
+            "value": "true"
+          },
+          "Write_Acknowledge_Flag": {
+            "value": "true"
+          },
+          "Write_Clock_Frequency": {
+            "value": "125"
+          }
+        }
+      },
+      "B_RX_secretkey_length_fifo": {
+        "vlnv": "xilinx.com:ip:fifo_generator:13.2",
+        "xci_name": "BD_interface_B_fifo_generator_0_4",
+        "xci_path": "ip\\BD_interface_B_fifo_generator_0_4\\BD_interface_B_fifo_generator_0_4.xci",
+        "inst_hier_path": "B_RX_secretkey_length_fifo",
+        "parameters": {
+          "Fifo_Implementation": {
+            "value": "Independent_Clocks_Builtin_FIFO"
+          },
+          "Input_Data_Width": {
+            "value": "32"
+          },
+          "Input_Depth": {
+            "value": "512"
+          },
+          "Performance_Options": {
+            "value": "First_Word_Fall_Through"
+          },
+          "Read_Clock_Frequency": {
+            "value": "125"
+          },
+          "Valid_Flag": {
+            "value": "true"
+          },
+          "Write_Acknowledge_Flag": {
+            "value": "true"
+          },
+          "Write_Clock_Frequency": {
+            "value": "125"
+          }
+        }
+      },
+      "B_RX_EVrandombit_bram": {
+        "vlnv": "xilinx.com:ip:blk_mem_gen:8.4",
+        "xci_name": "BD_interface_B_blk_mem_gen_0_0",
+        "xci_path": "ip\\BD_interface_B_blk_mem_gen_0_0\\BD_interface_B_blk_mem_gen_0_0.xci",
+        "inst_hier_path": "B_RX_EVrandombit_bram",
+        "parameters": {
+          "Enable_32bit_Address": {
+            "value": "false"
+          },
+          "Enable_B": {
+            "value": "Use_ENB_Pin"
+          },
+          "Memory_Type": {
+            "value": "True_Dual_Port_RAM"
+          },
+          "Port_B_Clock": {
+            "value": "100"
+          },
+          "Port_B_Enable_Rate": {
+            "value": "100"
+          },
+          "Port_B_Write_Rate": {
+            "value": "50"
+          },
+          "Read_Width_A": {
+            "value": "64"
+          },
+          "Read_Width_B": {
+            "value": "64"
+          },
+          "Register_PortA_Output_of_Memory_Primitives": {
+            "value": "false"
+          },
+          "Register_PortB_Output_of_Memory_Primitives": {
+            "value": "false"
+          },
+          "Use_Byte_Write_Enable": {
+            "value": "false"
+          },
+          "Use_RSTA_Pin": {
+            "value": "false"
+          },
+          "Use_RSTB_Pin": {
+            "value": "false"
+          },
+          "Write_Depth_A": {
+            "value": "16384"
+          },
+          "Write_Width_A": {
+            "value": "64"
+          },
+          "Write_Width_B": {
+            "value": "64"
+          },
+          "use_bram_block": {
+            "value": "Stand_Alone"
+          }
+        }
+      },
+      "B_RX_PArandombit_bram": {
+        "vlnv": "xilinx.com:ip:blk_mem_gen:8.4",
+        "xci_name": "BD_interface_B_blk_mem_gen_0_1",
+        "xci_path": "ip\\BD_interface_B_blk_mem_gen_0_1\\BD_interface_B_blk_mem_gen_0_1.xci",
+        "inst_hier_path": "B_RX_PArandombit_bram",
+        "parameters": {
+          "Enable_32bit_Address": {
+            "value": "false"
+          },
+          "Enable_B": {
+            "value": "Use_ENB_Pin"
+          },
+          "Memory_Type": {
+            "value": "True_Dual_Port_RAM"
+          },
+          "Port_B_Clock": {
+            "value": "100"
+          },
+          "Port_B_Enable_Rate": {
+            "value": "100"
+          },
+          "Port_B_Write_Rate": {
+            "value": "50"
+          },
+          "Read_Width_A": {
+            "value": "64"
+          },
+          "Read_Width_B": {
+            "value": "64"
+          },
+          "Register_PortA_Output_of_Memory_Primitives": {
+            "value": "false"
+          },
+          "Register_PortB_Output_of_Memory_Primitives": {
+            "value": "false"
+          },
+          "Use_Byte_Write_Enable": {
+            "value": "false"
+          },
+          "Use_RSTA_Pin": {
+            "value": "false"
+          },
+          "Write_Depth_A": {
+            "value": "16384"
+          },
+          "Write_Width_A": {
+            "value": "64"
+          },
+          "Write_Width_B": {
+            "value": "64"
+          },
+          "use_bram_block": {
+            "value": "Stand_Alone"
+          }
+        }
+      },
+      "Bsiftedkey_uram": {
+        "vlnv": "xilinx.com:ip:blk_mem_gen:8.4",
+        "xci_name": "BD_interface_B_blk_mem_gen_0_2",
+        "xci_path": "ip\\BD_interface_B_blk_mem_gen_0_2\\BD_interface_B_blk_mem_gen_0_2.xci",
+        "inst_hier_path": "Bsiftedkey_uram",
+        "parameters": {
+          "Assume_Synchronous_Clk": {
+            "value": "true"
+          },
+          "Enable_32bit_Address": {
+            "value": "false"
+          },
+          "Enable_B": {
+            "value": "Use_ENB_Pin"
+          },
+          "Memory_Type": {
+            "value": "True_Dual_Port_RAM"
+          },
+          "Operating_Mode_A": {
+            "value": "NO_CHANGE"
+          },
+          "Operating_Mode_B": {
+            "value": "NO_CHANGE"
+          },
+          "PRIM_type_to_Implement": {
+            "value": "BRAM"
+          },
+          "Port_B_Clock": {
+            "value": "100"
+          },
+          "Port_B_Enable_Rate": {
+            "value": "100"
+          },
+          "Port_B_Write_Rate": {
+            "value": "50"
+          },
+          "Read_Width_A": {
+            "value": "64"
+          },
+          "Read_Width_B": {
+            "value": "64"
+          },
+          "Register_PortA_Output_of_Memory_Primitives": {
+            "value": "true"
+          },
+          "Register_PortB_Output_of_Memory_Primitives": {
+            "value": "true"
+          },
+          "Use_Byte_Write_Enable": {
+            "value": "false"
+          },
+          "Use_RSTA_Pin": {
+            "value": "false"
+          },
+          "Write_Depth_A": {
+            "value": "32768"
+          },
+          "Write_Width_A": {
+            "value": "64"
+          },
+          "Write_Width_B": {
+            "value": "64"
+          },
+          "use_bram_block": {
+            "value": "Stand_Alone"
+          }
+        }
+      },
+      "Breconciledkey_uram": {
+        "vlnv": "xilinx.com:ip:blk_mem_gen:8.4",
+        "xci_name": "BD_interface_B_blk_mem_gen_0_3",
+        "xci_path": "ip\\BD_interface_B_blk_mem_gen_0_3\\BD_interface_B_blk_mem_gen_0_3.xci",
+        "inst_hier_path": "Breconciledkey_uram",
+        "parameters": {
+          "Assume_Synchronous_Clk": {
+            "value": "true"
+          },
+          "Enable_32bit_Address": {
+            "value": "false"
+          },
+          "Enable_B": {
+            "value": "Use_ENB_Pin"
+          },
+          "Memory_Type": {
+            "value": "True_Dual_Port_RAM"
+          },
+          "Operating_Mode_A": {
+            "value": "NO_CHANGE"
+          },
+          "Operating_Mode_B": {
+            "value": "NO_CHANGE"
+          },
+          "PRIM_type_to_Implement": {
+            "value": "BRAM"
+          },
+          "Port_B_Clock": {
+            "value": "100"
+          },
+          "Port_B_Enable_Rate": {
+            "value": "100"
+          },
+          "Port_B_Write_Rate": {
+            "value": "50"
+          },
+          "Read_Width_A": {
+            "value": "64"
+          },
+          "Read_Width_B": {
+            "value": "64"
+          },
+          "Register_PortA_Output_of_Memory_Primitives": {
+            "value": "true"
+          },
+          "Register_PortB_Output_of_Memory_Primitives": {
+            "value": "true"
+          },
+          "Use_Byte_Write_Enable": {
+            "value": "false"
+          },
+          "Use_RSTA_Pin": {
+            "value": "false"
+          },
+          "Write_Depth_A": {
+            "value": "32768"
+          },
+          "Write_Width_A": {
+            "value": "64"
+          },
+          "Write_Width_B": {
+            "value": "64"
+          },
+          "use_bram_block": {
+            "value": "Stand_Alone"
+          }
+        }
+      },
+      "ask_parity_fifo": {
+        "vlnv": "xilinx.com:ip:fifo_generator:13.2",
+        "xci_name": "BD_interface_B_fifo_generator_0_5",
+        "xci_path": "ip\\BD_interface_B_fifo_generator_0_5\\BD_interface_B_fifo_generator_0_5.xci",
+        "inst_hier_path": "ask_parity_fifo",
+        "parameters": {
+          "Input_Data_Width": {
+            "value": "32"
+          },
+          "Performance_Options": {
+            "value": "First_Word_Fall_Through"
+          },
+          "Valid_Flag": {
+            "value": "true"
+          },
+          "Write_Acknowledge_Flag": {
+            "value": "true"
+          }
+        }
+      }
+    },
+    "nets": {
+      "B_RX_EVrandombit_bram_douta": {
+        "ports": [
+          "B_RX_EVrandombit_bram/douta",
+          "B_RX_EVrandombit_douta"
+        ]
+      },
+      "B_RX_EVrandombit_bram_doutb": {
+        "ports": [
+          "B_RX_EVrandombit_bram/doutb",
+          "B_RX_EVrandombit_doutb"
+        ]
+      },
+      "B_RX_PArandombit_bram_douta": {
+        "ports": [
+          "B_RX_PArandombit_bram/douta",
+          "B_RX_PArandombit_douta"
+        ]
+      },
+      "B_RX_PArandombit_bram_doutb": {
+        "ports": [
+          "B_RX_PArandombit_bram/doutb",
+          "B_RX_PArandombit_doutb"
+        ]
+      },
+      "B_RX_Zbasis_decoy_fifo_dout": {
+        "ports": [
+          "B_RX_Zbasis_decoy_fifo/dout",
+          "B_RX_Zbasis_decoy_rd_dout"
+        ]
+      },
+      "B_RX_Zbasis_decoy_fifo_empty": {
+        "ports": [
+          "B_RX_Zbasis_decoy_fifo/empty",
+          "B_RX_Zbasis_decoy_empty"
+        ]
+      },
+      "B_RX_Zbasis_decoy_fifo_full": {
+        "ports": [
+          "B_RX_Zbasis_decoy_fifo/full",
+          "B_RX_Zbasis_decoy_full"
+        ]
+      },
+      "B_RX_Zbasis_decoy_fifo_rd_rst_busy": {
+        "ports": [
+          "B_RX_Zbasis_decoy_fifo/rd_rst_busy",
+          "B_RX_Zbasis_decoy_rd_rst_busy"
+        ]
+      },
+      "B_RX_Zbasis_decoy_fifo_valid": {
+        "ports": [
+          "B_RX_Zbasis_decoy_fifo/valid",
+          "B_RX_Zbasis_decoy_rd_valid"
+        ]
+      },
+      "B_RX_Zbasis_decoy_fifo_wr_ack": {
+        "ports": [
+          "B_RX_Zbasis_decoy_fifo/wr_ack",
+          "B_RX_Zbasis_decoy_wr_ack"
+        ]
+      },
+      "B_RX_Zbasis_decoy_fifo_wr_rst_busy": {
+        "ports": [
+          "B_RX_Zbasis_decoy_fifo/wr_rst_busy",
+          "B_RX_Zbasis_decoy_wr_rst_busy"
+        ]
+      },
+      "B_RX_er_fifo_dout": {
+        "ports": [
+          "B_RX_er_fifo/dout",
+          "B_RX_er_rd_dout"
+        ]
+      },
+      "B_RX_er_fifo_empty": {
+        "ports": [
+          "B_RX_er_fifo/empty",
+          "B_RX_er_empty"
+        ]
+      },
+      "B_RX_er_fifo_full": {
+        "ports": [
+          "B_RX_er_fifo/full",
+          "B_RX_er_full"
+        ]
+      },
+      "B_RX_er_fifo_rd_rst_busy": {
+        "ports": [
+          "B_RX_er_fifo/rd_rst_busy",
+          "B_RX_er_rd_rst_busy"
+        ]
+      },
+      "B_RX_er_fifo_valid": {
+        "ports": [
+          "B_RX_er_fifo/valid",
+          "B_RX_er_rd_valid"
+        ]
+      },
+      "B_RX_er_fifo_wr_ack": {
+        "ports": [
+          "B_RX_er_fifo/wr_ack",
+          "B_RX_er_wr_ack"
+        ]
+      },
+      "B_RX_er_fifo_wr_rst_busy": {
+        "ports": [
+          "B_RX_er_fifo/wr_rst_busy",
+          "B_RX_er_wr_rst_busy"
+        ]
+      },
+      "B_RX_secretkey_length_fifo_dout": {
+        "ports": [
+          "B_RX_secretkey_length_fifo/dout",
+          "B_RX_secretkey_length_rd_dout"
+        ]
+      },
+      "B_RX_secretkey_length_fifo_empty": {
+        "ports": [
+          "B_RX_secretkey_length_fifo/empty",
+          "B_RX_secretkey_length_empty"
+        ]
+      },
+      "B_RX_secretkey_length_fifo_full": {
+        "ports": [
+          "B_RX_secretkey_length_fifo/full",
+          "B_RX_secretkey_length_full"
+        ]
+      },
+      "B_RX_secretkey_length_fifo_rd_rst_busy": {
+        "ports": [
+          "B_RX_secretkey_length_fifo/rd_rst_busy",
+          "B_RX_secretkey_length_rd_rst_busy"
+        ]
+      },
+      "B_RX_secretkey_length_fifo_valid": {
+        "ports": [
+          "B_RX_secretkey_length_fifo/valid",
+          "B_RX_secretkey_length_rd_valid"
+        ]
+      },
+      "B_RX_secretkey_length_fifo_wr_ack": {
+        "ports": [
+          "B_RX_secretkey_length_fifo/wr_ack",
+          "B_RX_secretkey_length_wr_ack"
+        ]
+      },
+      "B_RX_secretkey_length_fifo_wr_rst_busy": {
+        "ports": [
+          "B_RX_secretkey_length_fifo/wr_rst_busy",
+          "B_RX_secretkey_length_wr_rst_busy"
+        ]
+      },
+      "B_TX_detected_fifo_dout": {
+        "ports": [
+          "B_TX_detected_fifo/dout",
+          "B_TX_detected_rd_dout"
+        ]
+      },
+      "B_TX_detected_fifo_empty": {
+        "ports": [
+          "B_TX_detected_fifo/empty",
+          "B_TX_detected_empty"
+        ]
+      },
+      "B_TX_detected_fifo_full": {
+        "ports": [
+          "B_TX_detected_fifo/full",
+          "B_TX_detected_full"
+        ]
+      },
+      "B_TX_detected_fifo_rd_rst_busy": {
+        "ports": [
+          "B_TX_detected_fifo/rd_rst_busy",
+          "B_TX_detected_rd_rst_busy"
+        ]
+      },
+      "B_TX_detected_fifo_valid": {
+        "ports": [
+          "B_TX_detected_fifo/valid",
+          "B_TX_detected_rd_valid"
+        ]
+      },
+      "B_TX_detected_fifo_wr_ack": {
+        "ports": [
+          "B_TX_detected_fifo/wr_ack",
+          "B_TX_detected_wr_ack"
+        ]
+      },
+      "B_TX_detected_fifo_wr_rst_busy": {
+        "ports": [
+          "B_TX_detected_fifo/wr_rst_busy",
+          "B_TX_detected_wr_rst_busy"
+        ]
+      },
+      "B_TX_er_fifo_dout": {
+        "ports": [
+          "B_TX_er_fifo/dout",
+          "B_TX_er_rd_dout"
+        ]
+      },
+      "B_TX_er_fifo_empty": {
+        "ports": [
+          "B_TX_er_fifo/empty",
+          "B_TX_er_empty"
+        ]
+      },
+      "B_TX_er_fifo_full": {
+        "ports": [
+          "B_TX_er_fifo/full",
+          "B_TX_er_full"
+        ]
+      },
+      "B_TX_er_fifo_rd_rst_busy": {
+        "ports": [
+          "B_TX_er_fifo/rd_rst_busy",
+          "B_TX_er_rd_rst_busy"
+        ]
+      },
+      "B_TX_er_fifo_valid": {
+        "ports": [
+          "B_TX_er_fifo/valid",
+          "B_TX_er_rd_valid"
+        ]
+      },
+      "B_TX_er_fifo_wr_ack": {
+        "ports": [
+          "B_TX_er_fifo/wr_ack",
+          "B_TX_er_wr_ack"
+        ]
+      },
+      "B_TX_er_fifo_wr_rst_busy": {
+        "ports": [
+          "B_TX_er_fifo/wr_rst_busy",
+          "B_TX_er_wr_rst_busy"
+        ]
+      },
+      "Breconciledkey_uram_douta": {
+        "ports": [
+          "Breconciledkey_uram/douta",
+          "Breconciledkey_douta"
+        ]
+      },
+      "Breconciledkey_uram_doutb": {
+        "ports": [
+          "Breconciledkey_uram/doutb",
+          "Breconciledkey_doutb"
+        ]
+      },
+      "Bsiftedkey_uram_douta": {
+        "ports": [
+          "Bsiftedkey_uram/douta",
+          "Bsiftedkey_douta"
+        ]
+      },
+      "Bsiftedkey_uram_doutb": {
+        "ports": [
+          "Bsiftedkey_uram/doutb",
+          "Bsiftedkey_doutb"
+        ]
+      },
+      "addra_0_1": {
+        "ports": [
+          "Breconciledkey_addra",
+          "Breconciledkey_uram/addra"
+        ]
+      },
+      "addra_0_2": {
+        "ports": [
+          "B_RX_PArandombit_addra",
+          "B_RX_PArandombit_bram/addra"
+        ]
+      },
+      "addra_0_3": {
+        "ports": [
+          "B_RX_EVrandombit_addra",
+          "B_RX_EVrandombit_bram/addra"
+        ]
+      },
+      "addra_0_4": {
+        "ports": [
+          "Bsiftedkey_addra",
+          "Bsiftedkey_uram/addra"
+        ]
+      },
+      "addrb_0_1": {
+        "ports": [
+          "Breconciledkey_addrb",
+          "Breconciledkey_uram/addrb"
+        ]
+      },
+      "addrb_0_2": {
+        "ports": [
+          "B_RX_PArandombit_addrb",
+          "B_RX_PArandombit_bram/addrb"
+        ]
+      },
+      "addrb_0_3": {
+        "ports": [
+          "B_RX_EVrandombit_addrb",
+          "B_RX_EVrandombit_bram/addrb"
+        ]
+      },
+      "addrb_0_4": {
+        "ports": [
+          "Bsiftedkey_addrb",
+          "Bsiftedkey_uram/addrb"
+        ]
+      },
+      "ask_parity_fifo_dout": {
+        "ports": [
+          "ask_parity_fifo/dout",
+          "ask_parity_rd_dout"
+        ]
+      },
+      "ask_parity_fifo_empty": {
+        "ports": [
+          "ask_parity_fifo/empty",
+          "ask_parity_empty"
+        ]
+      },
+      "ask_parity_fifo_full": {
+        "ports": [
+          "ask_parity_fifo/full",
+          "ask_parity_full"
+        ]
+      },
+      "ask_parity_fifo_rd_rst_busy": {
+        "ports": [
+          "ask_parity_fifo/rd_rst_busy",
+          "ask_parity_rd_rst_busy"
+        ]
+      },
+      "ask_parity_fifo_valid": {
+        "ports": [
+          "ask_parity_fifo/valid",
+          "ask_parity_rd_valid"
+        ]
+      },
+      "ask_parity_fifo_wr_ack": {
+        "ports": [
+          "ask_parity_fifo/wr_ack",
+          "ask_parity_wr_ack"
+        ]
+      },
+      "ask_parity_fifo_wr_rst_busy": {
+        "ports": [
+          "ask_parity_fifo/wr_rst_busy",
+          "ask_parity_wr_rst_busy"
+        ]
+      },
+      "clk_0_1": {
+        "ports": [
+          "ask_parity_clk",
+          "ask_parity_fifo/clk"
+        ]
+      },
+      "clka_0_1": {
+        "ports": [
+          "Breconciledkey_clka",
+          "Breconciledkey_uram/clka"
+        ]
+      },
+      "clka_0_2": {
+        "ports": [
+          "B_RX_PArandombit_clka",
+          "B_RX_PArandombit_bram/clka"
+        ]
+      },
+      "clka_0_3": {
+        "ports": [
+          "B_RX_EVrandombit_clka",
+          "B_RX_EVrandombit_bram/clka"
+        ]
+      },
+      "clka_0_4": {
+        "ports": [
+          "Bsiftedkey_clka",
+          "Bsiftedkey_uram/clka"
+        ]
+      },
+      "clkb_0_1": {
+        "ports": [
+          "Breconciledkey_clkb",
+          "Breconciledkey_uram/clkb"
+        ]
+      },
+      "clkb_0_2": {
+        "ports": [
+          "B_RX_PArandombit_clkb",
+          "B_RX_PArandombit_bram/clkb"
+        ]
+      },
+      "clkb_0_3": {
+        "ports": [
+          "B_RX_EVrandombit_clkb",
+          "B_RX_EVrandombit_bram/clkb"
+        ]
+      },
+      "clkb_0_4": {
+        "ports": [
+          "Bsiftedkey_clkb",
+          "Bsiftedkey_uram/clkb"
+        ]
+      },
+      "din_0_1": {
+        "ports": [
+          "B_RX_Zbasis_decoy_wr_din",
+          "B_RX_Zbasis_decoy_fifo/din"
+        ]
+      },
+      "din_0_2": {
+        "ports": [
+          "B_TX_er_wr_din",
+          "B_TX_er_fifo/din"
+        ]
+      },
+      "din_0_3": {
+        "ports": [
+          "B_RX_er_wr_din",
+          "B_RX_er_fifo/din"
+        ]
+      },
+      "din_0_4": {
+        "ports": [
+          "B_RX_secretkey_length_wr_din",
+          "B_RX_secretkey_length_fifo/din"
+        ]
+      },
+      "din_0_5": {
+        "ports": [
+          "B_TX_detected_wr_din",
+          "B_TX_detected_fifo/din"
+        ]
+      },
+      "din_0_6": {
+        "ports": [
+          "ask_parity_wr_din",
+          "ask_parity_fifo/din"
+        ]
+      },
+      "dina_0_1": {
+        "ports": [
+          "Breconciledkey_dina",
+          "Breconciledkey_uram/dina"
+        ]
+      },
+      "dina_0_2": {
+        "ports": [
+          "B_RX_PArandombit_dina",
+          "B_RX_PArandombit_bram/dina"
+        ]
+      },
+      "dina_0_3": {
+        "ports": [
+          "B_RX_EVrandombit_dina",
+          "B_RX_EVrandombit_bram/dina"
+        ]
+      },
+      "dina_0_4": {
+        "ports": [
+          "Bsiftedkey_dina",
+          "Bsiftedkey_uram/dina"
+        ]
+      },
+      "dinb_0_1": {
+        "ports": [
+          "Breconciledkey_dinb",
+          "Breconciledkey_uram/dinb"
+        ]
+      },
+      "dinb_0_2": {
+        "ports": [
+          "B_RX_PArandombit_dinb",
+          "B_RX_PArandombit_bram/dinb"
+        ]
+      },
+      "dinb_0_3": {
+        "ports": [
+          "B_RX_EVrandombit_dinb",
+          "B_RX_EVrandombit_bram/dinb"
+        ]
+      },
+      "dinb_0_4": {
+        "ports": [
+          "Bsiftedkey_dinb",
+          "Bsiftedkey_uram/dinb"
+        ]
+      },
+      "ena_0_1": {
+        "ports": [
+          "Breconciledkey_ena",
+          "Breconciledkey_uram/ena"
+        ]
+      },
+      "ena_0_2": {
+        "ports": [
+          "B_RX_PArandombit_ena",
+          "B_RX_PArandombit_bram/ena"
+        ]
+      },
+      "ena_0_3": {
+        "ports": [
+          "B_RX_EVrandombit_ena",
+          "B_RX_EVrandombit_bram/ena"
+        ]
+      },
+      "ena_0_4": {
+        "ports": [
+          "Bsiftedkey_ena",
+          "Bsiftedkey_uram/ena"
+        ]
+      },
+      "enb_0_1": {
+        "ports": [
+          "Breconciledkey_enb",
+          "Breconciledkey_uram/enb"
+        ]
+      },
+      "enb_0_2": {
+        "ports": [
+          "B_RX_PArandombit_enb",
+          "B_RX_PArandombit_bram/enb"
+        ]
+      },
+      "enb_0_3": {
+        "ports": [
+          "B_RX_EVrandombit_enb",
+          "B_RX_EVrandombit_bram/enb"
+        ]
+      },
+      "enb_0_4": {
+        "ports": [
+          "Bsiftedkey_enb",
+          "Bsiftedkey_uram/enb"
+        ]
+      },
+      "rd_clk_0_1": {
+        "ports": [
+          "B_RX_Zbasis_decoy_rd_clk",
+          "B_RX_Zbasis_decoy_fifo/rd_clk"
+        ]
+      },
+      "rd_clk_0_2": {
+        "ports": [
+          "B_TX_er_rd_clk",
+          "B_TX_er_fifo/rd_clk"
+        ]
+      },
+      "rd_clk_0_3": {
+        "ports": [
+          "B_RX_er_rd_clk",
+          "B_RX_er_fifo/rd_clk"
+        ]
+      },
+      "rd_clk_0_4": {
+        "ports": [
+          "B_RX_secretkey_length_rd_clk",
+          "B_RX_secretkey_length_fifo/rd_clk"
+        ]
+      },
+      "rd_clk_0_5": {
+        "ports": [
+          "B_TX_detected_rd_clk",
+          "B_TX_detected_fifo/rd_clk"
+        ]
+      },
+      "rd_en_0_1": {
+        "ports": [
+          "B_RX_Zbasis_decoy_rd_en",
+          "B_RX_Zbasis_decoy_fifo/rd_en"
+        ]
+      },
+      "rd_en_0_2": {
+        "ports": [
+          "B_TX_er_rd_en",
+          "B_TX_er_fifo/rd_en"
+        ]
+      },
+      "rd_en_0_3": {
+        "ports": [
+          "B_RX_er_rd_en",
+          "B_RX_er_fifo/rd_en"
+        ]
+      },
+      "rd_en_0_4": {
+        "ports": [
+          "B_RX_secretkey_length_rd_en",
+          "B_RX_secretkey_length_fifo/rd_en"
+        ]
+      },
+      "rd_en_0_5": {
+        "ports": [
+          "B_TX_detected_rd_en",
+          "B_TX_detected_fifo/rd_en"
+        ]
+      },
+      "rd_en_0_6": {
+        "ports": [
+          "ask_parity_rd_en",
+          "ask_parity_fifo/rd_en"
+        ]
+      },
+      "srst_0_1": {
+        "ports": [
+          "B_RX_Zbasis_decoy_srst",
+          "B_RX_Zbasis_decoy_fifo/srst"
+        ]
+      },
+      "srst_0_2": {
+        "ports": [
+          "B_TX_er_srst",
+          "B_TX_er_fifo/srst"
+        ]
+      },
+      "srst_0_3": {
+        "ports": [
+          "B_RX_er_srst",
+          "B_RX_er_fifo/srst"
+        ]
+      },
+      "srst_0_4": {
+        "ports": [
+          "B_RX_secretkey_length_srst",
+          "B_RX_secretkey_length_fifo/srst"
+        ]
+      },
+      "srst_0_5": {
+        "ports": [
+          "B_TX_detected_srst",
+          "B_TX_detected_fifo/srst"
+        ]
+      },
+      "srst_0_6": {
+        "ports": [
+          "ask_parity_srst",
+          "ask_parity_fifo/srst"
+        ]
+      },
+      "wea_0_1": {
+        "ports": [
+          "Breconciledkey_wea",
+          "Breconciledkey_uram/wea"
+        ]
+      },
+      "wea_0_2": {
+        "ports": [
+          "B_RX_PArandombit_wea",
+          "B_RX_PArandombit_bram/wea"
+        ]
+      },
+      "wea_0_3": {
+        "ports": [
+          "B_RX_EVrandombit_wea",
+          "B_RX_EVrandombit_bram/wea"
+        ]
+      },
+      "wea_0_4": {
+        "ports": [
+          "Bsiftedkey_wea",
+          "Bsiftedkey_uram/wea"
+        ]
+      },
+      "web_0_1": {
+        "ports": [
+          "Breconciledkey_web",
+          "Breconciledkey_uram/web"
+        ]
+      },
+      "web_0_2": {
+        "ports": [
+          "B_RX_PArandombit_web",
+          "B_RX_PArandombit_bram/web"
+        ]
+      },
+      "web_0_3": {
+        "ports": [
+          "B_RX_EVrandombit_web",
+          "B_RX_EVrandombit_bram/web"
+        ]
+      },
+      "web_0_4": {
+        "ports": [
+          "Bsiftedkey_web",
+          "Bsiftedkey_uram/web"
+        ]
+      },
+      "wr_clk_0_1": {
+        "ports": [
+          "B_RX_Zbasis_decoy_wr_clk",
+          "B_RX_Zbasis_decoy_fifo/wr_clk"
+        ]
+      },
+      "wr_clk_0_2": {
+        "ports": [
+          "B_TX_er_wr_clk",
+          "B_TX_er_fifo/wr_clk"
+        ]
+      },
+      "wr_clk_0_3": {
+        "ports": [
+          "B_RX_er_wr_clk",
+          "B_RX_er_fifo/wr_clk"
+        ]
+      },
+      "wr_clk_0_4": {
+        "ports": [
+          "B_RX_secretkey_length_wr_clk",
+          "B_RX_secretkey_length_fifo/wr_clk"
+        ]
+      },
+      "wr_clk_0_5": {
+        "ports": [
+          "B_TX_detected_wr_clk",
+          "B_TX_detected_fifo/wr_clk"
+        ]
+      },
+      "wr_en_0_1": {
+        "ports": [
+          "B_RX_Zbasis_decoy_wr_en",
+          "B_RX_Zbasis_decoy_fifo/wr_en"
+        ]
+      },
+      "wr_en_0_2": {
+        "ports": [
+          "B_TX_er_wr_en",
+          "B_TX_er_fifo/wr_en"
+        ]
+      },
+      "wr_en_0_3": {
+        "ports": [
+          "B_RX_er_wr_en",
+          "B_RX_er_fifo/wr_en"
+        ]
+      },
+      "wr_en_0_4": {
+        "ports": [
+          "B_RX_secretkey_length_wr_en",
+          "B_RX_secretkey_length_fifo/wr_en"
+        ]
+      },
+      "wr_en_0_5": {
+        "ports": [
+          "B_TX_detected_wr_en",
+          "B_TX_detected_fifo/wr_en"
+        ]
+      },
+      "wr_en_0_6": {
+        "ports": [
+          "ask_parity_wr_en",
+          "ask_parity_fifo/wr_en"
+        ]
+      }
+    }
+  }
+}

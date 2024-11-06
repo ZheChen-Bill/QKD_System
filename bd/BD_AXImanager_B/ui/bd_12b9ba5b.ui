@@ -1,0 +1,80 @@
+{
+   "ActiveEmotionalView":"Default View",
+   "Default View_ScaleFactor":"0.603603",
+   "Default View_TopLeft":"-794,152",
+   "ExpandedHierarchyInLayout":"",
+   "guistr":"# # String gsaved with Nlview 7.0r6  2020-01-29 bk=1.5227 VDI=41 GEI=36 GUI=JA:10.0 non-TLS-threadsafe
+#  -string -flagsOSRD
+preplace port AXImanager_PORTA -pg 1 -lvl 0 -x 0 -y 60 -defaultsOSRD
+preplace port Secretkey_PORTA -pg 1 -lvl 0 -x 0 -y 340 -defaultsOSRD
+preplace port Xbasis_detected_pos_PORTA -pg 1 -lvl 0 -x 0 -y 620 -defaultsOSRD
+preplace port Zbasis_detected_pos_PORTA -pg 1 -lvl 0 -x 0 -y 900 -defaultsOSRD
+preplace port port-id_AXImanager_clkb -pg 1 -lvl 0 -x 0 -y 120 -defaultsOSRD
+preplace port port-id_AXImanager_enb -pg 1 -lvl 0 -x 0 -y 180 -defaultsOSRD
+preplace port port-id_AXImanager_rstb -pg 1 -lvl 0 -x 0 -y 200 -defaultsOSRD
+preplace port port-id_Xbasis_detected_pos_rstb -pg 1 -lvl 0 -x 0 -y 760 -defaultsOSRD
+preplace port port-id_Xbasis_detected_pos_enb -pg 1 -lvl 0 -x 0 -y 740 -defaultsOSRD
+preplace port port-id_Xbasis_detected_pos_clkb -pg 1 -lvl 0 -x 0 -y 680 -defaultsOSRD
+preplace port port-id_Zbasis_detected_pos_clkb -pg 1 -lvl 0 -x 0 -y 960 -defaultsOSRD
+preplace port port-id_Zbasis_detected_pos_enb -pg 1 -lvl 0 -x 0 -y 1020 -defaultsOSRD
+preplace port port-id_Zbasis_detected_pos_rstb -pg 1 -lvl 0 -x 0 -y 1040 -defaultsOSRD
+preplace port port-id_Secretkey_clkb -pg 1 -lvl 0 -x 0 -y 400 -defaultsOSRD
+preplace port port-id_Secretkey_enb -pg 1 -lvl 0 -x 0 -y 460 -defaultsOSRD
+preplace port port-id_Secretkey_rstb -pg 1 -lvl 0 -x 0 -y 480 -defaultsOSRD
+preplace portBus AXImanager_addrb -pg 1 -lvl 0 -x 0 -y 100 -defaultsOSRD
+preplace portBus AXImanager_dinb -pg 1 -lvl 0 -x 0 -y 140 -defaultsOSRD
+preplace portBus AXImanager_doutb -pg 1 -lvl 3 -x 650 -y 280 -defaultsOSRD
+preplace portBus AXImanager_web -pg 1 -lvl 0 -x 0 -y 220 -defaultsOSRD
+preplace portBus Xbasis_detected_pos_doutb -pg 1 -lvl 3 -x 650 -y 840 -defaultsOSRD
+preplace portBus Xbasis_detected_pos_dinb -pg 1 -lvl 0 -x 0 -y 700 -defaultsOSRD
+preplace portBus Xbasis_detected_pos_addrb -pg 1 -lvl 0 -x 0 -y 660 -defaultsOSRD
+preplace portBus Xbasis_detected_pos_web -pg 1 -lvl 0 -x 0 -y 780 -defaultsOSRD
+preplace portBus Zbasis_detected_pos_addrb -pg 1 -lvl 0 -x 0 -y 940 -defaultsOSRD
+preplace portBus Zbasis_detected_pos_dinb -pg 1 -lvl 0 -x 0 -y 980 -defaultsOSRD
+preplace portBus Zbasis_detected_pos_doutb -pg 1 -lvl 3 -x 650 -y 1120 -defaultsOSRD
+preplace portBus Zbasis_detected_pos_web -pg 1 -lvl 0 -x 0 -y 1060 -defaultsOSRD
+preplace portBus Secretkey_addrb -pg 1 -lvl 0 -x 0 -y 380 -defaultsOSRD
+preplace portBus Secretkey_dinb -pg 1 -lvl 0 -x 0 -y 420 -defaultsOSRD
+preplace portBus Secretkey_doutb -pg 1 -lvl 3 -x 650 -y 560 -defaultsOSRD
+preplace portBus Secretkey_web -pg 1 -lvl 0 -x 0 -y 500 -defaultsOSRD
+preplace inst Zbasis_detected_pos_bram -pg 1 -lvl 2 -x 460 -y 980 -defaultsOSRD
+preplace inst Xbasis_detected_pos_bram -pg 1 -lvl 2 -x 460 -y 700 -defaultsOSRD
+preplace inst secretkey_bram -pg 1 -lvl 2 -x 460 -y 420 -defaultsOSRD
+preplace inst AXImanager_bram -pg 1 -lvl 2 -x 460 -y 140 -defaultsOSRD
+preplace netloc AXImanager_bram_doutb 1 1 2 170 280 NJ
+preplace netloc EV_randombit_bram_doutb 1 1 2 170 840 NJ
+preplace netloc addrb_0_1 1 0 2 NJ 100 NJ
+preplace netloc addrb_0_3 1 0 2 NJ 660 NJ
+preplace netloc addrb_0_4 1 0 2 NJ 940 NJ
+preplace netloc addrb_0_5 1 0 2 NJ 380 NJ
+preplace netloc clkb_0_1 1 0 2 NJ 120 NJ
+preplace netloc clkb_0_3 1 0 2 NJ 680 NJ
+preplace netloc clkb_0_4 1 0 2 NJ 960 NJ
+preplace netloc clkb_0_5 1 0 2 NJ 400 NJ
+preplace netloc dinb_0_1 1 0 2 NJ 140 NJ
+preplace netloc dinb_0_3 1 0 2 NJ 700 NJ
+preplace netloc dinb_0_4 1 0 2 NJ 980 NJ
+preplace netloc dinb_0_5 1 0 2 NJ 420 NJ
+preplace netloc enb_0_1 1 0 2 NJ 180 NJ
+preplace netloc enb_0_3 1 0 2 NJ 740 NJ
+preplace netloc enb_0_4 1 0 2 NJ 1020 NJ
+preplace netloc enb_0_5 1 0 2 NJ 460 NJ
+preplace netloc qubit_bram_doutb 1 1 2 170 1120 NJ
+preplace netloc rstb_0_1 1 0 2 NJ 200 NJ
+preplace netloc rstb_0_3 1 0 2 NJ 760 NJ
+preplace netloc rstb_0_4 1 0 2 NJ 1040 NJ
+preplace netloc rstb_0_5 1 0 2 NJ 480 NJ
+preplace netloc secretkey_bram_doutb 1 1 2 170 560 NJ
+preplace netloc web_0_1 1 0 2 NJ 220 NJ
+preplace netloc web_0_3 1 0 2 NJ 780 NJ
+preplace netloc web_0_4 1 0 2 NJ 1060 NJ
+preplace netloc web_0_5 1 0 2 NJ 500 NJ
+preplace netloc BRAM_PORTA_0_1 1 0 2 NJ 60 NJ
+preplace netloc BRAM_PORTA_0_2 1 0 2 NJ 340 NJ
+preplace netloc BRAM_PORTA_0_3 1 0 2 NJ 620 NJ
+preplace netloc BRAM_PORTA_0_4 1 0 2 NJ 900 NJ
+levelinfo -pg 1 0 150 460 650
+pagesize -pg 1 -db -bbox -sgen -280 0 930 1380
+"
+}
+0

@@ -1,0 +1,2088 @@
+{
+  "design": {
+    "design_info": {
+      "boundary_crc": "0x95931833D5D2D0",
+      "device": "xcku5p-ffvb676-2-e",
+      "gen_directory": "../../../../post_processing_v1.gen/sources_1/bd/BD_interface_A",
+      "name": "BD_interface_A",
+      "rev_ctrl_bd_flag": "RevCtrlBdOff",
+      "synth_flow_mode": "Singular",
+      "tool_version": "2022.1",
+      "validated": "true"
+    },
+    "design_tree": {
+      "A_RX_Zbasis_detected_fifo": "",
+      "A_RX_Xbasis_detected_fifo": "",
+      "A_RX_er_fifo": "",
+      "A_TX_decoy_fifo": "",
+      "A_TX_er_fifo": "",
+      "A_TX_pa_fifo": "",
+      "Asiftedkey_uram": "",
+      "Areconciledkey_uram": "",
+      "visibility_fifo": "",
+      "er_parm_fifo": ""
+    },
+    "ports": {
+      "A_RX_Xbasis_detected_rd_clk": {
+        "type": "clk",
+        "direction": "I",
+        "parameters": {
+          "CLK_DOMAIN": {
+            "value": "BD_interface_A_rd_clk_0",
+            "value_src": "default"
+          },
+          "FREQ_HZ": {
+            "value": "100000000",
+            "value_src": "default"
+          },
+          "FREQ_TOLERANCE_HZ": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.0",
+            "value_src": "default"
+          }
+        }
+      },
+      "A_RX_Xbasis_detected_rd_rst_busy": {
+        "direction": "O"
+      },
+      "A_RX_Xbasis_detected_srst": {
+        "direction": "I"
+      },
+      "A_RX_Xbasis_detected_rd_valid": {
+        "direction": "O"
+      },
+      "A_RX_Xbasis_detected_wr_ack": {
+        "direction": "O"
+      },
+      "A_RX_Xbasis_detected_wr_clk": {
+        "type": "clk",
+        "direction": "I",
+        "parameters": {
+          "CLK_DOMAIN": {
+            "value": "BD_interface_A_wr_clk_0",
+            "value_src": "default"
+          },
+          "FREQ_HZ": {
+            "value": "100000000",
+            "value_src": "default"
+          },
+          "FREQ_TOLERANCE_HZ": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.0",
+            "value_src": "default"
+          }
+        }
+      },
+      "A_RX_Xbasis_detected_wr_rst_busy": {
+        "direction": "O"
+      },
+      "A_RX_Xbasis_detected_full": {
+        "direction": "O"
+      },
+      "A_RX_Xbasis_detected_wr_en": {
+        "direction": "I"
+      },
+      "A_RX_Xbasis_detected_wr_din": {
+        "direction": "I",
+        "left": "63",
+        "right": "0"
+      },
+      "A_RX_Xbasis_detected_empty": {
+        "direction": "O"
+      },
+      "A_RX_Xbasis_detected_rd_dout": {
+        "direction": "O",
+        "left": "63",
+        "right": "0"
+      },
+      "A_RX_Xbasis_detected_rd_en": {
+        "direction": "I"
+      },
+      "A_RX_Zbasis_detected_rd_valid": {
+        "direction": "O"
+      },
+      "A_RX_Zbasis_detected_full": {
+        "direction": "O"
+      },
+      "A_RX_Zbasis_detected_wr_din": {
+        "direction": "I",
+        "left": "31",
+        "right": "0"
+      },
+      "A_RX_Zbasis_detected_wr_rst_busy": {
+        "direction": "O"
+      },
+      "A_RX_Zbasis_detected_rd_rst_busy": {
+        "direction": "O"
+      },
+      "A_RX_Zbasis_detected_wr_en": {
+        "direction": "I"
+      },
+      "A_RX_Zbasis_detected_srst": {
+        "direction": "I"
+      },
+      "A_RX_Zbasis_detected_wr_clk": {
+        "type": "clk",
+        "direction": "I",
+        "parameters": {
+          "CLK_DOMAIN": {
+            "value": "BD_interface_A_wr_clk_0",
+            "value_src": "default"
+          },
+          "FREQ_HZ": {
+            "value": "100000000",
+            "value_src": "default"
+          },
+          "FREQ_TOLERANCE_HZ": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.0",
+            "value_src": "default"
+          }
+        }
+      },
+      "A_RX_Zbasis_detected_rd_clk": {
+        "type": "clk",
+        "direction": "I",
+        "parameters": {
+          "CLK_DOMAIN": {
+            "value": "BD_interface_A_rd_clk_0",
+            "value_src": "default"
+          },
+          "FREQ_HZ": {
+            "value": "100000000",
+            "value_src": "default"
+          },
+          "FREQ_TOLERANCE_HZ": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.0",
+            "value_src": "default"
+          }
+        }
+      },
+      "A_RX_Zbasis_detected_empty": {
+        "direction": "O"
+      },
+      "A_RX_Zbasis_detected_rd_dout": {
+        "direction": "O",
+        "left": "31",
+        "right": "0"
+      },
+      "A_RX_Zbasis_detected_rd_en": {
+        "direction": "I"
+      },
+      "A_RX_Zbasis_detected_wr_ack": {
+        "direction": "O"
+      },
+      "A_RX_er_wr_clk": {
+        "type": "clk",
+        "direction": "I",
+        "parameters": {
+          "CLK_DOMAIN": {
+            "value": "BD_interface_A_wr_clk_0",
+            "value_src": "default"
+          },
+          "FREQ_HZ": {
+            "value": "100000000",
+            "value_src": "default"
+          },
+          "FREQ_TOLERANCE_HZ": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.0",
+            "value_src": "default"
+          }
+        }
+      },
+      "A_RX_er_srst": {
+        "direction": "I"
+      },
+      "A_RX_er_rd_rst_busy": {
+        "direction": "O"
+      },
+      "A_RX_er_wr_en": {
+        "direction": "I"
+      },
+      "A_RX_er_wr_din": {
+        "direction": "I",
+        "left": "31",
+        "right": "0"
+      },
+      "A_RX_er_wr_rst_busy": {
+        "direction": "O"
+      },
+      "A_RX_er_rd_valid": {
+        "direction": "O"
+      },
+      "A_RX_er_full": {
+        "direction": "O"
+      },
+      "A_RX_er_rd_en": {
+        "direction": "I"
+      },
+      "A_RX_er_rd_dout": {
+        "direction": "O",
+        "left": "31",
+        "right": "0"
+      },
+      "A_RX_er_empty": {
+        "direction": "O"
+      },
+      "A_RX_er_rd_clk": {
+        "type": "clk",
+        "direction": "I",
+        "parameters": {
+          "CLK_DOMAIN": {
+            "value": "BD_interface_A_rd_clk_0",
+            "value_src": "default"
+          },
+          "FREQ_HZ": {
+            "value": "100000000",
+            "value_src": "default"
+          },
+          "FREQ_TOLERANCE_HZ": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.0",
+            "value_src": "default"
+          }
+        }
+      },
+      "A_RX_er_wr_ack": {
+        "direction": "O"
+      },
+      "A_TX_decoy_wr_en": {
+        "direction": "I"
+      },
+      "A_TX_decoy_wr_din": {
+        "direction": "I",
+        "left": "31",
+        "right": "0"
+      },
+      "A_TX_decoy_full": {
+        "direction": "O"
+      },
+      "A_TX_decoy_rd_en": {
+        "direction": "I"
+      },
+      "A_TX_decoy_rd_dout": {
+        "direction": "O",
+        "left": "31",
+        "right": "0"
+      },
+      "A_TX_decoy_empty": {
+        "direction": "O"
+      },
+      "A_TX_decoy_rd_clk": {
+        "type": "clk",
+        "direction": "I",
+        "parameters": {
+          "CLK_DOMAIN": {
+            "value": "BD_interface_A_rd_clk_0",
+            "value_src": "default"
+          },
+          "FREQ_HZ": {
+            "value": "100000000",
+            "value_src": "default"
+          },
+          "FREQ_TOLERANCE_HZ": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.0",
+            "value_src": "default"
+          }
+        }
+      },
+      "A_TX_decoy_wr_clk": {
+        "type": "clk",
+        "direction": "I",
+        "parameters": {
+          "CLK_DOMAIN": {
+            "value": "BD_interface_A_wr_clk_0",
+            "value_src": "default"
+          },
+          "FREQ_HZ": {
+            "value": "100000000",
+            "value_src": "default"
+          },
+          "FREQ_TOLERANCE_HZ": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.0",
+            "value_src": "default"
+          }
+        }
+      },
+      "A_TX_decoy_srst": {
+        "direction": "I"
+      },
+      "A_TX_decoy_rd_rst_busy": {
+        "direction": "O"
+      },
+      "A_TX_decoy_wr_rst_busy": {
+        "direction": "O"
+      },
+      "A_TX_decoy_rd_valid": {
+        "direction": "O"
+      },
+      "A_TX_decoy_wr_ack": {
+        "direction": "O"
+      },
+      "A_TX_er_rd_en": {
+        "direction": "I"
+      },
+      "A_TX_er_rd_dout": {
+        "direction": "O",
+        "left": "31",
+        "right": "0"
+      },
+      "A_TX_er_wr_rst_busy": {
+        "direction": "O"
+      },
+      "A_TX_er_rd_valid": {
+        "direction": "O"
+      },
+      "A_TX_er_wr_en": {
+        "direction": "I"
+      },
+      "A_TX_er_wr_din": {
+        "direction": "I",
+        "left": "31",
+        "right": "0"
+      },
+      "A_TX_er_rd_rst_busy": {
+        "direction": "O"
+      },
+      "A_TX_er_wr_clk": {
+        "type": "clk",
+        "direction": "I",
+        "parameters": {
+          "CLK_DOMAIN": {
+            "value": "BD_interface_A_wr_clk_0",
+            "value_src": "default"
+          },
+          "FREQ_HZ": {
+            "value": "100000000",
+            "value_src": "default"
+          },
+          "FREQ_TOLERANCE_HZ": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.0",
+            "value_src": "default"
+          }
+        }
+      },
+      "A_TX_er_srst": {
+        "direction": "I"
+      },
+      "A_TX_er_wr_ack": {
+        "direction": "O"
+      },
+      "A_TX_er_rd_clk": {
+        "type": "clk",
+        "direction": "I",
+        "parameters": {
+          "CLK_DOMAIN": {
+            "value": "BD_interface_A_rd_clk_0",
+            "value_src": "default"
+          },
+          "FREQ_HZ": {
+            "value": "100000000",
+            "value_src": "default"
+          },
+          "FREQ_TOLERANCE_HZ": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.0",
+            "value_src": "default"
+          }
+        }
+      },
+      "A_TX_er_empty": {
+        "direction": "O"
+      },
+      "A_TX_er_full": {
+        "direction": "O"
+      },
+      "A_TX_pa_wr_rst_busy": {
+        "direction": "O"
+      },
+      "A_TX_pa_full": {
+        "direction": "O"
+      },
+      "A_TX_pa_wr_en": {
+        "direction": "I"
+      },
+      "A_TX_pa_rd_rst_busy": {
+        "direction": "O"
+      },
+      "A_TX_pa_wr_din": {
+        "direction": "I",
+        "left": "31",
+        "right": "0"
+      },
+      "A_TX_pa_empty": {
+        "direction": "O"
+      },
+      "A_TX_pa_rd_en": {
+        "direction": "I"
+      },
+      "A_TX_pa_rd_dout": {
+        "direction": "O",
+        "left": "31",
+        "right": "0"
+      },
+      "A_TX_pa_wr_clk": {
+        "type": "clk",
+        "direction": "I",
+        "parameters": {
+          "CLK_DOMAIN": {
+            "value": "BD_interface_A_wr_clk_0",
+            "value_src": "default"
+          },
+          "FREQ_HZ": {
+            "value": "100000000",
+            "value_src": "default"
+          },
+          "FREQ_TOLERANCE_HZ": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.0",
+            "value_src": "default"
+          }
+        }
+      },
+      "A_TX_pa_srst": {
+        "direction": "I"
+      },
+      "A_TX_pa_wr_ack": {
+        "direction": "O"
+      },
+      "A_TX_pa_rd_clk": {
+        "type": "clk",
+        "direction": "I",
+        "parameters": {
+          "CLK_DOMAIN": {
+            "value": "BD_interface_A_rd_clk_0",
+            "value_src": "default"
+          },
+          "FREQ_HZ": {
+            "value": "100000000",
+            "value_src": "default"
+          },
+          "FREQ_TOLERANCE_HZ": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.0",
+            "value_src": "default"
+          }
+        }
+      },
+      "A_TX_pa_rd_valid": {
+        "direction": "O"
+      },
+      "Areconciledkey_clka": {
+        "type": "clk",
+        "direction": "I",
+        "parameters": {
+          "CLK_DOMAIN": {
+            "value": "BD_interface_A_clka_0",
+            "value_src": "default"
+          },
+          "FREQ_HZ": {
+            "value": "100000000",
+            "value_src": "default"
+          },
+          "FREQ_TOLERANCE_HZ": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.0",
+            "value_src": "default"
+          }
+        }
+      },
+      "Areconciledkey_dina": {
+        "direction": "I",
+        "left": "63",
+        "right": "0"
+      },
+      "Areconciledkey_enb": {
+        "direction": "I"
+      },
+      "Areconciledkey_web": {
+        "direction": "I",
+        "left": "0",
+        "right": "0"
+      },
+      "Areconciledkey_addrb": {
+        "direction": "I",
+        "left": "14",
+        "right": "0"
+      },
+      "Areconciledkey_douta": {
+        "direction": "O",
+        "left": "63",
+        "right": "0"
+      },
+      "Areconciledkey_clkb": {
+        "type": "clk",
+        "direction": "I",
+        "parameters": {
+          "CLK_DOMAIN": {
+            "value": "BD_interface_A_clkb_0",
+            "value_src": "default"
+          },
+          "FREQ_HZ": {
+            "value": "100000000",
+            "value_src": "default"
+          },
+          "FREQ_TOLERANCE_HZ": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.0",
+            "value_src": "default"
+          }
+        }
+      },
+      "Areconciledkey_dinb": {
+        "direction": "I",
+        "left": "63",
+        "right": "0"
+      },
+      "Areconciledkey_ena": {
+        "direction": "I"
+      },
+      "Areconciledkey_wea": {
+        "direction": "I",
+        "left": "0",
+        "right": "0"
+      },
+      "Areconciledkey_doutb": {
+        "direction": "O",
+        "left": "63",
+        "right": "0"
+      },
+      "Areconciledkey_addra": {
+        "direction": "I",
+        "left": "14",
+        "right": "0"
+      },
+      "Asiftedkey_enb": {
+        "direction": "I"
+      },
+      "Asiftedkey_addra": {
+        "direction": "I",
+        "left": "14",
+        "right": "0"
+      },
+      "Asiftedkey_clka": {
+        "type": "clk",
+        "direction": "I",
+        "parameters": {
+          "CLK_DOMAIN": {
+            "value": "BD_interface_A_clka_0",
+            "value_src": "default"
+          },
+          "FREQ_HZ": {
+            "value": "100000000",
+            "value_src": "default"
+          },
+          "FREQ_TOLERANCE_HZ": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.0",
+            "value_src": "default"
+          }
+        }
+      },
+      "Asiftedkey_dina": {
+        "direction": "I",
+        "left": "63",
+        "right": "0"
+      },
+      "Asiftedkey_addrb": {
+        "direction": "I",
+        "left": "14",
+        "right": "0"
+      },
+      "Asiftedkey_clkb": {
+        "type": "clk",
+        "direction": "I",
+        "parameters": {
+          "CLK_DOMAIN": {
+            "value": "BD_interface_A_clkb_0",
+            "value_src": "default"
+          },
+          "FREQ_HZ": {
+            "value": "100000000",
+            "value_src": "default"
+          },
+          "FREQ_TOLERANCE_HZ": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.0",
+            "value_src": "default"
+          }
+        }
+      },
+      "Asiftedkey_dinb": {
+        "direction": "I",
+        "left": "63",
+        "right": "0"
+      },
+      "Asiftedkey_doutb": {
+        "direction": "O",
+        "left": "63",
+        "right": "0"
+      },
+      "Asiftedkey_douta": {
+        "direction": "O",
+        "left": "63",
+        "right": "0"
+      },
+      "Asiftedkey_ena": {
+        "direction": "I"
+      },
+      "Asiftedkey_wea": {
+        "direction": "I",
+        "left": "0",
+        "right": "0"
+      },
+      "Asiftedkey_web": {
+        "direction": "I",
+        "left": "0",
+        "right": "0"
+      },
+      "visibility_wr_clk": {
+        "type": "clk",
+        "direction": "I",
+        "parameters": {
+          "CLK_DOMAIN": {
+            "value": "BD_interface_A_wr_clk_0",
+            "value_src": "default"
+          },
+          "FREQ_HZ": {
+            "value": "100000000",
+            "value_src": "default"
+          },
+          "FREQ_TOLERANCE_HZ": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.0",
+            "value_src": "default"
+          }
+        }
+      },
+      "visibility_srst": {
+        "direction": "I"
+      },
+      "visibility_rd_en": {
+        "direction": "I"
+      },
+      "visibility_rd_dout": {
+        "direction": "O",
+        "left": "119",
+        "right": "0"
+      },
+      "visibility_empty": {
+        "direction": "O"
+      },
+      "visibility_wr_en": {
+        "direction": "I"
+      },
+      "visibility_wr_din": {
+        "direction": "I",
+        "left": "119",
+        "right": "0"
+      },
+      "visibility_rd_rst_busy": {
+        "direction": "O"
+      },
+      "visibility_wr_rst_busy": {
+        "direction": "O"
+      },
+      "visibility_rd_valid": {
+        "direction": "O"
+      },
+      "visibility_wr_ack": {
+        "direction": "O"
+      },
+      "visibility_rd_clk": {
+        "type": "clk",
+        "direction": "I",
+        "parameters": {
+          "CLK_DOMAIN": {
+            "value": "BD_interface_A_rd_clk_0",
+            "value_src": "default"
+          },
+          "FREQ_HZ": {
+            "value": "100000000",
+            "value_src": "default"
+          },
+          "FREQ_TOLERANCE_HZ": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.0",
+            "value_src": "default"
+          }
+        }
+      },
+      "visibility_full": {
+        "direction": "O"
+      },
+      "er_parm_wr_ack": {
+        "direction": "O"
+      },
+      "er_parm_srst": {
+        "direction": "I"
+      },
+      "er_parm_empty": {
+        "direction": "O"
+      },
+      "er_parm_wr_clk": {
+        "type": "clk",
+        "direction": "I",
+        "parameters": {
+          "CLK_DOMAIN": {
+            "value": "BD_interface_A_wr_clk_0",
+            "value_src": "default"
+          },
+          "FREQ_HZ": {
+            "value": "100000000",
+            "value_src": "default"
+          },
+          "FREQ_TOLERANCE_HZ": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.0",
+            "value_src": "default"
+          }
+        }
+      },
+      "er_parm_rd_rst_busy": {
+        "direction": "O"
+      },
+      "er_parm_rd_valid": {
+        "direction": "O"
+      },
+      "er_parm_wr_rst_busy": {
+        "direction": "O"
+      },
+      "er_parm_wr_din": {
+        "direction": "I",
+        "left": "31",
+        "right": "0"
+      },
+      "er_parm_wr_en": {
+        "direction": "I"
+      },
+      "er_parm_rd_dout": {
+        "direction": "O",
+        "left": "31",
+        "right": "0"
+      },
+      "er_parm_rd_clk": {
+        "type": "clk",
+        "direction": "I",
+        "parameters": {
+          "CLK_DOMAIN": {
+            "value": "BD_interface_A_rd_clk_0",
+            "value_src": "default"
+          },
+          "FREQ_HZ": {
+            "value": "100000000",
+            "value_src": "default"
+          },
+          "FREQ_TOLERANCE_HZ": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.0",
+            "value_src": "default"
+          }
+        }
+      },
+      "er_parm_rd_en": {
+        "direction": "I"
+      },
+      "er_parm_full": {
+        "direction": "O"
+      }
+    },
+    "components": {
+      "A_RX_Zbasis_detected_fifo": {
+        "vlnv": "xilinx.com:ip:fifo_generator:13.2",
+        "xci_name": "BD_interface_A_fifo_generator_0_0",
+        "xci_path": "ip\\BD_interface_A_fifo_generator_0_0\\BD_interface_A_fifo_generator_0_0.xci",
+        "inst_hier_path": "A_RX_Zbasis_detected_fifo",
+        "parameters": {
+          "Fifo_Implementation": {
+            "value": "Independent_Clocks_Builtin_FIFO"
+          },
+          "Input_Data_Width": {
+            "value": "32"
+          },
+          "Input_Depth": {
+            "value": "32768"
+          },
+          "Performance_Options": {
+            "value": "First_Word_Fall_Through"
+          },
+          "Read_Clock_Frequency": {
+            "value": "125"
+          },
+          "Valid_Flag": {
+            "value": "true"
+          },
+          "Write_Acknowledge_Flag": {
+            "value": "true"
+          },
+          "Write_Clock_Frequency": {
+            "value": "125"
+          },
+          "enable_low_latency": {
+            "value": "true"
+          },
+          "use_dout_register": {
+            "value": "true"
+          }
+        }
+      },
+      "A_RX_Xbasis_detected_fifo": {
+        "vlnv": "xilinx.com:ip:fifo_generator:13.2",
+        "xci_name": "BD_interface_A_fifo_generator_0_1",
+        "xci_path": "ip\\BD_interface_A_fifo_generator_0_1\\BD_interface_A_fifo_generator_0_1.xci",
+        "inst_hier_path": "A_RX_Xbasis_detected_fifo",
+        "parameters": {
+          "Fifo_Implementation": {
+            "value": "Independent_Clocks_Builtin_FIFO"
+          },
+          "Input_Data_Width": {
+            "value": "64"
+          },
+          "Input_Depth": {
+            "value": "32768"
+          },
+          "Performance_Options": {
+            "value": "First_Word_Fall_Through"
+          },
+          "Read_Clock_Frequency": {
+            "value": "125"
+          },
+          "Valid_Flag": {
+            "value": "true"
+          },
+          "Write_Acknowledge_Flag": {
+            "value": "true"
+          },
+          "Write_Clock_Frequency": {
+            "value": "125"
+          },
+          "enable_low_latency": {
+            "value": "true"
+          },
+          "use_dout_register": {
+            "value": "true"
+          }
+        }
+      },
+      "A_RX_er_fifo": {
+        "vlnv": "xilinx.com:ip:fifo_generator:13.2",
+        "xci_name": "BD_interface_A_fifo_generator_0_3",
+        "xci_path": "ip\\BD_interface_A_fifo_generator_0_3\\BD_interface_A_fifo_generator_0_3.xci",
+        "inst_hier_path": "A_RX_er_fifo",
+        "parameters": {
+          "Fifo_Implementation": {
+            "value": "Independent_Clocks_Builtin_FIFO"
+          },
+          "Input_Data_Width": {
+            "value": "32"
+          },
+          "Input_Depth": {
+            "value": "2048"
+          },
+          "Performance_Options": {
+            "value": "First_Word_Fall_Through"
+          },
+          "Read_Clock_Frequency": {
+            "value": "125"
+          },
+          "Valid_Flag": {
+            "value": "true"
+          },
+          "Write_Acknowledge_Flag": {
+            "value": "true"
+          },
+          "Write_Clock_Frequency": {
+            "value": "125"
+          },
+          "enable_low_latency": {
+            "value": "true"
+          },
+          "use_dout_register": {
+            "value": "true"
+          }
+        }
+      },
+      "A_TX_decoy_fifo": {
+        "vlnv": "xilinx.com:ip:fifo_generator:13.2",
+        "xci_name": "BD_interface_A_fifo_generator_0_4",
+        "xci_path": "ip\\BD_interface_A_fifo_generator_0_4\\BD_interface_A_fifo_generator_0_4.xci",
+        "inst_hier_path": "A_TX_decoy_fifo",
+        "parameters": {
+          "Fifo_Implementation": {
+            "value": "Independent_Clocks_Builtin_FIFO"
+          },
+          "Input_Data_Width": {
+            "value": "32"
+          },
+          "Input_Depth": {
+            "value": "2048"
+          },
+          "Performance_Options": {
+            "value": "First_Word_Fall_Through"
+          },
+          "Read_Clock_Frequency": {
+            "value": "125"
+          },
+          "Valid_Flag": {
+            "value": "true"
+          },
+          "Write_Acknowledge_Flag": {
+            "value": "true"
+          },
+          "Write_Clock_Frequency": {
+            "value": "125"
+          },
+          "enable_low_latency": {
+            "value": "true"
+          },
+          "use_dout_register": {
+            "value": "true"
+          }
+        }
+      },
+      "A_TX_er_fifo": {
+        "vlnv": "xilinx.com:ip:fifo_generator:13.2",
+        "xci_name": "BD_interface_A_fifo_generator_0_5",
+        "xci_path": "ip\\BD_interface_A_fifo_generator_0_5\\BD_interface_A_fifo_generator_0_5.xci",
+        "inst_hier_path": "A_TX_er_fifo",
+        "parameters": {
+          "Fifo_Implementation": {
+            "value": "Independent_Clocks_Builtin_FIFO"
+          },
+          "Input_Data_Width": {
+            "value": "32"
+          },
+          "Input_Depth": {
+            "value": "2048"
+          },
+          "Performance_Options": {
+            "value": "First_Word_Fall_Through"
+          },
+          "Read_Clock_Frequency": {
+            "value": "125"
+          },
+          "Valid_Flag": {
+            "value": "true"
+          },
+          "Write_Acknowledge_Flag": {
+            "value": "true"
+          },
+          "Write_Clock_Frequency": {
+            "value": "125"
+          },
+          "enable_low_latency": {
+            "value": "true"
+          },
+          "use_dout_register": {
+            "value": "true"
+          }
+        }
+      },
+      "A_TX_pa_fifo": {
+        "vlnv": "xilinx.com:ip:fifo_generator:13.2",
+        "xci_name": "BD_interface_A_fifo_generator_0_6",
+        "xci_path": "ip\\BD_interface_A_fifo_generator_0_6\\BD_interface_A_fifo_generator_0_6.xci",
+        "inst_hier_path": "A_TX_pa_fifo",
+        "parameters": {
+          "Fifo_Implementation": {
+            "value": "Independent_Clocks_Builtin_FIFO"
+          },
+          "Input_Data_Width": {
+            "value": "32"
+          },
+          "Input_Depth": {
+            "value": "2048"
+          },
+          "Performance_Options": {
+            "value": "First_Word_Fall_Through"
+          },
+          "Read_Clock_Frequency": {
+            "value": "125"
+          },
+          "Valid_Flag": {
+            "value": "true"
+          },
+          "Write_Acknowledge_Flag": {
+            "value": "true"
+          },
+          "Write_Clock_Frequency": {
+            "value": "125"
+          },
+          "enable_low_latency": {
+            "value": "true"
+          },
+          "use_dout_register": {
+            "value": "true"
+          }
+        }
+      },
+      "Asiftedkey_uram": {
+        "vlnv": "xilinx.com:ip:blk_mem_gen:8.4",
+        "xci_name": "BD_interface_A_blk_mem_gen_0_0",
+        "xci_path": "ip\\BD_interface_A_blk_mem_gen_0_0\\BD_interface_A_blk_mem_gen_0_0.xci",
+        "inst_hier_path": "Asiftedkey_uram",
+        "parameters": {
+          "Enable_32bit_Address": {
+            "value": "false"
+          },
+          "Memory_Type": {
+            "value": "True_Dual_Port_RAM"
+          },
+          "PRIM_type_to_Implement": {
+            "value": "URAM"
+          },
+          "Port_B_Clock": {
+            "value": "100"
+          },
+          "Port_B_Enable_Rate": {
+            "value": "100"
+          },
+          "Port_B_Write_Rate": {
+            "value": "50"
+          },
+          "Use_Byte_Write_Enable": {
+            "value": "false"
+          },
+          "Use_RSTA_Pin": {
+            "value": "false"
+          },
+          "Write_Depth_A": {
+            "value": "32768"
+          },
+          "Write_Width_A": {
+            "value": "64"
+          },
+          "use_bram_block": {
+            "value": "Stand_Alone"
+          }
+        }
+      },
+      "Areconciledkey_uram": {
+        "vlnv": "xilinx.com:ip:blk_mem_gen:8.4",
+        "xci_name": "BD_interface_A_blk_mem_gen_0_1",
+        "xci_path": "ip\\BD_interface_A_blk_mem_gen_0_1\\BD_interface_A_blk_mem_gen_0_1.xci",
+        "inst_hier_path": "Areconciledkey_uram",
+        "parameters": {
+          "Enable_32bit_Address": {
+            "value": "false"
+          },
+          "Memory_Type": {
+            "value": "True_Dual_Port_RAM"
+          },
+          "PRIM_type_to_Implement": {
+            "value": "URAM"
+          },
+          "Port_B_Clock": {
+            "value": "100"
+          },
+          "Port_B_Enable_Rate": {
+            "value": "100"
+          },
+          "Port_B_Write_Rate": {
+            "value": "50"
+          },
+          "Use_Byte_Write_Enable": {
+            "value": "false"
+          },
+          "Use_RSTA_Pin": {
+            "value": "false"
+          },
+          "Use_RSTB_Pin": {
+            "value": "false"
+          },
+          "Write_Depth_A": {
+            "value": "32768"
+          },
+          "Write_Width_A": {
+            "value": "64"
+          },
+          "use_bram_block": {
+            "value": "Stand_Alone"
+          }
+        }
+      },
+      "visibility_fifo": {
+        "vlnv": "xilinx.com:ip:fifo_generator:13.2",
+        "xci_name": "BD_interface_A_fifo_generator_0_7",
+        "xci_path": "ip\\BD_interface_A_fifo_generator_0_7\\BD_interface_A_fifo_generator_0_7.xci",
+        "inst_hier_path": "visibility_fifo",
+        "parameters": {
+          "Fifo_Implementation": {
+            "value": "Independent_Clocks_Builtin_FIFO"
+          },
+          "Input_Data_Width": {
+            "value": "120"
+          },
+          "Input_Depth": {
+            "value": "512"
+          },
+          "Performance_Options": {
+            "value": "First_Word_Fall_Through"
+          },
+          "Read_Clock_Frequency": {
+            "value": "125"
+          },
+          "Valid_Flag": {
+            "value": "true"
+          },
+          "Write_Acknowledge_Flag": {
+            "value": "true"
+          },
+          "Write_Clock_Frequency": {
+            "value": "20"
+          }
+        }
+      },
+      "er_parm_fifo": {
+        "vlnv": "xilinx.com:ip:fifo_generator:13.2",
+        "xci_name": "BD_interface_A_fifo_generator_0_8",
+        "xci_path": "ip\\BD_interface_A_fifo_generator_0_8\\BD_interface_A_fifo_generator_0_8.xci",
+        "inst_hier_path": "er_parm_fifo",
+        "parameters": {
+          "Fifo_Implementation": {
+            "value": "Independent_Clocks_Builtin_FIFO"
+          },
+          "Input_Data_Width": {
+            "value": "32"
+          },
+          "Input_Depth": {
+            "value": "512"
+          },
+          "Performance_Options": {
+            "value": "First_Word_Fall_Through"
+          },
+          "Read_Clock_Frequency": {
+            "value": "125"
+          },
+          "Use_Embedded_Registers": {
+            "value": "true"
+          },
+          "Valid_Flag": {
+            "value": "true"
+          },
+          "Write_Acknowledge_Flag": {
+            "value": "true"
+          },
+          "Write_Clock_Frequency": {
+            "value": "20"
+          }
+        }
+      }
+    },
+    "nets": {
+      "A_RX_Xbasis_detected_fifo_dout": {
+        "ports": [
+          "A_RX_Xbasis_detected_fifo/dout",
+          "A_RX_Xbasis_detected_rd_dout"
+        ]
+      },
+      "A_RX_Xbasis_detected_fifo_empty": {
+        "ports": [
+          "A_RX_Xbasis_detected_fifo/empty",
+          "A_RX_Xbasis_detected_empty"
+        ]
+      },
+      "A_RX_Xbasis_detected_fifo_full": {
+        "ports": [
+          "A_RX_Xbasis_detected_fifo/full",
+          "A_RX_Xbasis_detected_full"
+        ]
+      },
+      "A_RX_Xbasis_detected_fifo_rd_rst_busy": {
+        "ports": [
+          "A_RX_Xbasis_detected_fifo/rd_rst_busy",
+          "A_RX_Xbasis_detected_rd_rst_busy"
+        ]
+      },
+      "A_RX_Xbasis_detected_fifo_valid": {
+        "ports": [
+          "A_RX_Xbasis_detected_fifo/valid",
+          "A_RX_Xbasis_detected_rd_valid"
+        ]
+      },
+      "A_RX_Xbasis_detected_fifo_wr_ack": {
+        "ports": [
+          "A_RX_Xbasis_detected_fifo/wr_ack",
+          "A_RX_Xbasis_detected_wr_ack"
+        ]
+      },
+      "A_RX_Xbasis_detected_fifo_wr_rst_busy": {
+        "ports": [
+          "A_RX_Xbasis_detected_fifo/wr_rst_busy",
+          "A_RX_Xbasis_detected_wr_rst_busy"
+        ]
+      },
+      "A_RX_Zbasis_detected_fifo_dout": {
+        "ports": [
+          "A_RX_Zbasis_detected_fifo/dout",
+          "A_RX_Zbasis_detected_rd_dout"
+        ]
+      },
+      "A_RX_Zbasis_detected_fifo_empty": {
+        "ports": [
+          "A_RX_Zbasis_detected_fifo/empty",
+          "A_RX_Zbasis_detected_empty"
+        ]
+      },
+      "A_RX_Zbasis_detected_fifo_full": {
+        "ports": [
+          "A_RX_Zbasis_detected_fifo/full",
+          "A_RX_Zbasis_detected_full"
+        ]
+      },
+      "A_RX_Zbasis_detected_fifo_rd_rst_busy": {
+        "ports": [
+          "A_RX_Zbasis_detected_fifo/rd_rst_busy",
+          "A_RX_Zbasis_detected_rd_rst_busy"
+        ]
+      },
+      "A_RX_Zbasis_detected_fifo_valid": {
+        "ports": [
+          "A_RX_Zbasis_detected_fifo/valid",
+          "A_RX_Zbasis_detected_rd_valid"
+        ]
+      },
+      "A_RX_Zbasis_detected_fifo_wr_ack": {
+        "ports": [
+          "A_RX_Zbasis_detected_fifo/wr_ack",
+          "A_RX_Zbasis_detected_wr_ack"
+        ]
+      },
+      "A_RX_Zbasis_detected_fifo_wr_rst_busy": {
+        "ports": [
+          "A_RX_Zbasis_detected_fifo/wr_rst_busy",
+          "A_RX_Zbasis_detected_wr_rst_busy"
+        ]
+      },
+      "A_RX_er_fifo_dout": {
+        "ports": [
+          "A_RX_er_fifo/dout",
+          "A_RX_er_rd_dout"
+        ]
+      },
+      "A_RX_er_fifo_empty": {
+        "ports": [
+          "A_RX_er_fifo/empty",
+          "A_RX_er_empty"
+        ]
+      },
+      "A_RX_er_fifo_full": {
+        "ports": [
+          "A_RX_er_fifo/full",
+          "A_RX_er_full"
+        ]
+      },
+      "A_RX_er_fifo_rd_rst_busy": {
+        "ports": [
+          "A_RX_er_fifo/rd_rst_busy",
+          "A_RX_er_rd_rst_busy"
+        ]
+      },
+      "A_RX_er_fifo_valid": {
+        "ports": [
+          "A_RX_er_fifo/valid",
+          "A_RX_er_rd_valid"
+        ]
+      },
+      "A_RX_er_fifo_wr_ack": {
+        "ports": [
+          "A_RX_er_fifo/wr_ack",
+          "A_RX_er_wr_ack"
+        ]
+      },
+      "A_RX_er_fifo_wr_rst_busy": {
+        "ports": [
+          "A_RX_er_fifo/wr_rst_busy",
+          "A_RX_er_wr_rst_busy"
+        ]
+      },
+      "A_TX_decoy_fifo_dout": {
+        "ports": [
+          "A_TX_decoy_fifo/dout",
+          "A_TX_decoy_rd_dout"
+        ]
+      },
+      "A_TX_decoy_fifo_empty": {
+        "ports": [
+          "A_TX_decoy_fifo/empty",
+          "A_TX_decoy_empty"
+        ]
+      },
+      "A_TX_decoy_fifo_full": {
+        "ports": [
+          "A_TX_decoy_fifo/full",
+          "A_TX_decoy_full"
+        ]
+      },
+      "A_TX_decoy_fifo_rd_rst_busy": {
+        "ports": [
+          "A_TX_decoy_fifo/rd_rst_busy",
+          "A_TX_decoy_rd_rst_busy"
+        ]
+      },
+      "A_TX_decoy_fifo_valid": {
+        "ports": [
+          "A_TX_decoy_fifo/valid",
+          "A_TX_decoy_rd_valid"
+        ]
+      },
+      "A_TX_decoy_fifo_wr_ack": {
+        "ports": [
+          "A_TX_decoy_fifo/wr_ack",
+          "A_TX_decoy_wr_ack"
+        ]
+      },
+      "A_TX_decoy_fifo_wr_rst_busy": {
+        "ports": [
+          "A_TX_decoy_fifo/wr_rst_busy",
+          "A_TX_decoy_wr_rst_busy"
+        ]
+      },
+      "A_TX_er_fifo_dout": {
+        "ports": [
+          "A_TX_er_fifo/dout",
+          "A_TX_er_rd_dout"
+        ]
+      },
+      "A_TX_er_fifo_empty": {
+        "ports": [
+          "A_TX_er_fifo/empty",
+          "A_TX_er_empty"
+        ]
+      },
+      "A_TX_er_fifo_full": {
+        "ports": [
+          "A_TX_er_fifo/full",
+          "A_TX_er_full"
+        ]
+      },
+      "A_TX_er_fifo_rd_rst_busy": {
+        "ports": [
+          "A_TX_er_fifo/rd_rst_busy",
+          "A_TX_er_rd_rst_busy"
+        ]
+      },
+      "A_TX_er_fifo_valid": {
+        "ports": [
+          "A_TX_er_fifo/valid",
+          "A_TX_er_rd_valid"
+        ]
+      },
+      "A_TX_er_fifo_wr_ack": {
+        "ports": [
+          "A_TX_er_fifo/wr_ack",
+          "A_TX_er_wr_ack"
+        ]
+      },
+      "A_TX_er_fifo_wr_rst_busy": {
+        "ports": [
+          "A_TX_er_fifo/wr_rst_busy",
+          "A_TX_er_wr_rst_busy"
+        ]
+      },
+      "A_TX_pa_fifo_dout": {
+        "ports": [
+          "A_TX_pa_fifo/dout",
+          "A_TX_pa_rd_dout"
+        ]
+      },
+      "A_TX_pa_fifo_empty": {
+        "ports": [
+          "A_TX_pa_fifo/empty",
+          "A_TX_pa_empty"
+        ]
+      },
+      "A_TX_pa_fifo_full": {
+        "ports": [
+          "A_TX_pa_fifo/full",
+          "A_TX_pa_full"
+        ]
+      },
+      "A_TX_pa_fifo_rd_rst_busy": {
+        "ports": [
+          "A_TX_pa_fifo/rd_rst_busy",
+          "A_TX_pa_rd_rst_busy"
+        ]
+      },
+      "A_TX_pa_fifo_valid": {
+        "ports": [
+          "A_TX_pa_fifo/valid",
+          "A_TX_pa_rd_valid"
+        ]
+      },
+      "A_TX_pa_fifo_wr_ack": {
+        "ports": [
+          "A_TX_pa_fifo/wr_ack",
+          "A_TX_pa_wr_ack"
+        ]
+      },
+      "A_TX_pa_fifo_wr_rst_busy": {
+        "ports": [
+          "A_TX_pa_fifo/wr_rst_busy",
+          "A_TX_pa_wr_rst_busy"
+        ]
+      },
+      "Areconciledkey_uram_douta": {
+        "ports": [
+          "Areconciledkey_uram/douta",
+          "Areconciledkey_douta"
+        ]
+      },
+      "Areconciledkey_uram_doutb": {
+        "ports": [
+          "Areconciledkey_uram/doutb",
+          "Areconciledkey_doutb"
+        ]
+      },
+      "Asiftedkey_uram_douta": {
+        "ports": [
+          "Asiftedkey_uram/douta",
+          "Asiftedkey_douta"
+        ]
+      },
+      "Asiftedkey_uram_doutb": {
+        "ports": [
+          "Asiftedkey_uram/doutb",
+          "Asiftedkey_doutb"
+        ]
+      },
+      "addra_0_1": {
+        "ports": [
+          "Areconciledkey_addra",
+          "Areconciledkey_uram/addra"
+        ]
+      },
+      "addra_0_2": {
+        "ports": [
+          "Asiftedkey_addra",
+          "Asiftedkey_uram/addra"
+        ]
+      },
+      "addrb_0_1": {
+        "ports": [
+          "Areconciledkey_addrb",
+          "Areconciledkey_uram/addrb"
+        ]
+      },
+      "addrb_0_2": {
+        "ports": [
+          "Asiftedkey_addrb",
+          "Asiftedkey_uram/addrb"
+        ]
+      },
+      "clka_0_1": {
+        "ports": [
+          "Areconciledkey_clka",
+          "Areconciledkey_uram/clka"
+        ]
+      },
+      "clka_0_2": {
+        "ports": [
+          "Asiftedkey_clka",
+          "Asiftedkey_uram/clka"
+        ]
+      },
+      "clkb_0_1": {
+        "ports": [
+          "Areconciledkey_clkb",
+          "Areconciledkey_uram/clkb"
+        ]
+      },
+      "clkb_0_2": {
+        "ports": [
+          "Asiftedkey_clkb",
+          "Asiftedkey_uram/clkb"
+        ]
+      },
+      "din_0_1": {
+        "ports": [
+          "A_RX_Xbasis_detected_wr_din",
+          "A_RX_Xbasis_detected_fifo/din"
+        ]
+      },
+      "din_0_2": {
+        "ports": [
+          "A_RX_Zbasis_detected_wr_din",
+          "A_RX_Zbasis_detected_fifo/din"
+        ]
+      },
+      "din_0_3": {
+        "ports": [
+          "A_RX_er_wr_din",
+          "A_RX_er_fifo/din"
+        ]
+      },
+      "din_0_4": {
+        "ports": [
+          "A_TX_decoy_wr_din",
+          "A_TX_decoy_fifo/din"
+        ]
+      },
+      "din_0_5": {
+        "ports": [
+          "A_TX_er_wr_din",
+          "A_TX_er_fifo/din"
+        ]
+      },
+      "din_0_6": {
+        "ports": [
+          "A_TX_pa_wr_din",
+          "A_TX_pa_fifo/din"
+        ]
+      },
+      "din_0_7": {
+        "ports": [
+          "visibility_wr_din",
+          "visibility_fifo/din"
+        ]
+      },
+      "din_0_8": {
+        "ports": [
+          "er_parm_wr_din",
+          "er_parm_fifo/din"
+        ]
+      },
+      "dina_0_1": {
+        "ports": [
+          "Areconciledkey_dina",
+          "Areconciledkey_uram/dina"
+        ]
+      },
+      "dina_0_2": {
+        "ports": [
+          "Asiftedkey_dina",
+          "Asiftedkey_uram/dina"
+        ]
+      },
+      "dinb_0_1": {
+        "ports": [
+          "Areconciledkey_dinb",
+          "Areconciledkey_uram/dinb"
+        ]
+      },
+      "dinb_0_2": {
+        "ports": [
+          "Asiftedkey_dinb",
+          "Asiftedkey_uram/dinb"
+        ]
+      },
+      "ena_0_1": {
+        "ports": [
+          "Areconciledkey_ena",
+          "Areconciledkey_uram/ena"
+        ]
+      },
+      "ena_0_2": {
+        "ports": [
+          "Asiftedkey_ena",
+          "Asiftedkey_uram/ena"
+        ]
+      },
+      "enb_0_1": {
+        "ports": [
+          "Areconciledkey_enb",
+          "Areconciledkey_uram/enb"
+        ]
+      },
+      "enb_0_2": {
+        "ports": [
+          "Asiftedkey_enb",
+          "Asiftedkey_uram/enb"
+        ]
+      },
+      "er_parm_fifo_dout": {
+        "ports": [
+          "er_parm_fifo/dout",
+          "er_parm_rd_dout"
+        ]
+      },
+      "er_parm_fifo_empty": {
+        "ports": [
+          "er_parm_fifo/empty",
+          "er_parm_empty"
+        ]
+      },
+      "er_parm_fifo_full": {
+        "ports": [
+          "er_parm_fifo/full",
+          "er_parm_full"
+        ]
+      },
+      "er_parm_fifo_rd_rst_busy": {
+        "ports": [
+          "er_parm_fifo/rd_rst_busy",
+          "er_parm_rd_rst_busy"
+        ]
+      },
+      "er_parm_fifo_valid": {
+        "ports": [
+          "er_parm_fifo/valid",
+          "er_parm_rd_valid"
+        ]
+      },
+      "er_parm_fifo_wr_ack": {
+        "ports": [
+          "er_parm_fifo/wr_ack",
+          "er_parm_wr_ack"
+        ]
+      },
+      "er_parm_fifo_wr_rst_busy": {
+        "ports": [
+          "er_parm_fifo/wr_rst_busy",
+          "er_parm_wr_rst_busy"
+        ]
+      },
+      "rd_clk_0_1": {
+        "ports": [
+          "A_RX_Xbasis_detected_rd_clk",
+          "A_RX_Xbasis_detected_fifo/rd_clk"
+        ]
+      },
+      "rd_clk_0_2": {
+        "ports": [
+          "A_RX_Zbasis_detected_rd_clk",
+          "A_RX_Zbasis_detected_fifo/rd_clk"
+        ]
+      },
+      "rd_clk_0_3": {
+        "ports": [
+          "A_RX_er_rd_clk",
+          "A_RX_er_fifo/rd_clk"
+        ]
+      },
+      "rd_clk_0_4": {
+        "ports": [
+          "A_TX_decoy_rd_clk",
+          "A_TX_decoy_fifo/rd_clk"
+        ]
+      },
+      "rd_clk_0_5": {
+        "ports": [
+          "A_TX_er_rd_clk",
+          "A_TX_er_fifo/rd_clk"
+        ]
+      },
+      "rd_clk_0_6": {
+        "ports": [
+          "A_TX_pa_rd_clk",
+          "A_TX_pa_fifo/rd_clk"
+        ]
+      },
+      "rd_clk_0_7": {
+        "ports": [
+          "visibility_rd_clk",
+          "visibility_fifo/rd_clk"
+        ]
+      },
+      "rd_clk_0_8": {
+        "ports": [
+          "er_parm_rd_clk",
+          "er_parm_fifo/rd_clk"
+        ]
+      },
+      "rd_en_0_1": {
+        "ports": [
+          "A_RX_Xbasis_detected_rd_en",
+          "A_RX_Xbasis_detected_fifo/rd_en"
+        ]
+      },
+      "rd_en_0_2": {
+        "ports": [
+          "A_RX_Zbasis_detected_rd_en",
+          "A_RX_Zbasis_detected_fifo/rd_en"
+        ]
+      },
+      "rd_en_0_3": {
+        "ports": [
+          "A_RX_er_rd_en",
+          "A_RX_er_fifo/rd_en"
+        ]
+      },
+      "rd_en_0_4": {
+        "ports": [
+          "A_TX_decoy_rd_en",
+          "A_TX_decoy_fifo/rd_en"
+        ]
+      },
+      "rd_en_0_5": {
+        "ports": [
+          "A_TX_er_rd_en",
+          "A_TX_er_fifo/rd_en"
+        ]
+      },
+      "rd_en_0_6": {
+        "ports": [
+          "A_TX_pa_rd_en",
+          "A_TX_pa_fifo/rd_en"
+        ]
+      },
+      "rd_en_0_7": {
+        "ports": [
+          "visibility_rd_en",
+          "visibility_fifo/rd_en"
+        ]
+      },
+      "rd_en_0_8": {
+        "ports": [
+          "er_parm_rd_en",
+          "er_parm_fifo/rd_en"
+        ]
+      },
+      "srst_0_1": {
+        "ports": [
+          "A_RX_Xbasis_detected_srst",
+          "A_RX_Xbasis_detected_fifo/srst"
+        ]
+      },
+      "srst_0_2": {
+        "ports": [
+          "A_RX_Zbasis_detected_srst",
+          "A_RX_Zbasis_detected_fifo/srst"
+        ]
+      },
+      "srst_0_3": {
+        "ports": [
+          "A_RX_er_srst",
+          "A_RX_er_fifo/srst"
+        ]
+      },
+      "srst_0_4": {
+        "ports": [
+          "A_TX_decoy_srst",
+          "A_TX_decoy_fifo/srst"
+        ]
+      },
+      "srst_0_5": {
+        "ports": [
+          "A_TX_er_srst",
+          "A_TX_er_fifo/srst"
+        ]
+      },
+      "srst_0_6": {
+        "ports": [
+          "A_TX_pa_srst",
+          "A_TX_pa_fifo/srst"
+        ]
+      },
+      "srst_0_7": {
+        "ports": [
+          "visibility_srst",
+          "visibility_fifo/srst"
+        ]
+      },
+      "srst_0_8": {
+        "ports": [
+          "er_parm_srst",
+          "er_parm_fifo/srst"
+        ]
+      },
+      "visibility_fifo_dout": {
+        "ports": [
+          "visibility_fifo/dout",
+          "visibility_rd_dout"
+        ]
+      },
+      "visibility_fifo_empty": {
+        "ports": [
+          "visibility_fifo/empty",
+          "visibility_empty"
+        ]
+      },
+      "visibility_fifo_full": {
+        "ports": [
+          "visibility_fifo/full",
+          "visibility_full"
+        ]
+      },
+      "visibility_fifo_rd_rst_busy": {
+        "ports": [
+          "visibility_fifo/rd_rst_busy",
+          "visibility_rd_rst_busy"
+        ]
+      },
+      "visibility_fifo_valid": {
+        "ports": [
+          "visibility_fifo/valid",
+          "visibility_rd_valid"
+        ]
+      },
+      "visibility_fifo_wr_ack": {
+        "ports": [
+          "visibility_fifo/wr_ack",
+          "visibility_wr_ack"
+        ]
+      },
+      "visibility_fifo_wr_rst_busy": {
+        "ports": [
+          "visibility_fifo/wr_rst_busy",
+          "visibility_wr_rst_busy"
+        ]
+      },
+      "wea_0_1": {
+        "ports": [
+          "Areconciledkey_wea",
+          "Areconciledkey_uram/wea"
+        ]
+      },
+      "wea_0_2": {
+        "ports": [
+          "Asiftedkey_wea",
+          "Asiftedkey_uram/wea"
+        ]
+      },
+      "web_0_1": {
+        "ports": [
+          "Areconciledkey_web",
+          "Areconciledkey_uram/web"
+        ]
+      },
+      "web_0_2": {
+        "ports": [
+          "Asiftedkey_web",
+          "Asiftedkey_uram/web"
+        ]
+      },
+      "wr_clk_0_1": {
+        "ports": [
+          "A_RX_Xbasis_detected_wr_clk",
+          "A_RX_Xbasis_detected_fifo/wr_clk"
+        ]
+      },
+      "wr_clk_0_2": {
+        "ports": [
+          "A_RX_Zbasis_detected_wr_clk",
+          "A_RX_Zbasis_detected_fifo/wr_clk"
+        ]
+      },
+      "wr_clk_0_3": {
+        "ports": [
+          "A_RX_er_wr_clk",
+          "A_RX_er_fifo/wr_clk"
+        ]
+      },
+      "wr_clk_0_4": {
+        "ports": [
+          "A_TX_decoy_wr_clk",
+          "A_TX_decoy_fifo/wr_clk"
+        ]
+      },
+      "wr_clk_0_5": {
+        "ports": [
+          "A_TX_er_wr_clk",
+          "A_TX_er_fifo/wr_clk"
+        ]
+      },
+      "wr_clk_0_6": {
+        "ports": [
+          "A_TX_pa_wr_clk",
+          "A_TX_pa_fifo/wr_clk"
+        ]
+      },
+      "wr_clk_0_7": {
+        "ports": [
+          "visibility_wr_clk",
+          "visibility_fifo/wr_clk"
+        ]
+      },
+      "wr_clk_0_8": {
+        "ports": [
+          "er_parm_wr_clk",
+          "er_parm_fifo/wr_clk"
+        ]
+      },
+      "wr_en_0_1": {
+        "ports": [
+          "A_RX_Xbasis_detected_wr_en",
+          "A_RX_Xbasis_detected_fifo/wr_en"
+        ]
+      },
+      "wr_en_0_2": {
+        "ports": [
+          "A_RX_Zbasis_detected_wr_en",
+          "A_RX_Zbasis_detected_fifo/wr_en"
+        ]
+      },
+      "wr_en_0_3": {
+        "ports": [
+          "A_RX_er_wr_en",
+          "A_RX_er_fifo/wr_en"
+        ]
+      },
+      "wr_en_0_4": {
+        "ports": [
+          "A_TX_decoy_wr_en",
+          "A_TX_decoy_fifo/wr_en"
+        ]
+      },
+      "wr_en_0_5": {
+        "ports": [
+          "A_TX_er_wr_en",
+          "A_TX_er_fifo/wr_en"
+        ]
+      },
+      "wr_en_0_6": {
+        "ports": [
+          "A_TX_pa_wr_en",
+          "A_TX_pa_fifo/wr_en"
+        ]
+      },
+      "wr_en_0_7": {
+        "ports": [
+          "visibility_wr_en",
+          "visibility_fifo/wr_en"
+        ]
+      },
+      "wr_en_0_8": {
+        "ports": [
+          "er_parm_wr_en",
+          "er_parm_fifo/wr_en"
+        ]
+      }
+    }
+  }
+}

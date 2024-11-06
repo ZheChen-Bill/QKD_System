@@ -1,0 +1,116 @@
+{
+   "ActiveEmotionalView":"Default View",
+   "Default View_ScaleFactor":"0.615572",
+   "Default View_TopLeft":"-648,893",
+   "ExpandedHierarchyInLayout":"",
+   "guistr":"# # String gsaved with Nlview 7.0r6  2020-01-29 bk=1.5227 VDI=41 GEI=36 GUI=JA:10.0 non-TLS-threadsafe
+#  -string -flagsOSRD
+preplace port AXImanager_PORTA -pg 1 -lvl 0 -x -10 -y 60 -defaultsOSRD
+preplace port EVrandombit_PORTA -pg 1 -lvl 0 -x -10 -y 340 -defaultsOSRD
+preplace port PArandombit_PORTA -pg 1 -lvl 0 -x -10 -y 620 -defaultsOSRD
+preplace port QC_PORTA -pg 1 -lvl 0 -x -10 -y 900 -defaultsOSRD
+preplace port Qubit_PORTA -pg 1 -lvl 0 -x -10 -y 1180 -defaultsOSRD
+preplace port Secretkey_PORTA -pg 1 -lvl 0 -x -10 -y 1460 -defaultsOSRD
+preplace port port-id_AXImanager_clkb -pg 1 -lvl 0 -x -10 -y 120 -defaultsOSRD
+preplace port port-id_AXImanager_enb -pg 1 -lvl 0 -x -10 -y 180 -defaultsOSRD
+preplace port port-id_PArandombit_rstb -pg 1 -lvl 0 -x -10 -y 760 -defaultsOSRD
+preplace port port-id_PArandombit_enb -pg 1 -lvl 0 -x -10 -y 740 -defaultsOSRD
+preplace port port-id_PArandombit_clkb -pg 1 -lvl 0 -x -10 -y 680 -defaultsOSRD
+preplace port port-id_EVrandombit_rstb -pg 1 -lvl 0 -x -10 -y 480 -defaultsOSRD
+preplace port port-id_EVrandombit_enb -pg 1 -lvl 0 -x -10 -y 460 -defaultsOSRD
+preplace port port-id_EVrandombit_clkb -pg 1 -lvl 0 -x -10 -y 400 -defaultsOSRD
+preplace port port-id_Qubit_clkb -pg 1 -lvl 0 -x -10 -y 1240 -defaultsOSRD
+preplace port port-id_Qubit_enb -pg 1 -lvl 0 -x -10 -y 1300 -defaultsOSRD
+preplace port port-id_Qubit_rstb -pg 1 -lvl 0 -x -10 -y 1320 -defaultsOSRD
+preplace port port-id_Secretkey_clkb -pg 1 -lvl 0 -x -10 -y 1520 -defaultsOSRD
+preplace port port-id_Secretkey_enb -pg 1 -lvl 0 -x -10 -y 1580 -defaultsOSRD
+preplace port port-id_Secretkey_rstb -pg 1 -lvl 0 -x -10 -y 1600 -defaultsOSRD
+preplace port port-id_QC_clkb -pg 1 -lvl 0 -x -10 -y 960 -defaultsOSRD
+preplace port port-id_QC_enb -pg 1 -lvl 0 -x -10 -y 1020 -defaultsOSRD
+preplace port port-id_QC_rstb -pg 1 -lvl 0 -x -10 -y 1040 -defaultsOSRD
+preplace port port-id_AXImanager_rstb -pg 1 -lvl 0 -x -10 -y 200 -defaultsOSRD
+preplace portBus AXImanager_addrb -pg 1 -lvl 0 -x -10 -y 100 -defaultsOSRD
+preplace portBus AXImanager_dinb -pg 1 -lvl 0 -x -10 -y 140 -defaultsOSRD
+preplace portBus AXImanager_doutb -pg 1 -lvl 3 -x 660 -y 280 -defaultsOSRD
+preplace portBus AXImanager_web -pg 1 -lvl 0 -x -10 -y 220 -defaultsOSRD
+preplace portBus PArandombit_doutb -pg 1 -lvl 3 -x 660 -y 840 -defaultsOSRD
+preplace portBus PArandombit_dinb -pg 1 -lvl 0 -x -10 -y 700 -defaultsOSRD
+preplace portBus PArandombit_addrb -pg 1 -lvl 0 -x -10 -y 660 -defaultsOSRD
+preplace portBus PArandombit_web -pg 1 -lvl 0 -x -10 -y 780 -defaultsOSRD
+preplace portBus EVrandombit_doutb -pg 1 -lvl 3 -x 660 -y 560 -defaultsOSRD
+preplace portBus EVrandombit_dinb -pg 1 -lvl 0 -x -10 -y 420 -defaultsOSRD
+preplace portBus EVrandombit_addrb -pg 1 -lvl 0 -x -10 -y 380 -defaultsOSRD
+preplace portBus EVrandombit_web -pg 1 -lvl 0 -x -10 -y 500 -defaultsOSRD
+preplace portBus Qubit_addrb -pg 1 -lvl 0 -x -10 -y 1220 -defaultsOSRD
+preplace portBus Qubit_dinb -pg 1 -lvl 0 -x -10 -y 1260 -defaultsOSRD
+preplace portBus Qubit_doutb -pg 1 -lvl 3 -x 660 -y 1400 -defaultsOSRD
+preplace portBus Qubit_web -pg 1 -lvl 0 -x -10 -y 1340 -defaultsOSRD
+preplace portBus Secretkey_addrb -pg 1 -lvl 0 -x -10 -y 1500 -defaultsOSRD
+preplace portBus Secretkey_dinb -pg 1 -lvl 0 -x -10 -y 1540 -defaultsOSRD
+preplace portBus Secretkey_doutb -pg 1 -lvl 3 -x 660 -y 1680 -defaultsOSRD
+preplace portBus Secretkey_web -pg 1 -lvl 0 -x -10 -y 1620 -defaultsOSRD
+preplace portBus QC_addrb -pg 1 -lvl 0 -x -10 -y 940 -defaultsOSRD
+preplace portBus QC_dinb -pg 1 -lvl 0 -x -10 -y 980 -defaultsOSRD
+preplace portBus QC_doutb -pg 1 -lvl 3 -x 660 -y 1120 -defaultsOSRD
+preplace portBus QC_web -pg 1 -lvl 0 -x -10 -y 1060 -defaultsOSRD
+preplace inst qubit_bram -pg 1 -lvl 2 -x 470 -y 1260 -defaultsOSRD
+preplace inst EV_randombit_bram -pg 1 -lvl 2 -x 470 -y 420 -defaultsOSRD
+preplace inst PA_randombit_bram -pg 1 -lvl 2 -x 470 -y 700 -defaultsOSRD
+preplace inst secretkey_bram -pg 1 -lvl 2 -x 470 -y 1540 -defaultsOSRD
+preplace inst AXImanager_bram -pg 1 -lvl 2 -x 470 -y 140 -defaultsOSRD
+preplace inst QC_bram -pg 1 -lvl 2 -x 470 -y 980 -defaultsOSRD
+preplace netloc AXImanager_bram_doutb 1 1 2 170 280 NJ
+preplace netloc EV_randombit_bram_doutb 1 1 2 170 560 NJ
+preplace netloc PA_randombit_bram_doutb 1 1 2 170 840 NJ
+preplace netloc QC_bram_doutb 1 1 2 170 1120 NJ
+preplace netloc addrb_0_1 1 0 2 NJ 100 NJ
+preplace netloc addrb_0_2 1 0 2 NJ 660 NJ
+preplace netloc addrb_0_3 1 0 2 NJ 380 NJ
+preplace netloc addrb_0_4 1 0 2 NJ 1220 NJ
+preplace netloc addrb_0_5 1 0 2 NJ 1500 NJ
+preplace netloc addrb_0_6 1 0 2 NJ 940 NJ
+preplace netloc clkb_0_1 1 0 2 NJ 120 NJ
+preplace netloc clkb_0_2 1 0 2 NJ 680 NJ
+preplace netloc clkb_0_3 1 0 2 NJ 400 NJ
+preplace netloc clkb_0_4 1 0 2 NJ 1240 NJ
+preplace netloc clkb_0_5 1 0 2 NJ 1520 NJ
+preplace netloc clkb_0_6 1 0 2 NJ 960 NJ
+preplace netloc dinb_0_1 1 0 2 NJ 140 NJ
+preplace netloc dinb_0_2 1 0 2 NJ 700 NJ
+preplace netloc dinb_0_3 1 0 2 NJ 420 NJ
+preplace netloc dinb_0_4 1 0 2 NJ 1260 NJ
+preplace netloc dinb_0_5 1 0 2 NJ 1540 NJ
+preplace netloc dinb_0_6 1 0 2 NJ 980 NJ
+preplace netloc enb_0_1 1 0 2 NJ 180 NJ
+preplace netloc enb_0_2 1 0 2 NJ 740 NJ
+preplace netloc enb_0_3 1 0 2 NJ 460 NJ
+preplace netloc enb_0_4 1 0 2 NJ 1300 NJ
+preplace netloc enb_0_5 1 0 2 NJ 1580 NJ
+preplace netloc enb_0_6 1 0 2 NJ 1020 NJ
+preplace netloc qubit_bram_doutb 1 1 2 170 1400 NJ
+preplace netloc rstb_0_1 1 0 2 NJ 200 NJ
+preplace netloc rstb_0_2 1 0 2 NJ 760 NJ
+preplace netloc rstb_0_3 1 0 2 NJ 480 NJ
+preplace netloc rstb_0_4 1 0 2 NJ 1320 NJ
+preplace netloc rstb_0_5 1 0 2 NJ 1600 NJ
+preplace netloc rstb_0_6 1 0 2 NJ 1040 NJ
+preplace netloc secretkey_bram_doutb 1 1 2 170 1680 NJ
+preplace netloc web_0_1 1 0 2 NJ 220 NJ
+preplace netloc web_0_2 1 0 2 NJ 780 NJ
+preplace netloc web_0_3 1 0 2 NJ 500 NJ
+preplace netloc web_0_4 1 0 2 NJ 1340 NJ
+preplace netloc web_0_5 1 0 2 NJ 1620 NJ
+preplace netloc web_0_6 1 0 2 NJ 1060 NJ
+preplace netloc BRAM_PORTA_0_1 1 0 2 NJ 60 NJ
+preplace netloc BRAM_PORTA_0_2 1 0 2 NJ 340 NJ
+preplace netloc BRAM_PORTA_0_3 1 0 2 NJ 620 NJ
+preplace netloc BRAM_PORTA_0_4 1 0 2 NJ 900 NJ
+preplace netloc BRAM_PORTA_0_5 1 0 2 NJ 1180 NJ
+preplace netloc BRAM_PORTA_0_6 1 0 2 NJ 1460 NJ
+levelinfo -pg 1 -10 150 470 660
+pagesize -pg 1 -db -bbox -sgen -230 0 880 1920
+"
+}
+{
+   "da_axi4_cnt":"1"
+}

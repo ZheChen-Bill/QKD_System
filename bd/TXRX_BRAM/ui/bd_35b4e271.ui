@@ -1,0 +1,62 @@
+{
+   "ActiveEmotionalView":"Default View",
+   "Default View_ScaleFactor":"1.0",
+   "Default View_TopLeft":"-485,0",
+   "ExpandedHierarchyInLayout":"",
+   "guistr":"# # String gsaved with Nlview 7.0r6  2020-01-29 bk=1.5227 VDI=41 GEI=36 GUI=JA:10.0 non-TLS
+#  -string -flagsOSRD
+preplace port port-id_B_TX_bram_clkb -pg 1 -lvl 0 -x 0 -y 120 -defaultsOSRD
+preplace port port-id_B_TX_bram_enb -pg 1 -lvl 0 -x 0 -y 180 -defaultsOSRD
+preplace port port-id_A_RX_bram_enb -pg 1 -lvl 0 -x 0 -y 320 -defaultsOSRD
+preplace port port-id_A_RX_bram_clkb -pg 1 -lvl 0 -x 0 -y 260 -defaultsOSRD
+preplace port port-id_A_TX_bram_enb -pg 1 -lvl 0 -x 0 -y 580 -defaultsOSRD
+preplace port port-id_A_TX_bram_clkb -pg 1 -lvl 0 -x 0 -y 520 -defaultsOSRD
+preplace port port-id_B_RX_bram_enb -pg 1 -lvl 0 -x 0 -y 720 -defaultsOSRD
+preplace port port-id_B_RX_bram_clkb -pg 1 -lvl 0 -x 0 -y 660 -defaultsOSRD
+preplace portBus B_TX_bram_addrb -pg 1 -lvl 0 -x 0 -y 100 -defaultsOSRD
+preplace portBus B_TX_bram_dinb -pg 1 -lvl 0 -x 0 -y 140 -defaultsOSRD
+preplace portBus B_TX_bram_doutb -pg 1 -lvl 2 -x 240 -y 20 -defaultsOSRD
+preplace portBus B_TX_bram_web -pg 1 -lvl 0 -x 0 -y 200 -defaultsOSRD
+preplace portBus A_RX_bram_addrb -pg 1 -lvl 0 -x 0 -y 240 -defaultsOSRD
+preplace portBus A_RX_bram_dinb -pg 1 -lvl 0 -x 0 -y 280 -defaultsOSRD
+preplace portBus A_RX_bram_doutb -pg 1 -lvl 2 -x 240 -y 400 -defaultsOSRD
+preplace portBus A_RX_bram_web -pg 1 -lvl 0 -x 0 -y 340 -defaultsOSRD
+preplace portBus A_TX_bram_dinb -pg 1 -lvl 0 -x 0 -y 540 -defaultsOSRD
+preplace portBus A_TX_bram_web -pg 1 -lvl 0 -x 0 -y 600 -defaultsOSRD
+preplace portBus A_TX_bram_doutb -pg 1 -lvl 2 -x 240 -y 420 -defaultsOSRD
+preplace portBus A_TX_bram_addrb -pg 1 -lvl 0 -x 0 -y 500 -defaultsOSRD
+preplace portBus B_RX_bram_dinb -pg 1 -lvl 0 -x 0 -y 680 -defaultsOSRD
+preplace portBus B_RX_bram_doutb -pg 1 -lvl 2 -x 240 -y 800 -defaultsOSRD
+preplace portBus B_RX_bram_addrb -pg 1 -lvl 0 -x 0 -y 640 -defaultsOSRD
+preplace portBus B_RX_bram_web -pg 1 -lvl 0 -x 0 -y 740 -defaultsOSRD
+preplace inst B2A_BRAM -pg 1 -lvl 1 -x 120 -y 210 -defaultsOSRD
+preplace inst A2B_BRAM -pg 1 -lvl 1 -x 120 -y 610 -defaultsOSRD
+preplace netloc A2B_BRAM_douta 1 0 2 20 420 NJ
+preplace netloc A2B_BRAM_doutb 1 0 2 20 800 NJ
+preplace netloc B2A_BRAM_douta 1 0 2 20 20 NJ
+preplace netloc B2A_BRAM_doutb 1 0 2 20 400 NJ
+preplace netloc addra_0_1 1 0 1 NJ 100
+preplace netloc addra_0_2 1 0 1 NJ 500
+preplace netloc addrb_0_1 1 0 1 NJ 240
+preplace netloc addrb_0_2 1 0 1 NJ 640
+preplace netloc clka_0_1 1 0 1 NJ 120
+preplace netloc clka_0_2 1 0 1 NJ 520
+preplace netloc clkb_0_1 1 0 1 NJ 260
+preplace netloc clkb_0_2 1 0 1 NJ 660
+preplace netloc dina_0_1 1 0 1 NJ 140
+preplace netloc dina_0_2 1 0 1 NJ 540
+preplace netloc dinb_0_1 1 0 1 NJ 280
+preplace netloc dinb_0_2 1 0 1 NJ 680
+preplace netloc ena_0_1 1 0 1 NJ 180
+preplace netloc ena_0_2 1 0 1 NJ 580
+preplace netloc enb_0_1 1 0 1 NJ 320
+preplace netloc enb_0_2 1 0 1 NJ 720
+preplace netloc wea_0_1 1 0 1 NJ 200
+preplace netloc wea_0_2 1 0 1 NJ 600
+preplace netloc web_0_1 1 0 1 NJ 340
+preplace netloc web_0_2 1 0 1 NJ 740
+levelinfo -pg 1 0 120 240
+pagesize -pg 1 -db -bbox -sgen -200 0 440 820
+"
+}
+0

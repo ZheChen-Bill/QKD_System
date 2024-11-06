@@ -1,0 +1,62 @@
+{
+   "ActiveEmotionalView":"Default View",
+   "Default View_ScaleFactor":"0.67027",
+   "Default View_TopLeft":"-882,0",
+   "ExpandedHierarchyInLayout":"",
+   "guistr":"# # String gsaved with Nlview 7.0r6  2020-01-29 bk=1.5227 VDI=41 GEI=36 GUI=JA:10.0 non-TLS
+#  -string -flagsOSRD
+preplace port port-id_A_TX_clka -pg 1 -lvl 0 -x 0 -y 460 -defaultsOSRD
+preplace port port-id_A_TX_ena -pg 1 -lvl 0 -x 0 -y 520 -defaultsOSRD
+preplace port port-id_A_TX_wea -pg 1 -lvl 0 -x 0 -y 540 -defaultsOSRD
+preplace port port-id_A_TX_clkb -pg 1 -lvl 0 -x 0 -y 600 -defaultsOSRD
+preplace port port-id_A_TX_enb -pg 1 -lvl 0 -x 0 -y 660 -defaultsOSRD
+preplace port port-id_A_TX_web -pg 1 -lvl 0 -x 0 -y 680 -defaultsOSRD
+preplace port port-id_A_RX_clka -pg 1 -lvl 0 -x 0 -y 100 -defaultsOSRD
+preplace port port-id_A_RX_ena -pg 1 -lvl 0 -x 0 -y 160 -defaultsOSRD
+preplace port port-id_A_RX_wea -pg 1 -lvl 0 -x 0 -y 180 -defaultsOSRD
+preplace port port-id_A_RX_clkb -pg 1 -lvl 0 -x 0 -y 240 -defaultsOSRD
+preplace port port-id_A_RX_enb -pg 1 -lvl 0 -x 0 -y 300 -defaultsOSRD
+preplace port port-id_A_RX_web -pg 1 -lvl 0 -x 0 -y 320 -defaultsOSRD
+preplace portBus A_TX_addra -pg 1 -lvl 0 -x 0 -y 440 -defaultsOSRD
+preplace portBus A_TX_dina -pg 1 -lvl 0 -x 0 -y 480 -defaultsOSRD
+preplace portBus A_TX_douta -pg 1 -lvl 0 -x 0 -y 500 -defaultsOSRD -left
+preplace portBus A_TX_addrb -pg 1 -lvl 0 -x 0 -y 580 -defaultsOSRD
+preplace portBus A_TX_dinb -pg 1 -lvl 0 -x 0 -y 620 -defaultsOSRD
+preplace portBus A_TX_doutb -pg 1 -lvl 0 -x 0 -y 640 -defaultsOSRD -left
+preplace portBus A_RX_addra -pg 1 -lvl 0 -x 0 -y 80 -defaultsOSRD
+preplace portBus A_RX_dina -pg 1 -lvl 0 -x 0 -y 120 -defaultsOSRD
+preplace portBus A_RX_douta -pg 1 -lvl 0 -x 0 -y 140 -defaultsOSRD -left
+preplace portBus A_RX_addrb -pg 1 -lvl 0 -x 0 -y 220 -defaultsOSRD
+preplace portBus A_RX_dinb -pg 1 -lvl 0 -x 0 -y 260 -defaultsOSRD
+preplace portBus A_RX_doutb -pg 1 -lvl 0 -x 0 -y 280 -defaultsOSRD -left
+preplace inst blk_mem_gen_0 -pg 1 -lvl 1 -x 120 -y 190 -defaultsOSRD
+preplace inst blk_mem_gen_1 -pg 1 -lvl 1 -x 120 -y 550 -defaultsOSRD
+preplace netloc A_RX_addra_1 1 0 1 NJ 80
+preplace netloc A_RX_addrb_1 1 0 1 NJ 220
+preplace netloc A_RX_clka_1 1 0 1 NJ 100
+preplace netloc A_RX_clkb_1 1 0 1 NJ 240
+preplace netloc A_RX_dina_1 1 0 1 NJ 120
+preplace netloc A_RX_dinb_1 1 0 1 NJ 260
+preplace netloc A_RX_ena_1 1 0 1 NJ 160
+preplace netloc A_RX_enb_1 1 0 1 NJ 300
+preplace netloc A_RX_wea_1 1 0 1 NJ 180
+preplace netloc A_RX_web_1 1 0 1 NJ 320
+preplace netloc A_TX_addra_1 1 0 1 NJ 440
+preplace netloc A_TX_addrb_1 1 0 1 NJ 580
+preplace netloc A_TX_clka_1 1 0 1 NJ 460
+preplace netloc A_TX_clkb_1 1 0 1 NJ 600
+preplace netloc A_TX_dina_1 1 0 1 NJ 480
+preplace netloc A_TX_dinb_1 1 0 1 NJ 620
+preplace netloc A_TX_ena_1 1 0 1 NJ 520
+preplace netloc A_TX_enb_1 1 0 1 NJ 660
+preplace netloc A_TX_wea_1 1 0 1 NJ 540
+preplace netloc A_TX_web_1 1 0 1 NJ 680
+preplace netloc blk_mem_gen_0_douta 1 0 1 NJ 140
+preplace netloc blk_mem_gen_0_doutb 1 0 1 NJ 280
+preplace netloc blk_mem_gen_1_douta 1 0 1 NJ 500
+preplace netloc blk_mem_gen_1_doutb 1 0 1 NJ 640
+levelinfo -pg 1 0 120 230
+pagesize -pg 1 -db -bbox -sgen -170 0 230 740
+"
+}
+0

@@ -1,0 +1,178 @@
+{
+  "design": {
+    "design_info": {
+      "boundary_crc": "0x71F30F68B1EA2C3",
+      "device": "xcku5p-ffvb676-2-e",
+      "gen_directory": "../../../../post_processing_v1.gen/sources_1/bd/ask_parity_fifo",
+      "name": "ask_parity_fifo",
+      "rev_ctrl_bd_flag": "RevCtrlBdOff",
+      "synth_flow_mode": "Hierarchical",
+      "tool_version": "2022.1",
+      "validated": "true"
+    },
+    "design_tree": {
+      "ask_parity_fifo": ""
+    },
+    "ports": {
+      "clk": {
+        "type": "clk",
+        "direction": "I",
+        "parameters": {
+          "CLK_DOMAIN": {
+            "value": "ask_parity_fifo_clk",
+            "value_src": "default"
+          },
+          "FREQ_HZ": {
+            "value": "100000000",
+            "value_src": "default"
+          },
+          "FREQ_TOLERANCE_HZ": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.0",
+            "value_src": "default"
+          }
+        }
+      },
+      "rd_rst_busy": {
+        "direction": "O"
+      },
+      "srst": {
+        "direction": "I"
+      },
+      "valid": {
+        "direction": "O"
+      },
+      "wr_ack": {
+        "direction": "O"
+      },
+      "wr_rst_busy": {
+        "direction": "O"
+      },
+      "wr_en": {
+        "direction": "I"
+      },
+      "din": {
+        "direction": "I",
+        "left": "31",
+        "right": "0"
+      },
+      "full": {
+        "direction": "O"
+      },
+      "rd_en": {
+        "direction": "I"
+      },
+      "dout": {
+        "direction": "O",
+        "left": "31",
+        "right": "0"
+      },
+      "empty": {
+        "direction": "O"
+      }
+    },
+    "components": {
+      "ask_parity_fifo": {
+        "vlnv": "xilinx.com:ip:fifo_generator:13.2",
+        "xci_name": "ask_parity_fifo_ask_parity_fifo_2",
+        "xci_path": "ip\\ask_parity_fifo_ask_parity_fifo_2\\ask_parity_fifo_ask_parity_fifo_2.xci",
+        "inst_hier_path": "ask_parity_fifo",
+        "parameters": {
+          "Input_Data_Width": {
+            "value": "32"
+          },
+          "Performance_Options": {
+            "value": "First_Word_Fall_Through"
+          },
+          "Valid_Flag": {
+            "value": "true"
+          },
+          "Write_Acknowledge_Flag": {
+            "value": "true"
+          }
+        }
+      }
+    },
+    "nets": {
+      "ask_parity_fifo_dout": {
+        "ports": [
+          "ask_parity_fifo/dout",
+          "dout"
+        ]
+      },
+      "ask_parity_fifo_empty": {
+        "ports": [
+          "ask_parity_fifo/empty",
+          "empty"
+        ]
+      },
+      "ask_parity_fifo_full": {
+        "ports": [
+          "ask_parity_fifo/full",
+          "full"
+        ]
+      },
+      "ask_parity_fifo_rd_rst_busy": {
+        "ports": [
+          "ask_parity_fifo/rd_rst_busy",
+          "rd_rst_busy"
+        ]
+      },
+      "ask_parity_fifo_valid": {
+        "ports": [
+          "ask_parity_fifo/valid",
+          "valid"
+        ]
+      },
+      "ask_parity_fifo_wr_ack": {
+        "ports": [
+          "ask_parity_fifo/wr_ack",
+          "wr_ack"
+        ]
+      },
+      "ask_parity_fifo_wr_rst_busy": {
+        "ports": [
+          "ask_parity_fifo/wr_rst_busy",
+          "wr_rst_busy"
+        ]
+      },
+      "clk_0_1": {
+        "ports": [
+          "clk",
+          "ask_parity_fifo/clk"
+        ]
+      },
+      "din_0_1": {
+        "ports": [
+          "din",
+          "ask_parity_fifo/din"
+        ]
+      },
+      "rd_en_0_1": {
+        "ports": [
+          "rd_en",
+          "ask_parity_fifo/rd_en"
+        ]
+      },
+      "srst_0_1": {
+        "ports": [
+          "srst",
+          "ask_parity_fifo/srst"
+        ]
+      },
+      "wr_en_0_1": {
+        "ports": [
+          "wr_en",
+          "ask_parity_fifo/wr_en"
+        ]
+      }
+    }
+  }
+}

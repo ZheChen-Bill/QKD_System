@@ -1,0 +1,639 @@
+{
+  "design": {
+    "design_info": {
+      "boundary_crc": "0x66EFDAED5E131B93",
+      "device": "xcku5p-ffvb676-2-e",
+      "gen_directory": "../../../../post_processing_v1.gen/sources_1/bd/BD_AXImanager_B",
+      "name": "BD_AXImanager_B",
+      "rev_ctrl_bd_flag": "RevCtrlBdOff",
+      "synth_flow_mode": "Singular",
+      "tool_version": "2022.1",
+      "validated": "true"
+    },
+    "design_tree": {
+      "Zbasis_detected_pos_bram": "",
+      "Xbasis_detected_pos_bram": "",
+      "secretkey_bram": "",
+      "AXImanager_bram": ""
+    },
+    "interface_ports": {
+      "AXImanager_PORTA": {
+        "mode": "Slave",
+        "vlnv_bus_definition": "xilinx.com:interface:bram:1.0",
+        "vlnv": "xilinx.com:interface:bram_rtl:1.0",
+        "parameters": {
+          "MASTER_TYPE": {
+            "value": "BRAM_CTRL"
+          },
+          "MEM_ECC": {
+            "value": "NONE",
+            "value_src": "default"
+          },
+          "MEM_SIZE": {
+            "value": "4096"
+          },
+          "MEM_WIDTH": {
+            "value": "64"
+          },
+          "READ_LATENCY": {
+            "value": "1",
+            "value_src": "default"
+          },
+          "READ_WRITE_MODE": {
+            "value": "READ_WRITE"
+          }
+        }
+      },
+      "Secretkey_PORTA": {
+        "mode": "Slave",
+        "vlnv_bus_definition": "xilinx.com:interface:bram:1.0",
+        "vlnv": "xilinx.com:interface:bram_rtl:1.0",
+        "parameters": {
+          "MASTER_TYPE": {
+            "value": "BRAM_CTRL"
+          },
+          "MEM_ECC": {
+            "value": "NONE",
+            "value_src": "default"
+          },
+          "MEM_SIZE": {
+            "value": "262144"
+          },
+          "MEM_WIDTH": {
+            "value": "64"
+          },
+          "READ_LATENCY": {
+            "value": "1",
+            "value_src": "default"
+          },
+          "READ_WRITE_MODE": {
+            "value": "READ_WRITE"
+          }
+        }
+      },
+      "Xbasis_detected_pos_PORTA": {
+        "mode": "Slave",
+        "vlnv_bus_definition": "xilinx.com:interface:bram:1.0",
+        "vlnv": "xilinx.com:interface:bram_rtl:1.0",
+        "parameters": {
+          "MASTER_TYPE": {
+            "value": "BRAM_CTRL"
+          },
+          "MEM_ECC": {
+            "value": "NONE",
+            "value_src": "default"
+          },
+          "MEM_SIZE": {
+            "value": "262144"
+          },
+          "MEM_WIDTH": {
+            "value": "64"
+          },
+          "READ_LATENCY": {
+            "value": "1",
+            "value_src": "default"
+          },
+          "READ_WRITE_MODE": {
+            "value": "READ_WRITE"
+          }
+        }
+      },
+      "Zbasis_detected_pos_PORTA": {
+        "mode": "Slave",
+        "vlnv_bus_definition": "xilinx.com:interface:bram:1.0",
+        "vlnv": "xilinx.com:interface:bram_rtl:1.0",
+        "parameters": {
+          "MASTER_TYPE": {
+            "value": "BRAM_CTRL"
+          },
+          "MEM_ECC": {
+            "value": "NONE",
+            "value_src": "default"
+          },
+          "MEM_SIZE": {
+            "value": "262144"
+          },
+          "MEM_WIDTH": {
+            "value": "64"
+          },
+          "READ_LATENCY": {
+            "value": "1",
+            "value_src": "default"
+          },
+          "READ_WRITE_MODE": {
+            "value": "READ_WRITE"
+          }
+        }
+      }
+    },
+    "ports": {
+      "AXImanager_addrb": {
+        "direction": "I",
+        "left": "31",
+        "right": "0"
+      },
+      "AXImanager_clkb": {
+        "type": "clk",
+        "direction": "I",
+        "parameters": {
+          "CLK_DOMAIN": {
+            "value": "BD_AXImanager_B_AXImanager_clkb",
+            "value_src": "default"
+          },
+          "FREQ_HZ": {
+            "value": "100000000",
+            "value_src": "default"
+          },
+          "FREQ_TOLERANCE_HZ": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.0",
+            "value_src": "default"
+          }
+        }
+      },
+      "AXImanager_dinb": {
+        "direction": "I",
+        "left": "63",
+        "right": "0"
+      },
+      "AXImanager_doutb": {
+        "direction": "O",
+        "left": "63",
+        "right": "0"
+      },
+      "AXImanager_enb": {
+        "direction": "I"
+      },
+      "AXImanager_rstb": {
+        "type": "rst",
+        "direction": "I",
+        "parameters": {
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "POLARITY": {
+            "value": "ACTIVE_LOW",
+            "value_src": "default"
+          }
+        }
+      },
+      "AXImanager_web": {
+        "direction": "I",
+        "left": "7",
+        "right": "0"
+      },
+      "Xbasis_detected_pos_rstb": {
+        "type": "rst",
+        "direction": "I",
+        "parameters": {
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "POLARITY": {
+            "value": "ACTIVE_LOW",
+            "value_src": "default"
+          }
+        }
+      },
+      "Xbasis_detected_pos_doutb": {
+        "direction": "O",
+        "left": "63",
+        "right": "0"
+      },
+      "Xbasis_detected_pos_enb": {
+        "direction": "I"
+      },
+      "Xbasis_detected_pos_clkb": {
+        "type": "clk",
+        "direction": "I",
+        "parameters": {
+          "CLK_DOMAIN": {
+            "value": "BD_AXImanager_B_Xbasis_detected_pos_clkb",
+            "value_src": "default"
+          },
+          "FREQ_HZ": {
+            "value": "125000000"
+          },
+          "FREQ_TOLERANCE_HZ": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.0",
+            "value_src": "default"
+          }
+        }
+      },
+      "Xbasis_detected_pos_dinb": {
+        "direction": "I",
+        "left": "63",
+        "right": "0"
+      },
+      "Xbasis_detected_pos_addrb": {
+        "direction": "I",
+        "left": "31",
+        "right": "0"
+      },
+      "Xbasis_detected_pos_web": {
+        "direction": "I",
+        "left": "7",
+        "right": "0"
+      },
+      "Zbasis_detected_pos_addrb": {
+        "direction": "I",
+        "left": "31",
+        "right": "0"
+      },
+      "Zbasis_detected_pos_clkb": {
+        "type": "clk",
+        "direction": "I",
+        "parameters": {
+          "CLK_DOMAIN": {
+            "value": "BD_AXImanager_B_Zbasis_detected_pos_clkb",
+            "value_src": "default"
+          },
+          "FREQ_HZ": {
+            "value": "125000000"
+          },
+          "FREQ_TOLERANCE_HZ": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.0",
+            "value_src": "default"
+          }
+        }
+      },
+      "Zbasis_detected_pos_dinb": {
+        "direction": "I",
+        "left": "63",
+        "right": "0"
+      },
+      "Zbasis_detected_pos_doutb": {
+        "direction": "O",
+        "left": "63",
+        "right": "0"
+      },
+      "Zbasis_detected_pos_enb": {
+        "direction": "I"
+      },
+      "Zbasis_detected_pos_rstb": {
+        "type": "rst",
+        "direction": "I",
+        "parameters": {
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "POLARITY": {
+            "value": "ACTIVE_LOW",
+            "value_src": "default"
+          }
+        }
+      },
+      "Zbasis_detected_pos_web": {
+        "direction": "I",
+        "left": "7",
+        "right": "0"
+      },
+      "Secretkey_addrb": {
+        "direction": "I",
+        "left": "31",
+        "right": "0"
+      },
+      "Secretkey_dinb": {
+        "direction": "I",
+        "left": "63",
+        "right": "0"
+      },
+      "Secretkey_clkb": {
+        "type": "clk",
+        "direction": "I",
+        "parameters": {
+          "CLK_DOMAIN": {
+            "value": "BD_AXImanager_B_Secretkey_clkb",
+            "value_src": "default"
+          },
+          "FREQ_HZ": {
+            "value": "100000000",
+            "value_src": "default"
+          },
+          "FREQ_TOLERANCE_HZ": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.0",
+            "value_src": "default"
+          }
+        }
+      },
+      "Secretkey_enb": {
+        "direction": "I"
+      },
+      "Secretkey_doutb": {
+        "direction": "O",
+        "left": "63",
+        "right": "0"
+      },
+      "Secretkey_rstb": {
+        "type": "rst",
+        "direction": "I",
+        "parameters": {
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "POLARITY": {
+            "value": "ACTIVE_LOW",
+            "value_src": "default"
+          }
+        }
+      },
+      "Secretkey_web": {
+        "direction": "I",
+        "left": "7",
+        "right": "0"
+      }
+    },
+    "components": {
+      "Zbasis_detected_pos_bram": {
+        "vlnv": "xilinx.com:ip:blk_mem_gen:8.4",
+        "xci_name": "BD_AXImanager_B_Zbasis_detected_pos_bram_0",
+        "xci_path": "ip\\BD_AXImanager_B_Zbasis_detected_pos_bram_0\\BD_AXImanager_B_Zbasis_detected_pos_bram_0.xci",
+        "inst_hier_path": "Zbasis_detected_pos_bram",
+        "parameters": {
+          "Memory_Type": {
+            "value": "True_Dual_Port_RAM"
+          }
+        }
+      },
+      "Xbasis_detected_pos_bram": {
+        "vlnv": "xilinx.com:ip:blk_mem_gen:8.4",
+        "xci_name": "BD_AXImanager_B_Xbasis_detected_pos_bram_0",
+        "xci_path": "ip\\BD_AXImanager_B_Xbasis_detected_pos_bram_0\\BD_AXImanager_B_Xbasis_detected_pos_bram_0.xci",
+        "inst_hier_path": "Xbasis_detected_pos_bram",
+        "parameters": {
+          "Memory_Type": {
+            "value": "True_Dual_Port_RAM"
+          }
+        }
+      },
+      "secretkey_bram": {
+        "vlnv": "xilinx.com:ip:blk_mem_gen:8.4",
+        "xci_name": "BD_AXImanager_B_secretkey_bram_0",
+        "xci_path": "ip\\BD_AXImanager_B_secretkey_bram_0\\BD_AXImanager_B_secretkey_bram_0.xci",
+        "inst_hier_path": "secretkey_bram",
+        "parameters": {
+          "Memory_Type": {
+            "value": "True_Dual_Port_RAM"
+          }
+        }
+      },
+      "AXImanager_bram": {
+        "vlnv": "xilinx.com:ip:blk_mem_gen:8.4",
+        "xci_name": "BD_AXImanager_B_AXImanager_bram_0",
+        "xci_path": "ip\\BD_AXImanager_B_AXImanager_bram_0\\BD_AXImanager_B_AXImanager_bram_0.xci",
+        "inst_hier_path": "AXImanager_bram",
+        "parameters": {
+          "Enable_B": {
+            "value": "Use_ENB_Pin"
+          },
+          "Memory_Type": {
+            "value": "True_Dual_Port_RAM"
+          },
+          "Port_B_Clock": {
+            "value": "100"
+          },
+          "Port_B_Enable_Rate": {
+            "value": "100"
+          },
+          "Port_B_Write_Rate": {
+            "value": "50"
+          },
+          "Use_RSTB_Pin": {
+            "value": "true"
+          }
+        }
+      }
+    },
+    "interface_nets": {
+      "BRAM_PORTA_0_1": {
+        "interface_ports": [
+          "AXImanager_PORTA",
+          "AXImanager_bram/BRAM_PORTA"
+        ]
+      },
+      "BRAM_PORTA_0_2": {
+        "interface_ports": [
+          "Secretkey_PORTA",
+          "secretkey_bram/BRAM_PORTA"
+        ]
+      },
+      "BRAM_PORTA_0_3": {
+        "interface_ports": [
+          "Xbasis_detected_pos_PORTA",
+          "Xbasis_detected_pos_bram/BRAM_PORTA"
+        ]
+      },
+      "BRAM_PORTA_0_4": {
+        "interface_ports": [
+          "Zbasis_detected_pos_PORTA",
+          "Zbasis_detected_pos_bram/BRAM_PORTA"
+        ]
+      }
+    },
+    "nets": {
+      "AXImanager_bram_doutb": {
+        "ports": [
+          "AXImanager_bram/doutb",
+          "AXImanager_doutb"
+        ]
+      },
+      "EV_randombit_bram_doutb": {
+        "ports": [
+          "Xbasis_detected_pos_bram/doutb",
+          "Xbasis_detected_pos_doutb"
+        ]
+      },
+      "addrb_0_1": {
+        "ports": [
+          "AXImanager_addrb",
+          "AXImanager_bram/addrb"
+        ]
+      },
+      "addrb_0_3": {
+        "ports": [
+          "Xbasis_detected_pos_addrb",
+          "Xbasis_detected_pos_bram/addrb"
+        ]
+      },
+      "addrb_0_4": {
+        "ports": [
+          "Zbasis_detected_pos_addrb",
+          "Zbasis_detected_pos_bram/addrb"
+        ]
+      },
+      "addrb_0_5": {
+        "ports": [
+          "Secretkey_addrb",
+          "secretkey_bram/addrb"
+        ]
+      },
+      "clkb_0_1": {
+        "ports": [
+          "AXImanager_clkb",
+          "AXImanager_bram/clkb"
+        ]
+      },
+      "clkb_0_3": {
+        "ports": [
+          "Xbasis_detected_pos_clkb",
+          "Xbasis_detected_pos_bram/clkb"
+        ]
+      },
+      "clkb_0_4": {
+        "ports": [
+          "Zbasis_detected_pos_clkb",
+          "Zbasis_detected_pos_bram/clkb"
+        ]
+      },
+      "clkb_0_5": {
+        "ports": [
+          "Secretkey_clkb",
+          "secretkey_bram/clkb"
+        ]
+      },
+      "dinb_0_1": {
+        "ports": [
+          "AXImanager_dinb",
+          "AXImanager_bram/dinb"
+        ]
+      },
+      "dinb_0_3": {
+        "ports": [
+          "Xbasis_detected_pos_dinb",
+          "Xbasis_detected_pos_bram/dinb"
+        ]
+      },
+      "dinb_0_4": {
+        "ports": [
+          "Zbasis_detected_pos_dinb",
+          "Zbasis_detected_pos_bram/dinb"
+        ]
+      },
+      "dinb_0_5": {
+        "ports": [
+          "Secretkey_dinb",
+          "secretkey_bram/dinb"
+        ]
+      },
+      "enb_0_1": {
+        "ports": [
+          "AXImanager_enb",
+          "AXImanager_bram/enb"
+        ]
+      },
+      "enb_0_3": {
+        "ports": [
+          "Xbasis_detected_pos_enb",
+          "Xbasis_detected_pos_bram/enb"
+        ]
+      },
+      "enb_0_4": {
+        "ports": [
+          "Zbasis_detected_pos_enb",
+          "Zbasis_detected_pos_bram/enb"
+        ]
+      },
+      "enb_0_5": {
+        "ports": [
+          "Secretkey_enb",
+          "secretkey_bram/enb"
+        ]
+      },
+      "qubit_bram_doutb": {
+        "ports": [
+          "Zbasis_detected_pos_bram/doutb",
+          "Zbasis_detected_pos_doutb"
+        ]
+      },
+      "rstb_0_1": {
+        "ports": [
+          "AXImanager_rstb",
+          "AXImanager_bram/rstb"
+        ]
+      },
+      "rstb_0_3": {
+        "ports": [
+          "Xbasis_detected_pos_rstb",
+          "Xbasis_detected_pos_bram/rstb"
+        ]
+      },
+      "rstb_0_4": {
+        "ports": [
+          "Zbasis_detected_pos_rstb",
+          "Zbasis_detected_pos_bram/rstb"
+        ]
+      },
+      "rstb_0_5": {
+        "ports": [
+          "Secretkey_rstb",
+          "secretkey_bram/rstb"
+        ]
+      },
+      "secretkey_bram_doutb": {
+        "ports": [
+          "secretkey_bram/doutb",
+          "Secretkey_doutb"
+        ]
+      },
+      "web_0_1": {
+        "ports": [
+          "AXImanager_web",
+          "AXImanager_bram/web"
+        ]
+      },
+      "web_0_3": {
+        "ports": [
+          "Xbasis_detected_pos_web",
+          "Xbasis_detected_pos_bram/web"
+        ]
+      },
+      "web_0_4": {
+        "ports": [
+          "Zbasis_detected_pos_web",
+          "Zbasis_detected_pos_bram/web"
+        ]
+      },
+      "web_0_5": {
+        "ports": [
+          "Secretkey_web",
+          "secretkey_bram/web"
+        ]
+      }
+    }
+  }
+}

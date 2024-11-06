@@ -1,0 +1,37 @@
+{
+   "ActiveEmotionalView":"Default View",
+   "Default View_ScaleFactor":"1.0",
+   "Default View_TopLeft":"-476,0",
+   "ExpandedHierarchyInLayout":"",
+   "guistr":"# # String gsaved with Nlview 7.0r6  2020-01-29 bk=1.5227 VDI=41 GEI=36 GUI=JA:10.0 non-TLS
+#  -string -flagsOSRD
+preplace port port-id_B_RX_EVrandombit_clka -pg 1 -lvl 0 -x 0 -y 120 -defaultsOSRD
+preplace port port-id_B_RX_EVrandombit_ena -pg 1 -lvl 0 -x 0 -y 180 -defaultsOSRD
+preplace port port-id_B_RX_EVrandombit_enb -pg 1 -lvl 0 -x 0 -y 320 -defaultsOSRD
+preplace port port-id_B_RX_EVrandombit_clkb -pg 1 -lvl 0 -x 0 -y 260 -defaultsOSRD
+preplace portBus B_RX_EVrandombit_addra -pg 1 -lvl 0 -x 0 -y 100 -defaultsOSRD
+preplace portBus B_RX_EVrandombit_dina -pg 1 -lvl 0 -x 0 -y 140 -defaultsOSRD
+preplace portBus B_RX_EVrandombit_douta -pg 1 -lvl 2 -x 260 -y 20 -defaultsOSRD
+preplace portBus B_RX_EVrandombit_wea -pg 1 -lvl 0 -x 0 -y 200 -defaultsOSRD
+preplace portBus B_RX_EVrandombit_addrb -pg 1 -lvl 0 -x 0 -y 240 -defaultsOSRD
+preplace portBus B_RX_EVrandombit_doutb -pg 1 -lvl 2 -x 260 -y 400 -defaultsOSRD
+preplace portBus B_RX_EVrandombit_dinb -pg 1 -lvl 0 -x 0 -y 280 -defaultsOSRD
+preplace portBus B_RX_EVrandombit_web -pg 1 -lvl 0 -x 0 -y 340 -defaultsOSRD
+preplace inst B_RX_EVrandombit_uram -pg 1 -lvl 1 -x 130 -y 210 -defaultsOSRD
+preplace netloc B_RX_EVrandombit_uram_douta 1 0 2 20 20 NJ
+preplace netloc B_RX_EVrandombit_uram_doutb 1 0 2 20 400 NJ
+preplace netloc addra_0_1 1 0 1 NJ 100
+preplace netloc addrb_0_1 1 0 1 NJ 240
+preplace netloc clka_0_1 1 0 1 NJ 120
+preplace netloc clkb_0_1 1 0 1 NJ 260
+preplace netloc dina_0_1 1 0 1 NJ 140
+preplace netloc dinb_0_1 1 0 1 NJ 280
+preplace netloc ena_0_1 1 0 1 NJ 180
+preplace netloc enb_0_1 1 0 1 NJ 320
+preplace netloc wea_0_1 1 0 1 NJ 200
+preplace netloc web_0_1 1 0 1 NJ 340
+levelinfo -pg 1 0 130 260
+pagesize -pg 1 -db -bbox -sgen -260 0 520 420
+"
+}
+0

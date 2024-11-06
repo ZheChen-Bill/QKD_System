@@ -1,0 +1,261 @@
+{
+  "design": {
+    "design_info": {
+      "boundary_crc": "0x8FE42A480B642B4C",
+      "device": "xcku5p-ffvb676-2-e",
+      "gen_directory": "../../../../kcu116_all_frame_ER_v1.gen/sources_1/bd/uram_randombit",
+      "name": "uram_randombit",
+      "rev_ctrl_bd_flag": "RevCtrlBdOff",
+      "synth_flow_mode": "Hierarchical",
+      "tool_version": "2022.1",
+      "validated": "true"
+    },
+    "design_tree": {
+      "B_RX_EVrandombit_uram": ""
+    },
+    "ports": {
+      "B_RX_EVrandombit_addra": {
+        "direction": "I",
+        "left": "13",
+        "right": "0"
+      },
+      "B_RX_EVrandombit_dina": {
+        "direction": "I",
+        "left": "63",
+        "right": "0"
+      },
+      "B_RX_EVrandombit_clka": {
+        "type": "clk",
+        "direction": "I",
+        "parameters": {
+          "CLK_DOMAIN": {
+            "value": "uram_randombit_B_RX_EVrandombit_clka",
+            "value_src": "default"
+          },
+          "FREQ_HZ": {
+            "value": "100000000",
+            "value_src": "default"
+          },
+          "FREQ_TOLERANCE_HZ": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.0",
+            "value_src": "default"
+          }
+        }
+      },
+      "B_RX_EVrandombit_ena": {
+        "direction": "I"
+      },
+      "B_RX_EVrandombit_douta": {
+        "direction": "O",
+        "left": "63",
+        "right": "0"
+      },
+      "B_RX_EVrandombit_wea": {
+        "direction": "I",
+        "left": "0",
+        "right": "0"
+      },
+      "B_RX_EVrandombit_enb": {
+        "direction": "I"
+      },
+      "B_RX_EVrandombit_clkb": {
+        "type": "clk",
+        "direction": "I",
+        "parameters": {
+          "CLK_DOMAIN": {
+            "value": "uram_randombit_B_RX_EVrandombit_clkb",
+            "value_src": "default"
+          },
+          "FREQ_HZ": {
+            "value": "100000000",
+            "value_src": "default"
+          },
+          "FREQ_TOLERANCE_HZ": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.0",
+            "value_src": "default"
+          }
+        }
+      },
+      "B_RX_EVrandombit_addrb": {
+        "direction": "I",
+        "left": "13",
+        "right": "0"
+      },
+      "B_RX_EVrandombit_doutb": {
+        "direction": "O",
+        "left": "63",
+        "right": "0"
+      },
+      "B_RX_EVrandombit_dinb": {
+        "direction": "I",
+        "left": "63",
+        "right": "0"
+      },
+      "B_RX_EVrandombit_web": {
+        "direction": "I",
+        "left": "0",
+        "right": "0"
+      }
+    },
+    "components": {
+      "B_RX_EVrandombit_uram": {
+        "vlnv": "xilinx.com:ip:blk_mem_gen:8.4",
+        "xci_name": "uram_randombit_blk_mem_gen_0_0",
+        "xci_path": "ip\\uram_randombit_blk_mem_gen_0_0\\uram_randombit_blk_mem_gen_0_0.xci",
+        "inst_hier_path": "B_RX_EVrandombit_uram",
+        "parameters": {
+          "Assume_Synchronous_Clk": {
+            "value": "true"
+          },
+          "Enable_32bit_Address": {
+            "value": "false"
+          },
+          "Enable_B": {
+            "value": "Use_ENB_Pin"
+          },
+          "Memory_Type": {
+            "value": "True_Dual_Port_RAM"
+          },
+          "Operating_Mode_A": {
+            "value": "NO_CHANGE"
+          },
+          "Operating_Mode_B": {
+            "value": "NO_CHANGE"
+          },
+          "PRIM_type_to_Implement": {
+            "value": "BRAM"
+          },
+          "Port_B_Clock": {
+            "value": "100"
+          },
+          "Port_B_Enable_Rate": {
+            "value": "100"
+          },
+          "Port_B_Write_Rate": {
+            "value": "50"
+          },
+          "Read_Width_A": {
+            "value": "64"
+          },
+          "Read_Width_B": {
+            "value": "64"
+          },
+          "Register_PortA_Output_of_Memory_Primitives": {
+            "value": "true"
+          },
+          "Register_PortB_Output_of_Memory_Primitives": {
+            "value": "true"
+          },
+          "Use_Byte_Write_Enable": {
+            "value": "false"
+          },
+          "Use_RSTA_Pin": {
+            "value": "false"
+          },
+          "Write_Depth_A": {
+            "value": "16384"
+          },
+          "Write_Width_A": {
+            "value": "64"
+          },
+          "Write_Width_B": {
+            "value": "64"
+          },
+          "use_bram_block": {
+            "value": "Stand_Alone"
+          }
+        }
+      }
+    },
+    "nets": {
+      "B_RX_EVrandombit_uram_douta": {
+        "ports": [
+          "B_RX_EVrandombit_uram/douta",
+          "B_RX_EVrandombit_douta"
+        ]
+      },
+      "B_RX_EVrandombit_uram_doutb": {
+        "ports": [
+          "B_RX_EVrandombit_uram/doutb",
+          "B_RX_EVrandombit_doutb"
+        ]
+      },
+      "addra_0_1": {
+        "ports": [
+          "B_RX_EVrandombit_addra",
+          "B_RX_EVrandombit_uram/addra"
+        ]
+      },
+      "addrb_0_1": {
+        "ports": [
+          "B_RX_EVrandombit_addrb",
+          "B_RX_EVrandombit_uram/addrb"
+        ]
+      },
+      "clka_0_1": {
+        "ports": [
+          "B_RX_EVrandombit_clka",
+          "B_RX_EVrandombit_uram/clka"
+        ]
+      },
+      "clkb_0_1": {
+        "ports": [
+          "B_RX_EVrandombit_clkb",
+          "B_RX_EVrandombit_uram/clkb"
+        ]
+      },
+      "dina_0_1": {
+        "ports": [
+          "B_RX_EVrandombit_dina",
+          "B_RX_EVrandombit_uram/dina"
+        ]
+      },
+      "dinb_0_1": {
+        "ports": [
+          "B_RX_EVrandombit_dinb",
+          "B_RX_EVrandombit_uram/dinb"
+        ]
+      },
+      "ena_0_1": {
+        "ports": [
+          "B_RX_EVrandombit_ena",
+          "B_RX_EVrandombit_uram/ena"
+        ]
+      },
+      "enb_0_1": {
+        "ports": [
+          "B_RX_EVrandombit_enb",
+          "B_RX_EVrandombit_uram/enb"
+        ]
+      },
+      "wea_0_1": {
+        "ports": [
+          "B_RX_EVrandombit_wea",
+          "B_RX_EVrandombit_uram/wea"
+        ]
+      },
+      "web_0_1": {
+        "ports": [
+          "B_RX_EVrandombit_web",
+          "B_RX_EVrandombit_uram/web"
+        ]
+      }
+    }
+  }
+}
