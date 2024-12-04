@@ -1,4 +1,4 @@
-`include "D:/LAB/quantum_cryptography/QKD_post_processing/QKD_post_processing/TOP/PP_parameter.v"
+`include "PP_parameter.v"
 
 
 module top_A_PP (
@@ -11,7 +11,12 @@ module top_A_PP (
       input clkRX_msg,
 
       input start_TX,
-      input wait_TX,
+      input start_switch,
+      output wait_TX,
+      
+      output finish_sifting,
+      output finish_ER,
+      output finish_PA,
     //    input default_sysclk1_300_clk_n,
     //    input default_sysclk1_300_clk_p,
     //    input reset_high,
@@ -100,7 +105,9 @@ module top_A_PP (
     input [7:0]Secretkey_PORTA_we
 
 );
-
+    //****************************** wait_TX_signal ************************
+    assign wait_TX = ((wait_sifting_TX)||(wait_ER_TX)||(wait_PA_TX));
+    //****************************** wait_TX_signal ************************
     //****************************** setting ******************************
     wire clk;
     wire rst_n;
@@ -483,7 +490,7 @@ module top_A_PP (
     assign visibility_srst = ~rst_n;
 
     BD_interface_A_wrapper interface_A
-    (.A_RX_Xbasis_detected_empty(A_RX_Xbasis_detected_empty),
+    (   .A_RX_Xbasis_detected_empty(A_RX_Xbasis_detected_empty),
         .A_RX_Xbasis_detected_full(A_RX_Xbasis_detected_full),
         .A_RX_Xbasis_detected_rd_clk(A_RX_Xbasis_detected_rd_clk),
         .A_RX_Xbasis_detected_rd_dout(A_RX_Xbasis_detected_rd_dout),
@@ -731,7 +738,7 @@ module top_A_PP (
     wire start_PA;
     wire [31:0] secretkey_length;
     wire reconciled_key_addr_index;
-    wire [4:0] post_processing_state;
+     wire [4:0] post_processing_state;
 
 
     A_post_processing_control u_A_post_processing_control (
@@ -808,7 +815,7 @@ module top_A_PP (
     wire [`FRAME_COMPARE_0_WIDTH-1:0] A_compare_0;
     wire A_visibility_valid;
     
-//    wire wait_sifting_TX;
+    wire wait_sifting_TX;
      
     top_A_sifting u_Asifting (
         .clk(clk),
@@ -816,13 +823,13 @@ module top_A_PP (
         .start_A_sifting(start_sifting),
 
         .start_A_TX(start_TX),
-        .wait_A_TX(wait_TX),
+        .wait_A_TX(wait_sifting_TX),
 
         .A_sifting_finish(finish_sifting),
 
         .reset_sift_parameter(reset_sift_parameter),
 
-        .Zbasis_Xbasis_fifo_full(Zbasis_Xbasis_fifo_full),
+        .Zbasis_Xbasis_fifo_full(Zbasis_Xbasis_fifo_full_cdc),
 
         // visibility parameter
         .nvis(nvis),
@@ -845,21 +852,21 @@ module top_A_PP (
         .A_RX_Xbasis_detected_rd_dout(A_RX_Xbasis_detected_rd_dout),
         .A_RX_Xbasis_detected_empty(A_RX_Xbasis_detected_empty),
         .A_RX_Xbasis_detected_rd_valid(A_RX_Xbasis_detected_rd_valid),
-        .A_RX_Xbasis_detected_full(A_RX_Xbasis_detected_full),
+        .A_RX_Xbasis_detected_full(A_RX_Xbasis_detected_full_cdc), // change to cdc control
 
         .A_RX_Zbasis_detected_rd_clk(A_RX_Zbasis_detected_rd_clk),
         .A_RX_Zbasis_detected_rd_en(A_RX_Zbasis_detected_rd_en),
         .A_RX_Zbasis_detected_rd_dout(A_RX_Zbasis_detected_rd_dout),
         .A_RX_Zbasis_detected_empty(A_RX_Zbasis_detected_empty),
         .A_RX_Zbasis_detected_rd_valid(A_RX_Zbasis_detected_rd_valid),
-        .A_RX_Zbasis_detected_full(A_RX_Zbasis_detected_full),
+        .A_RX_Zbasis_detected_full(A_RX_Zbasis_detected_full_cdc),
 
         .A_TX_decoy_wr_clk(A_TX_decoy_wr_clk),
         .A_TX_decoy_wr_din(A_TX_decoy_wr_din),
         .A_TX_decoy_wr_en(A_TX_decoy_wr_en),
         .A_TX_decoy_full(A_TX_decoy_full),
         .A_TX_decoy_wr_ack(A_TX_decoy_wr_ack),
-        .A_TX_decoy_empty(A_TX_decoy_empty),
+        .A_TX_decoy_empty(A_TX_decoy_empty_cdc),
 
         .Asiftedkey_dina(Asiftedkey_dina),
         .Asiftedkey_addra(Asiftedkey_addra),
@@ -892,12 +899,16 @@ module top_A_PP (
     wire [13:0] EVrandombit_addrb_14;
     assign EVrandombit_addrb = {15'b0 , EVrandombit_addrb_14 , 3'b0};
 
+    wire wait_ER_TX;
 
     top_A_ER A_ER_test (
         .clk(clk), // Connect to clock
         .rst_n(rst_n), // Connect to reset
 
         .start_A_ER(start_ER), // Start signal for all frame error reconciliation
+
+        .start_TX(start_switch),
+        .wait_TX(wait_ER_TX),
 
         .finish_A_ER(finish_ER), //finish all frame error reconciliation
 
@@ -929,7 +940,7 @@ module top_A_PP (
         .A_A2B_wr_en(A_TX_er_wr_en),
         .A_A2B_wr_din(A_TX_er_wr_din),
         .A_A2B_full(A_TX_er_full),
-        .A_A2B_empty(A_TX_er_empty),
+        .A_A2B_empty(A_TX_er_empty_cdc),
         .A_A2B_wr_ack(A_TX_er_wr_ack),
 
         // EV random bit BRAM connections
@@ -1000,12 +1011,17 @@ module top_A_PP (
     reg [31:0] A_TX_pa_wr_din;
     reg A_TX_pa_wr_en;
 
+    wire wait_PA_TX;
 
     top_A_pa u_top_A_pa (
         .clk(clk), // Clock signal
         .rst_n(rst_n), // Reset signal
 
         .start_A_pa(start_PA), // Input to start PA
+        
+        .start_TX(start_TX),
+        .wait_TX(wait_PA_TX),
+        
         .A_pa_finish(finish_PA), // Output indicating PA is done
         .A_pa_fail(fail_PA), // Output indicating PA failure due to secret key length
 
@@ -1043,7 +1059,7 @@ module top_A_PP (
         .A_TX_pa_wr_en(A_TX_pa_wr_en),
         .A_TX_pa_full(A_TX_pa_full),
         .A_TX_pa_wr_ack(A_TX_pa_wr_ack),
-        .A_TX_pa_empty(A_TX_pa_empty)
+        .A_TX_pa_empty(A_TX_pa_empty_cdc)
     );
 
     //****************************** privacy amplification ******************************
@@ -1186,7 +1202,7 @@ module top_A_PP (
 
     wire reset_sift_parameter;
 
-    wire Zbasis_Xbasis_fifo_full;
+    (*mark_debug = "TRUE"*) wire Zbasis_Xbasis_fifo_full;
     wire [3:0] A_unpacket_state;
 
 
@@ -1200,29 +1216,35 @@ module top_A_PP (
 
         .busy_PP2Net_RX(busy_PP2Net_RX), // Output indicating post-processing to network reception is busy
 
-        .reset_sift_parameter(reset_sift_parameter), // Input to reset sift parameters
+        .reset_sift_parameter(reset_sift_parameter_cdc), // Input to reset sift parameters
         .Zbasis_Xbasis_fifo_full(Zbasis_Xbasis_fifo_full), // Output indicating fifo full status
 
         .A_unpacket_state(A_unpacket_state), // Output state of the A_unpacket FSM
 
         // A_B2A Zbasis fifo connections
         .A_RX_Zbasis_detected_wr_clk(A_RX_Zbasis_detected_wr_clk),
-        .A_RX_Zbasis_detected_wr_din(A_RX_Zbasis_detected_wr_din),
-        .A_RX_Zbasis_detected_wr_en(A_RX_Zbasis_detected_wr_en),
+//        .A_RX_Zbasis_detected_wr_din(A_RX_Zbasis_detected_wr_din),
+//        .A_RX_Zbasis_detected_wr_en(A_RX_Zbasis_detected_wr_en),
+        .A_RX_Zbasis_detected_wr_din_delay(A_RX_Zbasis_detected_wr_din),
+        .A_RX_Zbasis_detected_wr_en_delay(A_RX_Zbasis_detected_wr_en),
         .A_RX_Zbasis_detected_full(A_RX_Zbasis_detected_full),
         .A_RX_Zbasis_detected_wr_ack(A_RX_Zbasis_detected_wr_ack),
 
         // A_B2A Xbasis fifo connections
         .A_RX_Xbasis_detected_wr_clk(A_RX_Xbasis_detected_wr_clk),
-        .A_RX_Xbasis_detected_wr_din(A_RX_Xbasis_detected_wr_din),
-        .A_RX_Xbasis_detected_wr_en(A_RX_Xbasis_detected_wr_en),
+//        .A_RX_Xbasis_detected_wr_din(A_RX_Xbasis_detected_wr_din),
+//        .A_RX_Xbasis_detected_wr_en(A_RX_Xbasis_detected_wr_en),
+        .A_RX_Xbasis_detected_wr_din_delay(A_RX_Xbasis_detected_wr_din),
+        .A_RX_Xbasis_detected_wr_en_delay(A_RX_Xbasis_detected_wr_en),
         .A_RX_Xbasis_detected_full(A_RX_Xbasis_detected_full),
         .A_RX_Xbasis_detected_wr_ack(A_RX_Xbasis_detected_wr_ack),
 
         // A_B2A er fifo connections
         .A_RX_er_wr_clk(A_RX_er_wr_clk),
-        .A_RX_er_wr_din(A_RX_er_wr_din),
-        .A_RX_er_wr_en(A_RX_er_wr_en),
+//        .A_RX_er_wr_din(A_RX_er_wr_din),
+//        .A_RX_er_wr_en(A_RX_er_wr_en),
+        .A_RX_er_wr_din_delay(A_RX_er_wr_din),
+        .A_RX_er_wr_en_delay(A_RX_er_wr_en),
         .A_RX_er_full(A_RX_er_full),
         .A_RX_er_wr_ack(A_RX_er_wr_ack),
 
@@ -1235,9 +1257,73 @@ module top_A_PP (
     );
 
     //****************************** A unpacket  ******************************
+ //*********************** cdc for Alice Sifting control signal **********************
+    wire A_RX_Xbasis_detected_full_cdc;
+    wire A_RX_Zbasis_detected_full_cdc;
+    wire A_TX_decoy_empty_cdc;
 
+    cdc_delay1 u_A_RX_Xbasis_detected_full_delay(
+        .clk_src(clkRX_msg),
+        .clk_des(clk),
+        .reset(~rst_n),
+        .pulse_src(A_RX_Xbasis_detected_full),
+        .pulse_des(A_RX_Xbasis_detected_full_cdc)
+    );
 
+    cdc_delay1 u_A_RX_Zbasis_detected_full_delay(
+        .clk_src(clkRX_msg),
+        .clk_des(clk),
+        .reset(~rst_n),
+        .pulse_src(A_RX_Zbasis_detected_full),
+        .pulse_des(A_RX_Zbasis_detected_full_cdc)
+    );
 
+    cdc_delay1 u_A_TX_decoy_empty_delay(
+        .clk_src(clkTX_msg),
+        .clk_des(clk),
+        .reset(~rst_n),
+        .pulse_src(A_TX_decoy_empty),
+        .pulse_des(A_TX_decoy_empty_cdc)
+    );
+wire reset_sift_parameter_cdc;
+(*mark_debug = "TRUE"*) wire Zbasis_Xbasis_fifo_full_cdc;
+    clock_domain_crossing u_reset_sift_parameter_pulse(
+        .clk_src(clk),
+        .clk_des(clkRX_msg),
+        .reset(~rst_n),
+        .pulse_src(reset_sift_parameter),
+        .pulse_des(reset_sift_parameter_cdc)
+    );
+
+    cdc_delay1 u_Zbasis_Xbasis_fifo_full_delay(
+        .clk_src(clkRX_msg),
+        .clk_des(clk),
+        .reset(~rst_n),
+        .pulse_src(Zbasis_Xbasis_fifo_full),
+        .pulse_des(Zbasis_Xbasis_fifo_full_cdc)
+    );
+
+//*********************** cdc for Alice Sifting control signal **********************
+//*********************** cdc for Alice ER control signal**************************
+    wire A_TX_er_empty_cdc;
+    cdc_delay1 u_A_TX_er_empty_cdc(
+        .clk_src(clkTX_msg),
+        .clk_des(clk),
+        .reset(~rst_n),
+        .pulse_src(A_TX_er_empty),
+        .pulse_des(A_TX_er_empty_cdc)
+    );
+//*********************** cdc for Alice ER control signal**************************
+//*********************** cdc for Alice PA control signal **************************
+    wire A_TX_pa_empty_cdc;
+    cdc_delay1 u_A_TX_pa_empty_cdc(
+        .clk_src(clkTX_msg),
+        .clk_des(clk),
+        .reset(~rst_n),
+        .pulse_src(A_TX_pa_empty),
+        .pulse_des(A_TX_pa_empty_cdc)
+    );
+//*********************** cdc for Alice PA control signal **************************
 
 
 
