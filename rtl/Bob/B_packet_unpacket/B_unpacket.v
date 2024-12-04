@@ -1,7 +1,4 @@
-
-
-`include "./packet_parameter.v"
-
+`include "PP_parameter.v"
 
 module B_unpacket (
     input clk,
@@ -27,15 +24,19 @@ module B_unpacket (
 
     // B_A2B decoy fifo
     output wire  B_RX_Zbasis_decoy_wr_clk,
-    output wire  [31:0] B_RX_Zbasis_decoy_wr_din,
-    output wire  B_RX_Zbasis_decoy_wr_en,
+//    output wire  [31:0] B_RX_Zbasis_decoy_wr_din,
+//    output wire  B_RX_Zbasis_decoy_wr_en,
+    output reg  [31:0] B_RX_Zbasis_decoy_wr_din_delay,
+    output reg  B_RX_Zbasis_decoy_wr_en_delay,
     input wire B_RX_Zbasis_decoy_full,
     input wire B_RX_Zbasis_decoy_wr_ack,
 
     // B_A2B ER fifo
     output wire B_RX_er_wr_clk,
-    output wire [31:0] B_RX_er_wr_din,
-    output wire B_RX_er_wr_en,
+//    output wire [31:0] B_RX_er_wr_din,
+//    output wire B_RX_er_wr_en,
+    output reg [31:0] B_RX_er_wr_din_delay,
+    output reg B_RX_er_wr_en_delay,
     input wire B_RX_er_full,
     input wire B_RX_er_wr_ack,
 
@@ -48,8 +49,10 @@ module B_unpacket (
 
     // B_A2B secret key length fifo
     output wire  B_RX_secretkey_length_wr_clk,
-    output wire  [31:0] B_RX_secretkey_length_wr_din,
-    output wire  B_RX_secretkey_length_wr_en,
+//    output wire  [31:0] B_RX_secretkey_length_wr_din,
+//    output wire  B_RX_secretkey_length_wr_en,
+    output reg  [31:0] B_RX_secretkey_length_wr_din_delay,
+    output reg  B_RX_secretkey_length_wr_en_delay,
     input wire B_RX_secretkey_length_full,
     input wire B_RX_secretkey_length_wr_ack,
 
@@ -69,7 +72,6 @@ module B_unpacket (
     input wire [31:0] B_RX_bram_doutb
     
 );
-
 //****************************** FIFO setup ******************************
     // B_A2B decoy fifo
     assign B_RX_Zbasis_decoy_wr_clk = clk;
@@ -101,7 +103,32 @@ module B_unpacket (
         end
     end
 //****************************** DFF for bram output ******************************
-
+//****************************** Delay for write to FIFO (timing slack...) ******************************
+    wire  [31:0] B_RX_Zbasis_decoy_wr_din;
+    wire  B_RX_Zbasis_decoy_wr_en;
+    wire [31:0] B_RX_er_wr_din;
+    wire B_RX_er_wr_en;
+    wire  [31:0] B_RX_secretkey_length_wr_din;
+    wire  B_RX_secretkey_length_wr_en;
+    always @(posedge clk ) begin
+        if (~rst_n) begin
+            B_RX_Zbasis_decoy_wr_en_delay <= 1'b0;
+            B_RX_er_wr_en_delay <= 1'b0;
+            B_RX_secretkey_length_wr_en_delay <= 1'b0;
+            B_RX_Zbasis_decoy_wr_din_delay <= 32'b0;
+            B_RX_er_wr_din_delay <= 32'b0;
+            B_RX_secretkey_length_wr_din_delay <= 32'b0;
+        end
+        else begin
+            B_RX_Zbasis_decoy_wr_en_delay <= B_RX_Zbasis_decoy_wr_en;
+            B_RX_er_wr_en_delay <= B_RX_er_wr_en;
+            B_RX_secretkey_length_wr_en_delay <= B_RX_secretkey_length_wr_en;
+            B_RX_Zbasis_decoy_wr_din_delay <= B_RX_Zbasis_decoy_wr_din;
+            B_RX_er_wr_din_delay <= B_RX_er_wr_din;
+            B_RX_secretkey_length_wr_din_delay <= B_RX_secretkey_length_wr_din;
+        end
+    end
+//****************************** Delay for write to FIFO (timing slack...) ******************************
 
 
 
