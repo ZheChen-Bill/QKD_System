@@ -1,4 +1,5 @@
-`include "D:/LAB/quantum_cryptography/QKD_post_processing/QKD_post_processing/TOP/PP_parameter.v"
+//`include "D:/LAB/quantum_cryptography/QKD_post_processing/QKD_post_processing/TOP/PP_parameter.v"
+`include "PP_parameter.v"
 
 
 module top_B_PP (
@@ -10,7 +11,11 @@ module top_B_PP (
       input clkRX_msg,
       
       input start_TX,
-      input wait_TX,
+      output wait_TX,
+      
+      output finish_sifting,
+      output finish_ER,
+      output finish_PA,
 //    input default_sysclk1_300_clk_n,
 //    input default_sysclk1_300_clk_p,
 //    input reset_high,
@@ -40,7 +45,8 @@ module top_B_PP (
     output B_RX_bram_enb,
     output B_RX_bram_web,
     output [10:0] B_RX_bram_addrb,
-    input [31:0] B_RX_bram_doutb,
+    input [31:0] B_RX_bram_doutb
+    ,
 
     // AXImanager BRAM PORT-A
     input [31:0]AXImanager_PORTA_addr,
@@ -79,7 +85,9 @@ module top_B_PP (
     input [7:0]Secretkey_PORTA_we
 
 );
-
+//****************************** wait_TX_signal ************************
+    assign wait_TX = (wait_sifting_TX)||(wait_ER_TX);
+//****************************** wait_TX_signal ************************
 //****************************** setting ******************************
     wire clk;
     wire rst_n;
@@ -118,11 +126,11 @@ module top_B_PP (
 
     wire [31:0]Secretkey_addrb;
     wire Secretkey_clkb;
-    wire [63:0]Secretkey_dinb;
+    (* KEEP = "TRUE" *) wire [63:0]Secretkey_dinb;
     wire [63:0]Secretkey_doutb;
     wire Secretkey_enb;
     wire Secretkey_rstb;
-    wire [7:0]Secretkey_web;
+    (* KEEP = "TRUE" *) wire [7:0]Secretkey_web;
 
     // wire [31:0]Xbasis_detected_pos_PORTA_addr;
     // wire Xbasis_detected_pos_PORTA_clk;
@@ -156,12 +164,12 @@ module top_B_PP (
     wire Zbasis_detected_pos_rstb;
     wire [7:0]Zbasis_detected_pos_web;
 
-    wire clk_out_125M;
+      wire clk_out_125M;
+      wire [0:0]proc_rst_n;
 //    wire default_sysclk1_300_clk_n;
 //    wire default_sysclk1_300_clk_p;
-    wire [0:0]proc_rst_n;
 //    wire reset_high;
-
+    
     BD_AXImanager_B_wrapper AXImanager_B
         (.AXImanager_PORTA_addr(AXImanager_PORTA_addr),
             .AXImanager_PORTA_clk(AXImanager_PORTA_clk),
@@ -664,15 +672,14 @@ module top_B_PP (
 
 
 //****************************** sifting ******************************
-
-//    wire wait_sifting_TX;
+    wire wait_sifting_TX;
     top_B_sifting u_Bsifting (
         .clk(clk),
         .rst_n(rst_n),
         .start_B_sifting(start_sifting),
         
         .start_B_TX(start_TX),
-        .wait_B_TX(wait_TX),
+        .wait_B_TX(wait_sifting_TX),
         
         .B_sifting_finish(finish_sifting),
 
@@ -701,7 +708,7 @@ module top_B_PP (
         .B_TX_detected_wr_en(B_TX_detected_wr_en),
         .B_TX_detected_full(B_TX_detected_full),
         .B_TX_detected_wr_ack(B_TX_detected_wr_ack),
-        .B_TX_detected_empty(B_TX_detected_empty),
+        .B_TX_detected_empty(B_TX_detected_empty_cdc),
 
         .Bsiftedkey_dina(Bsiftedkey_dina),
         .Bsiftedkey_addra(Bsiftedkey_addra),
@@ -721,16 +728,19 @@ module top_B_PP (
 
 //****************************** error reconciliation ******************************
     wire B_single_frame_error_verification_fail;
-
+    wire wait_ER_TX;
     top_B_ER B_ER_test (
         .clk(clk),                                // Connect to clock
         .rst_n(rst_n),                            // Connect to reset
 
         .start_B_ER(start_ER), // Start signal for all frame error reconciliation
+        
+        .start_TX(start_TX),
+        .wait_TX(wait_ER_TX),
 
         .finish_B_ER(finish_ER),        //finish all frame error reconciliation
 
-        .EVrandombit_full(EVrandombit_full),
+        .EVrandombit_full(EVrandombit_full_cdc),
         .reset_er_parameter(reset_er_parameter),
     
 
@@ -797,13 +807,13 @@ module top_B_PP (
 
 
 
-
     top_B_pa u_top_B_pa (
         .clk(clk),                                     // Clock signal
         .rst_n(rst_n),                                 // Reset signal
 
         .start_B_pa(start_PA),                       // Input to start PA
-        .PArandombit_full(PArandombit_full),           // Input indicating PA random bit from Alice is full
+        
+        .PArandombit_full(PArandombit_full_cdc),           // Input indicating PA random bit from Alice is full
         .reset_pa_parameter(reset_pa_parameter),       // Output to reset PA parameters
 
         .reconciled_key_addr_index(reconciled_key_addr_index), // Input: Reconciled key address index
@@ -990,25 +1000,29 @@ module top_B_PP (
 
         .busy_PP2Net_RX(busy_PP2Net_RX),                 // Output indicating post-processing to network reception is busy
 
-        .reset_er_parameter(reset_er_parameter),         // Input to reset error reconciliation parameter
+        .reset_er_parameter(reset_er_parameter_cdc),         // Input to reset error reconciliation parameter
         .EVrandombit_full(EVrandombit_full),             // Output indicating EV random bit buffer is full
 
-        .reset_pa_parameter(reset_pa_parameter),         // Input to reset post-authentication parameter
+        .reset_pa_parameter(reset_pa_parameter_cdc),         // Input to reset post-authentication parameter
         .PArandombit_full(PArandombit_full),             // Output indicating PA random bit buffer is full
 
         .B_unpacket_state(B_unpacket_state),             // Output state of the B_unpacket FSM
 
         // B_A2B decoy fifo connections
         .B_RX_Zbasis_decoy_wr_clk(B_RX_Zbasis_decoy_wr_clk),
-        .B_RX_Zbasis_decoy_wr_din(B_RX_Zbasis_decoy_wr_din),
-        .B_RX_Zbasis_decoy_wr_en(B_RX_Zbasis_decoy_wr_en),
+//        .B_RX_Zbasis_decoy_wr_din(B_RX_Zbasis_decoy_wr_din),
+//        .B_RX_Zbasis_decoy_wr_en(B_RX_Zbasis_decoy_wr_en),
+        .B_RX_Zbasis_decoy_wr_din_delay(B_RX_Zbasis_decoy_wr_din),
+        .B_RX_Zbasis_decoy_wr_en_delay(B_RX_Zbasis_decoy_wr_en),
         .B_RX_Zbasis_decoy_full(B_RX_Zbasis_decoy_full),
         .B_RX_Zbasis_decoy_wr_ack(B_RX_Zbasis_decoy_wr_ack),
 
         // B_A2B ER fifo connections
         .B_RX_er_wr_clk(B_RX_er_wr_clk),
-        .B_RX_er_wr_din(B_RX_er_wr_din),
-        .B_RX_er_wr_en(B_RX_er_wr_en),
+//        .B_RX_er_wr_din(B_RX_er_wr_din),
+//        .B_RX_er_wr_en(B_RX_er_wr_en),
+        .B_RX_er_wr_din_delay(B_RX_er_wr_din),
+        .B_RX_er_wr_en_delay(B_RX_er_wr_en),
         .B_RX_er_full(B_RX_er_full),
         .B_RX_er_wr_ack(B_RX_er_wr_ack),
 
@@ -1021,8 +1035,10 @@ module top_B_PP (
 
         // B_A2B secret key length fifo connections
         .B_RX_secretkey_length_wr_clk(B_RX_secretkey_length_wr_clk),
-        .B_RX_secretkey_length_wr_din(B_RX_secretkey_length_wr_din),
-        .B_RX_secretkey_length_wr_en(B_RX_secretkey_length_wr_en),
+//        .B_RX_secretkey_length_wr_din(B_RX_secretkey_length_wr_din),
+//        .B_RX_secretkey_length_wr_en(B_RX_secretkey_length_wr_en),
+        .B_RX_secretkey_length_wr_din_delay(B_RX_secretkey_length_wr_din),
+        .B_RX_secretkey_length_wr_en_delay(B_RX_secretkey_length_wr_en),
         .B_RX_secretkey_length_full(B_RX_secretkey_length_full),
         .B_RX_secretkey_length_wr_ack(B_RX_secretkey_length_wr_ack),
 
@@ -1042,6 +1058,53 @@ module top_B_PP (
     );
 
 //****************************** B unpacket  ******************************
+    //********************** cdc for Bob sifting signal **********************
+    wire B_TX_detected_empty_cdc;
+    cdc_delay1 u_B_TX_detected_empty_delay(
+        .clk_src(clkTX_msg),
+        .clk_des(clk),
+        .reset(~rst_n),
+        .pulse_src(B_TX_detected_empty),
+        .pulse_des(B_TX_detected_empty_cdc)
+    );
+    //********************** cdc for Bob sifting signal *************************
+    //********************** cdc for Bob ER signal *************************
+    wire reset_er_parameter_cdc;
+    cdc_delay1 u_reset_er_parameter_cdc(
+        .clk_src(clk),
+        .clk_des(clkRX_msg),
+        .reset(~rst_n),
+        .pulse_src(reset_er_parameter),
+        .pulse_des(reset_er_parameter_cdc)
+    );
+    wire EVrandombit_full_cdc;
+    cdc_delay1 u_EVrandombit_full_cdc(
+        .clk_src(clkRX_msg),
+        .clk_des(clk),
+        .reset(~rst_n),
+        .pulse_src(EVrandombit_full),
+        .pulse_des(EVrandombit_full_cdc)
+    );
+    //********************** cdc for Bob ER signal *************************
+    //********************** cdc for Bob PA signal *************************
+    wire reset_pa_parameter_cdc;
+    wire PArandombit_full_cdc;
+    cdc_delay1 u_reset_pa_parameter_cdc(
+        .clk_src(clk),
+        .clk_des(clkRX_msg),
+        .reset(~rst_n),
+        .pulse_src(reset_pa_parameter),
+        .pulse_des(reset_pa_parameter_cdc)
+    );
+    cdc_delay1 u_PArandombit_full_cdc(
+        .clk_src(clkRX_msg),
+        .clk_des(clk),
+        .reset(~rst_n),
+        .pulse_src(PArandombit_full),
+        .pulse_des(PArandombit_full_cdc)
+    );
+    //********************** cdc for Bob PA signal *************************
+    //********************** cdc for Bob PA signal *************************
 
 
 endmodule
