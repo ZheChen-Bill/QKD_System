@@ -1,11 +1,11 @@
-`timescale 1ns / 1ps
+`timescale 1ps/1ps
 //////////////////////////////////////////////////////////////////////////////////
 // Company: 
 // Engineer: 
 // 
-// Create Date: 2024/10/17 21:28:48
+// Create Date: 2024/04/18 16:19:54
 // Design Name: 
-// Module Name: top_Bob
+// Module Name: top_Alice
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -19,8 +19,8 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-`include "./packet_parameter.v"
-`include "./error_reconcilation_parameter.v"
+`include "PP_parameter.v"
+
 module top_Alice(
 
     // global reset 
@@ -42,10 +42,7 @@ module top_Alice(
     output tx_disable,
 
     input start_switch,
-
     input start_TX,
-
-    //    input start_RX,
 
     output reg output_clk,
     input independent_clk_en,
@@ -53,6 +50,13 @@ module top_Alice(
     input gmii_rx_clk_en,
     output [7:0] tcp_status
 
+    // Test signal
+    //    ,
+    //    output [10:0] addrRX_msg_jtag,
+    //    output clkRX_msg_jtag,
+    //    output [31:0] dataRX_msg_jtag,
+    //    output weRX_msg_jtag,
+    //    output [31:0] dataRX_msg_buf_jtag
 );
 
     always @* begin
@@ -67,74 +71,70 @@ module top_Alice(
     end
     wire independent_clk;
     wire io_refclk;
+    wire clk_fast;
 
     wire txn, txp, rxn, rxp;
     wire gmii_rx_clk, gmii_tx_clk;
     wire clock_100M;
-    //    wire clock_80M;
     wire clock_125M;
+    wire clock_20M;
+    wire clock_15M;
+    wire proc_rst_n;
 
-    (*mark_debug = "TRUE"*) wire [7:0]gmii_txd; // Transmit data from client MAC.
-    (*mark_debug = "TRUE"*) wire gmii_tx_en; // Transmit control signal from client MAC.
-    (*mark_debug = "TRUE"*) wire gmii_tx_er; // Transmit control signal from client MAC.
-    (*mark_debug = "TRUE"*) wire [7:0]gmii_rxd; // Received Data to client MAC.
-    (*mark_debug = "TRUE"*) wire gmii_rx_dv; // Received control signal to client MAC.
-    (*mark_debug = "TRUE"*) wire gmii_rx_er; // Received control signal to client MAC.
-
-//    wire [7:0]gmii_txd; // Transmit data from client MAC.
-//    wire gmii_tx_en; // Transmit control signal from client MAC.
-//    wire gmii_tx_er; // Transmit control signal from client MAC.
-//    wire [7:0]gmii_rxd; // Received Data to client MAC.
-//    wire gmii_rx_dv; // Received control signal to client MAC.
-//    wire gmii_rx_er; // Received control signal to client MAC.
+    wire [7:0]gmii_txd; // Transmit data from client MAC.
+    wire gmii_tx_en; // Transmit control signal from client MAC.
+    wire gmii_tx_er; // Transmit control signal from client MAC.
+    wire [7:0]gmii_rxd; // Received Data to client MAC.
+    wire gmii_rx_dv; // Received control signal to client MAC.
+    wire gmii_rx_er; // Received control signal to client MAC.
 
     wire [15:0] status_vector;
-    wire A_ER_finish;
-    reg A_ER_finish_reg;
+
+    reg A_sifting_finish_reg;
 
     //    assign link_status = status_vector[0] & status_vector[1];
-    assign link_status = status_vector[0];
+    assign link_status = status_vector;
     //    assign link_status = 1'b1;
     wire [3:0] network_fsm_TCP_TX;
     assign achieve = (network_fsm_TCP_TX == 4'd3)  ? 1'b1 : 1'b0; // network_fsm_TCP has reached TRANSFER_TCP state
     assign disconnect = (network_fsm_TCP_TX == 4'd0)  ? 1'b1 : 1'b0;
     assign handshake0 = (network_fsm_TCP_TX == 4'd2)  ? 1'b1 : 1'b0;
     assign handshake1 = (network_fsm_TCP_TX == 4'd4)  ? 1'b1 : 1'b0;
-    assign handshake = (network_fsm_TCP_TX == 4'd1)  ? 1'b1 : 1'b0;
-    assign ack_t = (network_fsm_TCP_TX == 4'd6)  ? 1'b1 : 1'b0;
-    assign ack_r = (network_fsm_TCP_TX == 4'd5)  ? 1'b1 : 1'b0;
+    assign handshake = (network_fsm_TCP_TX == 4'd1) ? 1'b1 : 1'b0;
+    assign ack_t = (network_fsm_TCP_TX == 4'd6) ? 1'b1 : 1'b0;
+    assign ack_r = (network_fsm_TCP_TX == 4'd5) ? 1'b1 : 1'b0;
 
     //                                          LED7      LED6               LED5          LED4                LED3    LED2        LED1                                 LED0
-    //    assign tcp_status = {link_status, handshake0, handshake, handshake1, achieve, ack_t, B2A_busy_Net2PP_RX, B2A_busy_Net2PP_TX};
+    //    assign tcp_status = {link_status, handshake0, handshake, handshake1, achieve, ack_t, A2B_busy_Net2PP_RX, A2B_busy_Net2PP_TX};
 
-    //                               LED7      LED6               LED5                             LED4               LED3             LED2        LED1              LED0
-    assign tcp_status = {link_status, achieve, A2B_busy_Net2PP_RX, A2B_busy_Net2PP_TX, start_switch, start_TX ,   wait_TX ,  A_ER_finish_reg};
+    //                                          LED7      LED6               LED5                             LED4                       LED3          LED2        LED1      LED0
+    assign tcp_status = {link_status, achieve, A2B_busy_Net2PP_RX, A2B_busy_Net2PP_TX, start_switch , start_TX, wait_TX, 1'b0};
 
-    //                                          LED7      LED6               LED5                             LED4                             LED3                LED2              LED1          LED0
-    //    assign tcp_status = {link_status, achieve, B2A_busy_Net2PP_RX, B2A_busy_Net2PP_TX, start_switch, sift_state_4, sift_state_5, sift_state_6};
 
-    wire [3:0] B_sift_state;
-    //    assign sift_state_4 = (B_sift_state == 4'd4)  ? 1'b1 : 1'b0;
-    //    assign sift_state_5 = (B_sift_state == 4'd5)  ? 1'b1 : 1'b0;
-    //    assign sift_state_6 = (B_sift_state == 4'd6)  ? 1'b1 : 1'b0;
 
     assign tx_disable = 1'b1;
 
-    clock_generator Uclk_gen
-    (.clk_in1_n(clk_300M_n), // input
+    clock_generator_wrapper Uclk_gen
+    (
+        .clk_in1_n(clk_300M_n), // input
         .clk_in1_p(clk_300M_p), // input
         .clk_out1_62_5M(independent_clk), // output
         .clk_out2_100M(clock_100M), // output
+        .clk_out5_125M(clock_125M), // output
+        
+        .clk_out6_15M(clock_15M), // output
+//        .clk_out6_20M(clock_20M), // output
         .clk_out3_300M(io_refclk), // output
         .clk_out4_375M(clk_fast), // output
-        //        .clk_out5_125M(clock_125M), // output
+//        .clk_out4_312_5M(clk_fast), // output
 
-        .reset(reset) // input
+        .reset(reset), // input
+        .proc_rst_n(proc_rst_n) // output
     );
 
-    top_phy Utop_phy //for Bob is TX, for Alice is RX
-    (
 
+    top_phy Utop_phy
+    (
         .independent_clock(independent_clk),
         .io_refclk(io_refclk),
 
@@ -173,98 +173,393 @@ module top_Alice(
         .reset(reset) // Asynchronous reset for entire core.
         //    input            signal_detect          // Input from PMD to indicate presence of optical input.
     );
-    
-    wire Areconciledkey_clka;
-    wire Areconciledkey_ena; //1'b1
-    (*mark_debug = "TRUE"*) wire [3:0] Areconciledkey_wea; //
-    wire [14:0] Areconciledkey_addra; //0~32767
-    wire [63:0] Areconciledkey_dina; //Alice sifted key 
-    
-    wire [`FRAME_LEAKED_INFO_WIDTH-1:0] single_frame_leaked_info;
-    wire [`FRAME_ERROR_COUNT_WIDTH-1:0] single_frame_error_count;
-    wire single_frame_parameter_valid;
-    wire A_single_frame_error_verification_fail;       //error verification is fail
-    
-    ER_Alice u_Alice(
-    .clk(clock_100M),
-    .rst_n(~reset),
-    //----------------------------new add signal------------------------------
-    .gmii_tx_clk(gmii_tx_clk),
-    .gmii_rx_clk(gmii_rx_clk),
 
+    //    wire [63:0] Asiftedkey_dina;      //Alice sifted key 
+    //    wire [14:0] Asiftedkey_addra;    //0~32767
+    //    wire Asiftedkey_clka;
+    //    wire Asiftedkey_ena;                   //1'b1
+    //    wire Asiftedkey_wea;                  //
 
-    .clk_PP(clk_fast),
-    .link_status(link_status),
+    wire [10:0]A_RX_bram_addrb;
+    wire A_RX_bram_clkb;
+    wire [31:0]A_RX_bram_dinb;
+    wire [31:0]A_RX_bram_doutb;
+    wire A_RX_bram_enb;
+    wire [0:0]A_RX_bram_web;
 
-    .A2B_busy_Net2PP_TX(A2B_busy_Net2PP_TX),
-    .A2B_busy_Net2PP_RX(A2B_busy_Net2PP_RX),
+    wire [10:0]A_TX_bram_addrb;
+    wire A_TX_bram_clkb;
+    wire [31:0]A_TX_bram_dinb;
+    wire [31:0]A_TX_bram_doutb;
+    wire A_TX_bram_enb;
+    wire [0:0]A_TX_bram_web;
 
-    .gmii_txd(gmii_txd), // Transmit data from client MAC.
-    .gmii_tx_en(gmii_tx_en), // Transmit control signal from client MAC.
-    .gmii_tx_er(gmii_tx_er), // Transmit control signal from client MAC.
-    .gmii_rxd(gmii_rxd), // Received Data to client MAC.
-    .gmii_rx_dv(gmii_rx_dv), // Received control signal to client MAC.
-    .gmii_rx_er(gmii_rx_er), // Received control signal to client MAC.
+     wire [31:0]AXImanager_PORTA_addr;
+     wire AXImanager_PORTA_clk;
+     wire [63:0]AXImanager_PORTA_din;
+     wire [63:0]AXImanager_PORTA_dout;
+     wire AXImanager_PORTA_en;
+     wire AXImanager_PORTA_rst;
+     wire [7:0]AXImanager_PORTA_we;
 
+     wire [31:0]EVrandombit_PORTA_addr;
+     wire EVrandombit_PORTA_clk;
+     wire [63:0]EVrandombit_PORTA_din;
+     wire [63:0]EVrandombit_PORTA_dout;
+     wire EVrandombit_PORTA_en;
+     wire EVrandombit_PORTA_rst;
+     wire [7:0]EVrandombit_PORTA_we;
 
-    .clkTX_msg(clkTX_msg),
-    .clkRX_msg(clkRX_msg),
-    .network_fsm_TCP_A_TX(network_fsm_TCP_TX),
-    //----------------------------new add signal------------------------------
-    
-    .start_switch(start_switch),
-    .start_TX(start_TX),
-    .wait_TX(wait_TX),
-    .finish_A_ER(A_ER_finish),
+     wire [31:0]PArandombit_PORTA_addr;
+     wire PArandombit_PORTA_clk;
+     wire [63:0]PArandombit_PORTA_din;
+     wire [63:0]PArandombit_PORTA_dout;
+     wire PArandombit_PORTA_en;
+     wire PArandombit_PORTA_rst;
+     wire [7:0]PArandombit_PORTA_we;
 
-    .sifted_key_addr_index(1'b0),                //address index
-                                                            //0:addr0 ~ addr16383
-                                                            //1:addr16384 ~ addr32767
+     wire [31:0]QC_PORTA_addr;
+     wire QC_PORTA_clk;
+     wire [63:0]QC_PORTA_din;
+     wire [63:0]QC_PORTA_dout;
+     wire QC_PORTA_en;
+     wire QC_PORTA_rst;
+     wire [7:0]QC_PORTA_we;
 
+     wire [31:0]Qubit_PORTA_addr;
+     wire Qubit_PORTA_clk;
+     wire [63:0]Qubit_PORTA_din;
+     wire [63:0]Qubit_PORTA_dout;
+     wire Qubit_PORTA_en;
+     wire Qubit_PORTA_rst;
+     wire [7:0]Qubit_PORTA_we;
 
-    .Areconciledkey_clka(Areconciledkey_clka),
-    .Areconciledkey_ena(Areconciledkey_ena),
-    .Areconciledkey_wea(Areconciledkey_wea),
-    .Areconciledkey_addra(Areconciledkey_addra),
-    .Areconciledkey_dina(Areconciledkey_dina),
+     wire [31:0]Secretkey_PORTA_addr;
+     wire Secretkey_PORTA_clk;
+     wire [63:0]Secretkey_PORTA_din;
+     wire [63:0]Secretkey_PORTA_dout;
+     wire Secretkey_PORTA_en;
+     wire Secretkey_PORTA_rst;
+     wire [7:0]Secretkey_PORTA_we;
 
-    .single_frame_leaked_info(single_frame_leaked_info),
-    .single_frame_error_count(single_frame_error_count),
-    .single_frame_parameter_valid(single_frame_parameter_valid),
-    .A_single_frame_error_verification_fail(A_single_frame_error_verification_fail)       //error verification is fail
+    top_A_PP u_Alice(
+        .clk_out_125M(clock_100M),
+        .clk_out_20M(clock_15M),
+        .proc_rst_n(~reset),
+        .clkTX_msg(clkTX_msg),
+        .clkRX_msg(clkRX_msg),
+        
+        .start_TX(start_TX),
+        .start_switch(start_switch),
+        .wait_TX(wait_TX),
+        //        .default_sysclk1_300_clk_n(default_sysclk1_300_clk_n),
+        //        .default_sysclk1_300_clk_p(default_sysclk1_300_clk_p),
+        //        .reset_high(reset_high),
+
+        //        .clk_out_125M(clk_out_125M),
+        //        .rst_n(rst_n),
+
+        // TX - A packet connections
+        .busy_Net2PP_TX(A2B_busy_Net2PP_TX),
+        .busy_PP2Net_TX(A2B_busy_PP2Net_TX),
+        .msg_stored(A2B_msg_stored),
+        .sizeTX_msg(A2B_sizeTX_msg),
+        // TX BRAM connections
+        .A_TX_bram_clkb(A_TX_bram_clkb),
+        .A_TX_bram_enb(A_TX_bram_enb),
+        .A_TX_bram_web(A_TX_bram_web),
+        .A_TX_bram_addrb(A_TX_bram_addrb),
+        .A_TX_bram_dinb(A_TX_bram_dinb),
+
+        // RX - A unpacket connections
+        .busy_Net2PP_RX(A2B_busy_Net2PP_RX),
+        .msg_accessed(A2B_msg_accessed),
+        .sizeRX_msg(A2B_sizeRX_msg),
+        .busy_PP2Net_RX(A2B_busy_PP2Net_RX),
+        // RX BRAM connections
+        .A_RX_bram_clkb(A_RX_bram_clkb),
+        .A_RX_bram_enb(A_RX_bram_enb),
+        .A_RX_bram_web(A_RX_bram_web),
+        .A_RX_bram_addrb(A_RX_bram_addrb),
+        .A_RX_bram_doutb(A_RX_bram_doutb),
+
+        // AXImanager BRAM PORT-A connections
+        .AXImanager_PORTA_addr(AXImanager_PORTA_addr),
+        .AXImanager_PORTA_clk(AXImanager_PORTA_clk),
+        .AXImanager_PORTA_din(AXImanager_PORTA_din),
+        .AXImanager_PORTA_dout(AXImanager_PORTA_dout),
+        .AXImanager_PORTA_en(AXImanager_PORTA_en),
+        .AXImanager_PORTA_rst(AXImanager_PORTA_rst),
+        .AXImanager_PORTA_we(AXImanager_PORTA_we),
+
+        // EVrandombit BRAM PORT-A connections
+        .EVrandombit_PORTA_addr(EVrandombit_PORTA_addr),
+        .EVrandombit_PORTA_clk(EVrandombit_PORTA_clk),
+        .EVrandombit_PORTA_din(EVrandombit_PORTA_din),
+        .EVrandombit_PORTA_dout(EVrandombit_PORTA_dout),
+        .EVrandombit_PORTA_en(EVrandombit_PORTA_en),
+        .EVrandombit_PORTA_rst(EVrandombit_PORTA_rst),
+        .EVrandombit_PORTA_we(EVrandombit_PORTA_we),
+
+        // PArandombit BRAM PORT-A connections
+        .PArandombit_PORTA_addr(PArandombit_PORTA_addr),
+        .PArandombit_PORTA_clk(PArandombit_PORTA_clk),
+        .PArandombit_PORTA_din(PArandombit_PORTA_din),
+        .PArandombit_PORTA_dout(PArandombit_PORTA_dout),
+        .PArandombit_PORTA_en(PArandombit_PORTA_en),
+        .PArandombit_PORTA_rst(PArandombit_PORTA_rst),
+        .PArandombit_PORTA_we(PArandombit_PORTA_we),
+
+        // QC BRAM PORT-A connections
+        .QC_PORTA_addr(QC_PORTA_addr),
+        .QC_PORTA_clk(QC_PORTA_clk),
+        .QC_PORTA_din(QC_PORTA_din),
+        .QC_PORTA_dout(QC_PORTA_dout),
+        .QC_PORTA_en(QC_PORTA_en),
+        .QC_PORTA_rst(QC_PORTA_rst),
+        .QC_PORTA_we(QC_PORTA_we),
+        
+        // Qubit BRAM PORT-A connections
+        .Qubit_PORTA_addr(Qubit_PORTA_addr),
+        .Qubit_PORTA_clk(Qubit_PORTA_clk),
+        .Qubit_PORTA_din(Qubit_PORTA_din),
+        .Qubit_PORTA_dout(Qubit_PORTA_dout),
+        .Qubit_PORTA_en(Qubit_PORTA_en),
+        .Qubit_PORTA_rst(Qubit_PORTA_rst),
+        .Qubit_PORTA_we(Qubit_PORTA_we),
+
+        // Secretkey BRAM PORT-A connections
+        .Secretkey_PORTA_addr(Secretkey_PORTA_addr),
+        .Secretkey_PORTA_clk(Secretkey_PORTA_clk),
+        .Secretkey_PORTA_din(Secretkey_PORTA_din),
+        .Secretkey_PORTA_dout(Secretkey_PORTA_dout),
+        .Secretkey_PORTA_en(Secretkey_PORTA_en),
+        .Secretkey_PORTA_rst(Secretkey_PORTA_rst),
+        .Secretkey_PORTA_we(Secretkey_PORTA_we)
     );
+    //---------------------------------------AXI manager interface for Post processing----------------------------------------
+   wire [11:0]AXImanager_PORTA_addr_12;
+   wire [16:0]EVrandombit_PORTA_addr_17;
+   wire [16:0]PArandombit_PORTA_addr_17;
+   wire [17:0]QC_PORTA_addr_18;
+   wire [17:0]Qubit_PORTA_addr_18;
+   wire [17:0]Secretkey_PORTA_addr_18;
+   
+   assign AXImanager_PORTA_addr  = {20'b0, AXImanager_PORTA_addr_12};
+   assign EVrandombit_PORTA_addr = {15'b0, EVrandombit_PORTA_addr_17};
+   assign PArandombit_PORTA_addr = {15'b0, PArandombit_PORTA_addr_17};
+   assign QC_PORTA_addr = {14'b0, QC_PORTA_addr_18};
+   assign Qubit_PORTA_addr = {14'b0, Qubit_PORTA_addr_18};
+   assign Secretkey_PORTA_addr = {14'b0, Secretkey_PORTA_addr_18};
+   
+    AXI_Manager_A_wrapper  u_AXI_Manager_A(
+        // AXImanager BRAM PORT-A connections
+        .AXImanager_PORTA_addr(AXImanager_PORTA_addr_12),
+        .AXImanager_PORTA_clk(AXImanager_PORTA_clk),
+        .AXImanager_PORTA_din(AXImanager_PORTA_din),
+        .AXImanager_PORTA_dout(AXImanager_PORTA_dout),
+        .AXImanager_PORTA_en(AXImanager_PORTA_en),
+        .AXImanager_PORTA_rst(AXImanager_PORTA_rst),
+        .AXImanager_PORTA_we(AXImanager_PORTA_we),
 
-    always@(posedge clock_100M or posedge reset) begin
-        if(reset) begin
-            A_ER_finish_reg <= 1'b0;
-        end else if (A_ER_finish) begin
-            A_ER_finish_reg <= 1'b1;
-        end else begin
-            A_ER_finish_reg <= A_ER_finish_reg;
-        end
-    end
-    //    //************************ Jtag for B siftkey bram***********************
-JTAG_wrapper U_KEY (
-    .BRAM_PORTB_0_addr({15'b0, (Areconciledkey_addra+15'b1), 2'b0}),
-    .BRAM_PORTB_0_clk(Areconciledkey_clka),
-    .BRAM_PORTB_0_din(Areconciledkey_dina[63:32]),
-    .BRAM_PORTB_0_dout(),
-    .BRAM_PORTB_0_en(Areconciledkey_ena),
-    .BRAM_PORTB_0_rst(reset),
-    .BRAM_PORTB_0_we(Areconciledkey_wea),
+        // EVrandombit BRAM PORT-A connections
+        .EVrandombit_PORTA_addr(EVrandombit_PORTA_addr_17),
+        .EVrandombit_PORTA_clk(EVrandombit_PORTA_clk),
+        .EVrandombit_PORTA_din(EVrandombit_PORTA_din),
+        .EVrandombit_PORTA_dout(EVrandombit_PORTA_dout),
+        .EVrandombit_PORTA_en(EVrandombit_PORTA_en),
+        .EVrandombit_PORTA_rst(EVrandombit_PORTA_rst),
+        .EVrandombit_PORTA_we(EVrandombit_PORTA_we),
+
+            // PArandombit BRAM PORT-A connections
+        .PArandombit_PORTA_addr(PArandombit_PORTA_addr_17),
+        .PArandombit_PORTA_clk(PArandombit_PORTA_clk),
+        .PArandombit_PORTA_din(PArandombit_PORTA_din),
+        .PArandombit_PORTA_dout(PArandombit_PORTA_dout),
+        .PArandombit_PORTA_en(PArandombit_PORTA_en),
+        .PArandombit_PORTA_rst(PArandombit_PORTA_rst),
+        .PArandombit_PORTA_we(PArandombit_PORTA_we),
+
+        // QC BRAM PORT-A connections
+        .QC_PORTA_addr(QC_PORTA_addr_18),
+        .QC_PORTA_clk(QC_PORTA_clk),
+        .QC_PORTA_din(QC_PORTA_din),
+        .QC_PORTA_dout(QC_PORTA_dout),
+        .QC_PORTA_en(QC_PORTA_en),
+        .QC_PORTA_rst(QC_PORTA_rst),
+        .QC_PORTA_we(QC_PORTA_we),
+        
+        // Qubit BRAM PORT-A connections
+        .Qubit_PORTA_addr(Qubit_PORTA_addr_18),
+        .Qubit_PORTA_clk(Qubit_PORTA_clk),
+        .Qubit_PORTA_din(Qubit_PORTA_din),
+        .Qubit_PORTA_dout(Qubit_PORTA_dout),
+        .Qubit_PORTA_en(Qubit_PORTA_en),
+        .Qubit_PORTA_rst(Qubit_PORTA_rst),
+        .Qubit_PORTA_we(Qubit_PORTA_we),
+
+        // Secretkey BRAM PORT-A connections
+        .Secretkey_PORTA_addr(Secretkey_PORTA_addr_18),
+        .Secretkey_PORTA_clk(Secretkey_PORTA_clk),
+        .Secretkey_PORTA_din(Secretkey_PORTA_din),
+        .Secretkey_PORTA_dout(Secretkey_PORTA_dout),
+        .Secretkey_PORTA_en(Secretkey_PORTA_en),
+        .Secretkey_PORTA_rst(Secretkey_PORTA_rst),
+        
+        .clk_100M(clock_100M),
+        .rst_n(~reset)
+        );
+    //---------------------------------------AXI manager interface for Post processing----------------------------------------
+    //---------------------------------------------------------Network of A---------------------------------------------------------
+    wire clkTX_msg;
+    wire clkRX_msg;
+
+    wire [31:0] A2B_dataTX_msg; // message from PP 
+    wire [10:0] A2B_addrTX_msg; // addr for BRAMMsgTX
+    wire [10:0] A2B_sizeTX_msg;                // transmitting message size
+
+    wire [31:0] A2B_dataRX_msg; // message pasrsed from Ethernet frame
+    wire [10:0] A2B_addrRX_msg; // addr for BRAMMSGRX
+    wire A2B_weRX_msg; // write enable for BRAMMsgRX
+    wire [10:0] A2B_sizeRX_msg;               // receoved message size
+
+    wire  [7:0] gmii_txd; // Transmit data from client MAC.
+    wire  gmii_tx_en; // Transmit control signal from client MAC.
+    wire  gmii_tx_er; // Transmit control signal from client MAC.
+
+    wire [7:0]   gmii_rxd; // Received Data to client MAC.d
+    wire           gmii_rx_dv; // Received control signal to client MAC.
+    wire           gmii_rx_er;
+    //---------------------------------------------------------Network of A---------------------------------------------------------
+    networkCentCtrl #(
+    .lost_cycle(26'd30),
+    .phy_reset_wait(26'd20)
+    ) Unetwork_A2B_TX(
+        .reset(reset), // system reset
+//        .clock_100M(clk),            // clock for JTAG module 
+//        .clk_PP(clk_PP),               // CDC interface for Network
+        .clk_PP(clk_fast),          // Same clock domain 
+        .clkTX_msg(clkTX_msg), // clock for accessing BRAMMsgTX
+        .clkRX_msg(clkRX_msg), // clock for accessing BRAMMsgRX
+
+        // Post Processing interface
+        //------------------------------------
+        .busy_PP2Net_TX(A2B_busy_PP2Net_TX), // BRAMMsgTX is used by PP
+        .busy_Net2PP_TX(A2B_busy_Net2PP_TX), // BRAMMsgTX is used by NetworkCentCtrl
+        .msg_stored(A2B_msg_stored), // msg is stored in BRAMMsgTX by PP 
+
+        .busy_PP2Net_RX(A2B_busy_PP2Net_RX), // BRAMMsgRX is used by PP
+        .busy_Net2PP_RX(A2B_busy_Net2PP_RX), // BRAMMsgRX is used by networkCentCtrl
+        .msg_accessed(A2B_msg_accessed), // msg is stored in BRAMMsgTX by networkCentCtrl
+
+        .dataTX_msg(A2B_dataTX_msg), // message from PP 
+        .addrTX_msg(A2B_addrTX_msg), // addr for BRAMMsgTX
+        .sizeTX_msg(A2B_sizeTX_msg), // transmitting message size
+
+        .dataRX_msg(A2B_dataRX_msg), // message pasrsed from Ethernet frame
+        .weRX_msg(A2B_weRX_msg), // write enable for BRAMMsgRX
+        .addrRX_msg(A2B_addrRX_msg), // addr for BRAMMSGRX
+        .sizeRX_msg(A2B_sizeRX_msg), // receoved message size
+
+        // GMII Interface (client MAC <=> PCS)
+        //------------------------------------
+        .gmii_tx_clk(gmii_tx_clk), // Transmit clock from client MAC.
+        .gmii_rx_clk(gmii_rx_clk), // Receive clock to client MAC.
+        .link_status(link_status), // Link status: use status_vector[0]
+        .gmii_txd(gmii_txd), // Transmit data from client MAC.
+        .gmii_tx_en(gmii_tx_en), // Transmit control signal from client MAC.
+        .gmii_tx_er(gmii_tx_er), // Transmit control signal from client MAC.
+        .gmii_rxd(gmii_rxd), // Received Data to client MAC.
+        .gmii_rx_dv(gmii_rx_dv), // Received control signal to client MAC.
+        .gmii_rx_er(gmii_rx_er), // Received control signal to client MAC.
+        // link status indicator
+        .network_fsm_TCP(network_fsm_TCP_TX)
+    );
+    //---------------------------------------------------------Network of A---------------------------------------------------------
+    //---------------------------------------------------------TX RX Bram -----------------------------------------------------------
+    wire clkRX_msg;
+(*mark_debug = "TRUE"*)    wire A2B_weRX_msg;
+(*mark_debug = "TRUE"*)    wire [10:0] A2B_addrRX_msg;
+(*mark_debug = "TRUE"*)    wire [31:0] A2B_dataRX_msg;
     
-    .BRAM_PORTB_1_addr({15'b0, (Areconciledkey_addra+15'b1), 2'b0}),
-    .BRAM_PORTB_1_clk(Areconciledkey_clka),
-    .BRAM_PORTB_1_din(Areconciledkey_dina[31:0]),
-    .BRAM_PORTB_1_dout(),
-    .BRAM_PORTB_1_en(Areconciledkey_ena),
-    .BRAM_PORTB_1_rst(reset),
-    .BRAM_PORTB_1_we(Areconciledkey_wea),
+    wire A_RX_bram_clkb;
+    wire A_RX_bram_enb;
+    wire A_RX_bram_web;
+(*mark_debug = "TRUE"*)    wire [10:0] A_RX_bram_addrb;
+(*mark_debug = "TRUE"*)    wire [31:0] A_RX_bram_doutb;
     
-    .clk_in_100M(clock_100M),
-    .reset(reset)
+    wire clkTX_msg;
+    wire [10:0] A2B_addrTX_msg;
+    wire [31:0] A2B_dataTX_msg;
+    
+    wire A_TX_bram_clkb;
+    wire A_TX_bram_enb;
+    wire A_TX_bram_web;
+    wire [10:0] A_TX_bram_addrb;
+    wire [31:0] A_TX_bram_dinb;
+
+    A_TXRX_BRAM_wrapper A_TXRX_BRAM(
+        .A_RX_clka(clkRX_msg),
+        .A_RX_ena(1'b1),
+        .A_RX_wea(A2B_weRX_msg),
+        .A_RX_addra(A2B_addrRX_msg),
+        .A_RX_dina(A2B_dataRX_msg),
+        .A_RX_douta(),
+
+        .A_RX_clkb(A_RX_bram_clkb),
+        .A_RX_enb(A_RX_bram_enb),
+        .A_RX_web(A_RX_bram_web),
+        .A_RX_addrb(A_RX_bram_addrb),
+        .A_RX_dinb(),
+        .A_RX_doutb(A_RX_bram_doutb),
+
+        .A_TX_clka(clkTX_msg),
+        .A_TX_ena(1'b1),
+        .A_TX_wea(1'b0),
+        .A_TX_addra(A2B_addrTX_msg),
+        .A_TX_dina(),
+        .A_TX_douta(A2B_dataTX_msg),
+
+        .A_TX_clkb(A_TX_bram_clkb),
+        .A_TX_enb(A_TX_bram_enb),
+        .A_TX_web(A_TX_bram_web),
+        .A_TX_addrb(A_TX_bram_addrb),
+        .A_TX_dinb(A_TX_bram_dinb),
+        .A_TX_doutb()
+    );
+    //---------------------------------------------------------TX RX Bram -----------------------------------------------------------
+    //************************ END SIGNAL*****************************
+//    always@(posedge clock_125M or posedge reset) begin
+//        if(reset) begin
+//            A_sifting_finish_reg <= 1'b0;
+//        end else if (A_sifting_finish) begin
+//            A_sifting_finish_reg <= 1'b1;
+//        end else begin
+//            A_sifting_finish_reg <= A_sifting_finish_reg;
+//        end
+//    end
+    //*************************** END SIGNAL***************************
+    //************************ Jtag for A siftkey bram***********************
+    /*
+JTAG_wrapper U_JTAG(
+   .bram_addrb({15'b0, Asiftedkey_addra, 2'b00}),
+   .bram_clkb(Asiftedkey_clka),
+   .bram_dinb(Asiftedkey_dina[31:0]),
+   .bram_enb(Asiftedkey_ena),
+   .bram_rstb(reset),
+   .bram_web({4{Asiftedkey_wea}}),
+   
+   .bram_addrb_1({15'b0, Asiftedkey_addra, 2'b00}),
+   .bram_clkb_1(Asiftedkey_clka),
+   .bram_dinb_1(Asiftedkey_dina[63:32]),
+   .bram_enb_1(Asiftedkey_ena),
+   .bram_rstb_1(reset),
+   .bram_web_1({4{Asiftedkey_wea}}),
+   
+   .clk_in_100M(clock_100M),
+   .reset(reset)
 );
+*/
+    //************************ Jtag for A siftkey bram***********************
 
-    //    //************************ Jtag for B siftkey bram***********************
 endmodule
-
