@@ -1,11 +1,4 @@
-
-
-`include "./packet_parameter.v"
-
-
-
-
-
+`include "PP_parameter.v"
 
 module A_unpacket (
     input clk,
@@ -29,22 +22,28 @@ module A_unpacket (
 
     // A_B2A Zbasis fifo
     output wire A_RX_Zbasis_detected_wr_clk,
-    output wire [31:0] A_RX_Zbasis_detected_wr_din,
-    output wire A_RX_Zbasis_detected_wr_en,
+//    output wire [31:0] A_RX_Zbasis_detected_wr_din,
+//    output wire A_RX_Zbasis_detected_wr_en,
+    output reg [31:0] A_RX_Zbasis_detected_wr_din_delay,
+    output reg A_RX_Zbasis_detected_wr_en_delay,
     input wire A_RX_Zbasis_detected_full,
     input wire A_RX_Zbasis_detected_wr_ack,
 
     // A_B2A Xbasis fifo
     output wire A_RX_Xbasis_detected_wr_clk,
-    output wire [63:0] A_RX_Xbasis_detected_wr_din,
-    output wire A_RX_Xbasis_detected_wr_en,
+//    output wire [63:0] A_RX_Xbasis_detected_wr_din,
+//    output wire A_RX_Xbasis_detected_wr_en,
+    output reg [63:0] A_RX_Xbasis_detected_wr_din_delay,
+    output reg A_RX_Xbasis_detected_wr_en_delay,
     input wire A_RX_Xbasis_detected_full,
     input wire A_RX_Xbasis_detected_wr_ack,
 
     // A_B2A er fifo
     output wire A_RX_er_wr_clk,
-    output wire [31:0] A_RX_er_wr_din,
-    output wire A_RX_er_wr_en,
+//    output wire [31:0] A_RX_er_wr_din,
+//    output wire A_RX_er_wr_en,
+    output reg [31:0] A_RX_er_wr_din_delay,
+    output reg A_RX_er_wr_en_delay,
     input wire A_RX_er_full,
     input wire A_RX_er_wr_ack,
 
@@ -83,6 +82,32 @@ module A_unpacket (
         end
     end
 //****************************** DFF for bram output ******************************
+//****************************** Delay for write to FIFO (timing slack...) ******************************
+    wire [63:0] A_RX_Xbasis_detected_wr_din;
+    wire A_RX_Xbasis_detected_wr_en;
+    wire [31:0] A_RX_Zbasis_detected_wr_din;
+    wire A_RX_Zbasis_detected_wr_en;
+    wire [31:0] A_RX_er_wr_din;
+    wire A_RX_er_wr_en;
+    always @(posedge clk ) begin
+        if (~rst_n) begin
+            A_RX_Xbasis_detected_wr_en_delay <= 1'b0;
+            A_RX_Zbasis_detected_wr_en_delay <= 1'b0;
+            A_RX_er_wr_en_delay <= 1'b0;
+            A_RX_Xbasis_detected_wr_din_delay <= 64'b0;
+            A_RX_Zbasis_detected_wr_din_delay <= 32'b0;
+            A_RX_er_wr_din_delay <= 32'b0;
+        end
+        else begin
+            A_RX_Xbasis_detected_wr_en_delay <= A_RX_Xbasis_detected_wr_en;
+            A_RX_Zbasis_detected_wr_en_delay <= A_RX_Zbasis_detected_wr_en;
+            A_RX_er_wr_en_delay <= A_RX_er_wr_en;
+            A_RX_Xbasis_detected_wr_din_delay <= A_RX_Xbasis_detected_wr_din;
+            A_RX_Zbasis_detected_wr_din_delay <= A_RX_Zbasis_detected_wr_din;
+            A_RX_er_wr_din_delay <= A_RX_er_wr_din;
+        end
+    end
+//****************************** Delay for write to FIFO (timing slack...) ******************************
 
 
 
@@ -108,7 +133,7 @@ module A_unpacket (
     wire set_parameter_en;
     wire read_bram_header_en;
     wire write_fifo_bram_en;
-    wire reset_parameter;
+    (*mark_debug = "TRUE"*) wire reset_parameter;
     wire [3:0] A_unpacket_state;
 
     A_unpacket_fsm Aunpacket_fsm (
@@ -136,30 +161,47 @@ module A_unpacket (
 
 
 //****************************** read BRAM header ******************************
-    reg [31:0] bram_header_ff;
+    (* DONT_TOUCH = "TRUE" *) reg [31:0] bram_header_ff;
+    (* DONT_TOUCH = "TRUE" *) reg [31:0] bram_header_ff_replicate1;
+    (* DONT_TOUCH = "TRUE" *) reg [31:0] bram_header_ff_replicate2;
     always @(posedge clk ) begin
         if (~rst_n)begin
             bram_header_ff <= 32'b0;
+            bram_header_ff_replicate1 <= 32'b0;
+            bram_header_ff_replicate2 <= 32'b0;
         end
         else if (read_bram_header_en) begin
             bram_header_ff <= A_RX_bram_doutb_ff;
+            bram_header_ff_replicate1 <= A_RX_bram_doutb_ff;
+            bram_header_ff_replicate2 <= A_RX_bram_doutb_ff;
         end
         else if (reset_parameter) begin
             bram_header_ff <= 32'b0;
+            bram_header_ff_replicate1 <= 32'b0;
+            bram_header_ff_replicate2 <= 32'b0;
         end
         else begin
             bram_header_ff <= bram_header_ff;
+            bram_header_ff_replicate1 <= bram_header_ff_replicate1;
+            bram_header_ff_replicate2 <= bram_header_ff_replicate2;
         end
     end
 
-    wire [`PACKET_LENGTH_WIDTH-1:0] bram_packet_depth;
+    (* KEEP = "TRUE" *) wire [`PACKET_LENGTH_WIDTH-1:0] bram_packet_depth;
+    (* KEEP = "TRUE" *) wire [`PACKET_LENGTH_WIDTH-1:0] bram_packet_depth_replicate1;
+    (* KEEP = "TRUE" *) wire [`PACKET_LENGTH_WIDTH-1:0] bram_packet_depth_replicate2;
     assign bram_packet_depth = bram_header_ff[27:24];
-
-    wire [`PACKET_TYPE_WIDTH-1:0] bram_packet_type;
+    assign bram_packet_depth_replicate1 = bram_header_ff_replicate1[27:24];
+    assign bram_packet_depth_replicate2 = bram_header_ff_replicate2[27:24];
+    (* KEEP = "TRUE" *) wire [`PACKET_TYPE_WIDTH-1:0] bram_packet_type;
+    (* KEEP = "TRUE" *) wire [`PACKET_TYPE_WIDTH-1:0] bram_packet_type_replicate1;
+    (* KEEP = "TRUE" *) wire [`PACKET_TYPE_WIDTH-1:0] bram_packet_type_replicate2;
     assign bram_packet_type = bram_header_ff[31:28];
+    assign bram_packet_type_replicate1 = bram_header_ff_replicate1[31:28];
+    assign bram_packet_type_replicate2 = bram_header_ff_replicate2[31:28];
 
 
-    reg [10:0] bram_real_depth;
+    (* DONT_TOUCH = "TRUE" *) reg [10:0] bram_real_depth;
     always @(*) begin
         if (bram_packet_depth==`PACKET_LENGTH_257) begin
             bram_real_depth = bram_header_ff[23:15];
@@ -177,6 +219,42 @@ module A_unpacket (
             bram_real_depth = 11'd1024;
         end
     end
+    (* DONT_TOUCH = "TRUE" *) reg [10:0] bram_real_depth_replicate1;
+    always @(*) begin
+        if (bram_packet_depth_replicate1==`PACKET_LENGTH_257) begin
+            bram_real_depth_replicate1 = bram_header_ff_replicate1[23:15];
+        end
+        else if (bram_packet_depth_replicate1==`PACKET_LENGTH_514) begin
+            bram_real_depth_replicate1 = 11'd512;
+        end
+        else if (bram_packet_depth_replicate1==`PACKET_LENGTH_771) begin
+            bram_real_depth_replicate1 = 11'd768;
+        end
+        else if (bram_packet_depth_replicate1==`PACKET_LENGTH_1028) begin
+            bram_real_depth_replicate1 = 11'd1024;
+        end
+        else begin
+            bram_real_depth_replicate1 = 11'd1024;
+        end
+    end
+    (* DONT_TOUCH = "TRUE" *) reg [10:0] bram_real_depth_replicate2;
+    always @(*) begin
+        if (bram_packet_depth_replicate2==`PACKET_LENGTH_257) begin
+            bram_real_depth_replicate2 = bram_header_ff_replicate2[23:15];
+        end
+        else if (bram_packet_depth_replicate2==`PACKET_LENGTH_514) begin
+            bram_real_depth_replicate2 = 11'd512;
+        end
+        else if (bram_packet_depth_replicate2==`PACKET_LENGTH_771) begin
+            bram_real_depth_replicate2 = 11'd768;
+        end
+        else if (bram_packet_depth_replicate2==`PACKET_LENGTH_1028) begin
+            bram_real_depth_replicate2 = 11'd1024;
+        end
+        else begin
+            bram_real_depth_replicate2 = 11'd1024;
+        end
+    end
 //****************************** read BRAM header ******************************
 
 
@@ -185,19 +263,29 @@ module A_unpacket (
 
 //****************************** read from BRAM ******************************
 
-    reg [10:0] read_bram_cnt;
+    (* DONT_TOUCH = "TRUE" *) reg [10:0] read_bram_cnt;
+    (* DONT_TOUCH = "TRUE" *) reg [10:0] read_bram_cnt_replicate1;
+    (* DONT_TOUCH = "TRUE" *) reg [10:0] read_bram_cnt_replicate2;
     always @(posedge clk ) begin
         if (~rst_n) begin
             read_bram_cnt <= 11'b0;
+            read_bram_cnt_replicate1 <= 11'b0;
+            read_bram_cnt_replicate2 <= 11'b0;
         end
         else if (reset_parameter) begin
             read_bram_cnt <= 11'b0;
+            read_bram_cnt_replicate1 <= 11'b0;
+            read_bram_cnt_replicate2 <= 11'b0;
         end
         else if (write_fifo_bram_en) begin
             read_bram_cnt <= read_bram_cnt + 1;
+            read_bram_cnt_replicate1 <= read_bram_cnt_replicate1 + 1;
+            read_bram_cnt_replicate2 <= read_bram_cnt_replicate2 + 1;
         end
         else begin
             read_bram_cnt <= read_bram_cnt;
+            read_bram_cnt_replicate1 <= read_bram_cnt_replicate1;
+            read_bram_cnt_replicate2 <= read_bram_cnt_replicate2;
         end
     end
 
@@ -215,14 +303,22 @@ module A_unpacket (
         end
     end
 
-    wire write_header_en;
+    (* KEEP = "TRUE" *) wire write_header_en;
+    (* KEEP = "TRUE" *) wire write_header_en_replicate1;
+    (* KEEP = "TRUE" *) wire write_header_en_replicate2;
     assign write_header_en = ((bram_packet_type==`B2A_ASK_PARITY)||(bram_packet_type==`B2A_VERIFICATION_HASHTAG))? 1'b1:1'b0;
+    assign write_header_en_replicate1 = ((bram_packet_type_replicate1==`B2A_ASK_PARITY)||(bram_packet_type_replicate1==`B2A_VERIFICATION_HASHTAG))? 1'b1:1'b0;
+    assign write_header_en_replicate2 = ((bram_packet_type_replicate2==`B2A_ASK_PARITY)||(bram_packet_type_replicate2==`B2A_VERIFICATION_HASHTAG))? 1'b1:1'b0;
 
 
-    wire A_B2A_wr_en;
+    (* KEEP = "TRUE" *) wire A_B2A_wr_en;
+    (* KEEP = "TRUE" *) wire A_B2A_wr_en_replicate1;
+    (* KEEP = "TRUE" *) wire A_B2A_wr_en_replicate2;
     wire [31:0] A_B2A_wr_din;
 
     assign A_B2A_wr_en = ((read_bram_cnt>(7 - write_header_en))&&(read_bram_cnt<(bram_real_depth+8)))? 1'b1:1'b0;
+    assign A_B2A_wr_en_replicate1 = ((read_bram_cnt_replicate1 >(7 - write_header_en_replicate1))&&(read_bram_cnt_replicate1 <(bram_real_depth_replicate1+8)))? 1'b1:1'b0;
+    assign A_B2A_wr_en_replicate2 = ((read_bram_cnt_replicate2 >(7 - write_header_en_replicate2))&&(read_bram_cnt_replicate2 <(bram_real_depth_replicate2+8)))? 1'b1:1'b0;
     assign A_B2A_wr_din = (A_B2A_wr_en)? A_RX_bram_doutb_ff:32'b0;
 
 //****************************** read from BRAM ******************************
@@ -237,12 +333,12 @@ module A_unpacket (
 
 
     assign A_RX_er_wr_en = ((bram_packet_type==`B2A_ASK_PARITY) || (bram_packet_type==`B2A_VERIFICATION_HASHTAG))? 
-                                A_B2A_wr_en:1'b0;
+                                A_B2A_wr_en_replicate1:1'b0;
     assign A_RX_er_wr_din = ((bram_packet_type==`B2A_ASK_PARITY) || (bram_packet_type==`B2A_VERIFICATION_HASHTAG))? 
                                 A_B2A_wr_din:32'b0;
 
     assign A_RX_Zbasis_detected_wr_en = ((bram_packet_type==`B2A_Z_BASIS_DETECTED))? 
-                                A_B2A_wr_en:1'b0;
+                                A_B2A_wr_en_replicate2:1'b0;
     assign A_RX_Zbasis_detected_wr_din = ((bram_packet_type==`B2A_Z_BASIS_DETECTED))? 
                                 A_B2A_wr_din:32'b0;
 
@@ -292,7 +388,7 @@ module A_unpacket (
 
 
 //****************************** EV random bit full ******************************
-    reg [31:0] sift_fifo_cnt;
+    (*mark_debug = "TRUE"*) reg [31:0] sift_fifo_cnt;
     always @(posedge clk ) begin
         if (~rst_n) begin
             sift_fifo_cnt <= 32'b0;
