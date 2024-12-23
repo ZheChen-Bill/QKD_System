@@ -157,16 +157,20 @@ The **Error Reconciliation Module** ensures consistency between Alice's and Bob'
 
 ### Error Correction
 - **Alice's EC Module**:
+
 ![398139596-11b457f0-787e-4efb-bd61-78c7f96bf7bf](https://github.com/user-attachments/assets/3d2341ab-3031-49d0-80a5-5a679e508394)
   
 - **Bob's EC Module**:
+
 ![398139682-d65c98a3-7b1e-4cc2-a405-6514d88b2276](https://github.com/user-attachments/assets/582b127f-6cb7-476f-99fb-d94102165286)
 
 ### Error Verification
 - **Alice's EV Module**:
+
 ![398139750-11f94155-fe81-44ee-a20a-178cadc1fd4d](https://github.com/user-attachments/assets/ab3e471b-3753-4e3a-ba86-39125c724899)
 
 - **Bob's EV Module**:
+
 ![398139773-ade4fd5e-4422-4551-bc06-008b88de601f](https://github.com/user-attachments/assets/5023a3e2-03fb-476f-b5df-e8ce0055b871)
 
 ---
